@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+<title>朝の日本経済・AIニュース</title>
+<link>https://owner.github.io/morning-news/</link>
+<atom:link href="https://owner.github.io/morning-news/feed.xml" rel="self" type="application/rss+xml"/>
+<language>ja</language>
+<description>毎朝7時ごろ更新。日本経済の重要ニュース5〜7本と今日のAIニュースを、2人の掛け合いで因果関係から解説します。AIが自動生成しているため、重要な判断の前には一次情報を確認してください。</description>
+<itunes:author>Morning Brief</itunes:author>
+<itunes:summary>毎朝7時ごろ更新。日本経済の重要ニュース5〜7本と今日のAIニュースを、2人の掛け合いで因果関係から解説します。AIが自動生成しているため、重要な判断の前には一次情報を確認してください。</itunes:summary>
+<itunes:image href="https://owner.github.io/morning-news/cover.png"/>
+<itunes:category text="News"><itunes:category text="Business News"/></itunes:category>
+<itunes:explicit>false</itunes:explicit>
+<itunes:block>Yes</itunes:block>
+<lastBuildDate>Sun, 27 Sep 2026 21:57:14 +0900</lastBuildDate>
+</channel>
+</rss>
