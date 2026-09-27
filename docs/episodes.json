@@ -1,1 +1,13 @@
-[]
+[
+  {
+    "date": "2026-09-27",
+    "title": "テスト放送 音声の確認",
+    "summary": "音声化と配信の動作確認用のテスト回です。",
+    "sources": [
+      "テスト用のため情報源なし"
+    ],
+    "url": "https://github.com/knishida00/morning-news/releases/download/ep-2026-09-27/2026-09-27.mp3",
+    "bytes": 451648,
+    "seconds": 56
+  }
+]
