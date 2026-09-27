@@ -1,5 +1,27 @@
 [
   {
+    "date": "2026-09-28",
+    "title": "9月28日 米長期金利07年来の高水準と原油乱高下",
+    "summary": "アメリカの長期金利が2007年以来の水準まで上昇し、中東情勢の緊迫による原油の乱高下や円安も重なっています。AI活用コラムはGoogle MeetのGemini自動議事録機能で会議の議事録作成を効率化する方法です。",
+    "sources": [
+      "NHKニュース：ホルムズ開放に向けたイラン提案 トランプ大統領が拒否の報道（出来事2026年9月24〜26日／公開2026年9月26日）https://news.web.nhk/newsweb/na/nd-20260926de52568",
+      "NHKニュース：イラン外相 トランプ大統領の反応認識も仲介国待ち対応判断（出来事2026年9月27日／公開2026年9月27日）https://news.web.nhk/newsweb/na/nd-20260927de52673",
+      "NHKニュース：米トランプ大統領 今週イランと協議の見通し示す 米報道（出来事2026年9月28日／公開2026年9月28日）https://news.web.nhk/newsweb/na/nd-20260928de52755",
+      "共同通信（Yahoo!ニュース）：トランプ氏、イランの海峡開放提案拒否か（出来事2026年9月26日／公開2026年9月26日）https://news.yahoo.co.jp/articles/8f668f23b51ba46fd1d2a1980c3af90a3a8ddb05",
+      "時事通信（Yahoo!ファイナンス）：〔NY石油〕WTI反落、93ドル台（25日午前）（出来事・公開ともに2026年9月25日）https://finance.yahoo.co.jp/news/detail/cfd33002981e0282ba14b0e2367ba93c7a3a371e",
+      "共同通信（Yahoo!ニュース）：NY株式25日終値（出来事・公開ともに2026年9月25日）https://news.yahoo.co.jp/articles/cd91a4e790708837c56f6b4a1f05fc410f11d674",
+      "日本経済新聞：米長期金利、切り上がる市場の目線 AIブームに利上げは効くか（出来事・公開ともに2026年9月25日）https://www.nikkei.com/article/DGXZQOFL25BLL0V20C26A9000000/",
+      "日本経済新聞：アメリカ消費支出物価（PCE）、8月2.7％上昇 市場予想通り（出来事2026年9月26日／公開2026年9月26日）https://www.nikkei.com/article/DGXZQOGN26BQR0W5A920C2000000/",
+      "日本経済新聞：日経平均大引け 5日続伸 850円高の6万6364円（出来事・公開ともに2026年9月25日）https://www.nikkei.com/article/DGXZQOFL254TJ0V20C26A9000000/",
+      "時事通信（Yahoo!ファイナンス）：〔東京株式〕堅調＝半導体の一角値上がり（25日後場寄り付き）（出来事・公開ともに2026年9月25日）https://news.yahoo.co.jp/articles/a64de09766468fb62b41c9dc7b91af31770483b6",
+      "nippon.com（時事通信配信）：為替相場 26日（日本時間7時）（出来事2026年9月25〜26日／公開2026年9月26日）https://www.nippon.com/ja/news/kd1476277831139443218/",
+      "Google Workspace Updates：New Google Meet 'Take notes for me' settings for admins and end users take effect September 29th（公開2026年9月）https://workspaceupdates.googleblog.com/2026/09/new-google-meet-take-notes-for-me-settings-for-admins-and-end-users-take-effect-September-29th.html"
+    ],
+    "url": "https://github.com/knishida00/morning-news/releases/download/ep-2026-09-28/2026-09-28.mp3",
+    "bytes": 4235433,
+    "seconds": 529
+  },
+  {
     "date": "2026-09-27",
     "title": "9月27日 日銀1.25%利上げと円安のゆくえ",
     "summary": "日銀とFRBがそろって利上げに動いた一方で円安圧力は収まらず、原油高が物価と両中銀の判断を左右しています。AIではAnthropicの新モデルとOpenAIの安全性問題も取り上げます。",
