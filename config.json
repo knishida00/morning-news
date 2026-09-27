@@ -15,5 +15,5 @@
   "tts_style": "以下は日本語の朝の経済ニュース番組での、AkiとKenの自然な会話です。落ち着いて聞き取りやすく、やや明るいトーンで、ラジオ番組のように読み上げてください。",
   "chunk_chars": 1400,
   "mp3_bitrate": "64k",
-  "keep_episodes": 30
+  "keep_episodes": 365
 }
