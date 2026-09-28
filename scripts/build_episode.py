@@ -29,6 +29,13 @@ INDEX_JSON = os.path.join(DOCS, "episodes.json")
 JST = dt.timezone(dt.timedelta(hours=9))
 SAMPLE_RATE = 24000  # Gemini TTS は 24kHz / 16bit / mono PCM を返す
 DATE_RE = re.compile(r"^episodes/(\d{4}-\d{2}-\d{2})\.md$")
+COLUMN_LOG = "episodes/column_log.md"
+REBUILD_DAYS = 7  # 台本が書き換えられたら作り直す対象期間（無料枠保護のため直近のみ）
+
+
+def text_hash(text):
+    import hashlib
+    return hashlib.sha1(text.encode("utf-8")).hexdigest()
 
 
 def log(*a):
@@ -296,7 +303,7 @@ def write_feed(items, cfg, site):
             f"<title>{html.escape(it['title'])}</title>",
             f"<description><![CDATA[{desc}]]></description>",
             f"<pubDate>{pub}</pubDate>",
-            f'<guid isPermaLink="false">morning-news-{it["date"]}</guid>',
+            f'<guid isPermaLink="false">morning-news-{it["date"]}{"-r" + str(it["rev"]) if it.get("rev", 1) > 1 else ""}</guid>',
             f'<enclosure url="{it["url"]}" length="{it["bytes"]}" type="audio/mpeg"/>',
             f"<itunes:duration>{fmt_duration(it['seconds'])}</itunes:duration>",
             "</item>",
@@ -352,11 +359,27 @@ def main():
     os.makedirs(BUILD, exist_ok=True)
     repo, site = repo_info()
     items = load_index()
-    done = {it["date"] for it in items}
-
+    by_date = {it["date"]: it for it in items}
     candidates = find_candidates()
-    todo = sorted(d for d in candidates if d not in done)
-    log(f"検出した台本: {sorted(candidates)} / 未公開: {todo}")
+
+    # 以前の版で作った回には台本の指紋がないので、main にある台本から補う
+    for d, it in by_date.items():
+        if "sha" not in it and d in candidates:
+            head = run(["git", "show", f"HEAD:episodes/{d}.md"], check=False)
+            if head:
+                it["sha"] = text_hash(head)
+
+    today = dt.datetime.now(JST).date()
+    todo, texts = [], {}
+    for d in sorted(candidates):
+        ref, path = candidates[d]
+        texts[d] = read_from_ref(ref, path)
+        if d not in by_date:
+            todo.append(d)
+        elif by_date[d].get("sha") != text_hash(texts[d]) and \
+                (today - dt.date.fromisoformat(d)).days <= REBUILD_DAYS:
+            todo.append(d)  # 台本が作り直された回
+    log(f"検出した台本: {sorted(candidates)} / 今回作る回: {todo}")
 
     api_key = os.environ.get("GEMINI_API_KEY", "")
     if todo and not args.dry_run and not api_key:
@@ -366,7 +389,7 @@ def main():
     for date in todo[-3:]:  # 取りこぼしがあっても最大3回分まで（無料枠保護）
         ref, path = candidates[date]
         log(f"== {date} を処理（{ref}）")
-        text = read_from_ref(ref, path)
+        text = texts[date]
         meta, lines, sources = parse_episode(text)
         lines = validate_lines(lines, cfg["speakers"])
         chunks = chunk_lines(lines, cfg["chunk_chars"])
@@ -392,9 +415,17 @@ def main():
         with open(os.path.join(ROOT, path), "w", encoding="utf-8") as f:
             f.write(text)
 
+        # コラムの記録（episodes/column_log.md）も main に反映する
+        log_text = run(["git", "show", f"{ref}:{COLUMN_LOG}"], check=False)
+        if log_text:
+            with open(os.path.join(ROOT, COLUMN_LOG), "w", encoding="utf-8") as f:
+                f.write(log_text)
+
+        rev = by_date[date].get("rev", 1) + 1 if date in by_date else 1
         items = [it for it in items if it["date"] != date] + [{
             "date": date, "title": title, "summary": meta.get("summary", ""),
             "sources": sources[:12], "url": url, "bytes": os.path.getsize(mp3), "seconds": round(seconds),
+            "sha": text_hash(text), "rev": rev,
         }]
         processed_refs.add(ref)
         log(f"  完成: {fmt_duration(seconds)} / {os.path.getsize(mp3) // 1024} KB")
