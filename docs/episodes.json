@@ -1,5 +1,29 @@
 [
   {
+    "date": "2026-09-29",
+    "title": "9月29日 米長期金利5.2%台と円157円台ほか",
+    "summary": "米長期金利が19年ぶりの高水準、原油高と日銀の利上げ論、Nvidiaの巨額自社株買いを解説。AI活用コラムはClaude in Excelで月次レポートの集計を半自動化する方法。",
+    "sources": [
+      "日本経済新聞：NY債券、長期債続落 10年債利回り5.20% 19年ぶり高水準（出来事 2026-09-24 / 公開 2026-09-25）https://www.nikkei.com/article/DGXZQOFL24A950U6A920C2000000/",
+      "みんかぶFX：米10年債利回りは5.217%に上昇して始まる（出来事 2026-09-28 / 公開 2026-09-28）https://fx.minkabu.jp/news/380093",
+      "KRMG（AP配信）：How major US stock indexes fared Monday 9/28/2026（出来事 2026-09-28 / 公開 2026-09-28）https://krmg.com/2026/09/28/how-major-us-stock-indexes-fared-monday-9-28-2026/",
+      "ロイター日本語字幕映像ニュース：トランプ氏、イランのホルムズ再開提案を拒否（出来事 2026-09-26 / 公開 2026-09-27）https://topics.smt.docomo.ne.jp/article/reuters_newsvideo_jp/world/reuters_newsvideo_jp-tag_reuters.com_2026_newsml_OWjpvCF5J4603B9VT1YKN8DIN26ZWB0",
+      "Investing.com：トランプ大統領がホルムズ和平案を拒否、イランは外交継続を主張（出来事 2026-09-26 / 公開 2026-09-27）https://jp.investing.com/news/economy-news/article-1692856",
+      "nippon.com（時事）：利上げペース加速の意見相次ぐ 物価上振れに警戒―日銀7月会合（出来事 2026-09-28 / 公開 2026-09-28）https://www.nippon.com/ja/news/yjj2026092800276/",
+      "ロイター：企業向けサービス価格8月は3.7％上昇、2年ぶり伸び 中東・価格転嫁で（出来事 2026-09-28 / 公開 2026-09-28）https://finance.yahoo.co.jp/news/detail/86184652cedfd20ff62ac8bf3687a13ec66a6dcb",
+      "日本経済新聞：日経平均大引け 6日ぶり反落 486円安の6万5877円（出来事 2026-09-28 / 公開 2026-09-28）https://www.nikkei.com/article/DGXZQOFL284KW0Y6A920C2000000/",
+      "共同通信：NY円、157円台前半（出来事 2026-09-28 / 公開 2026-09-28）https://news.yahoo.co.jp/articles/d67d5d60046d0f1224ce6ac8fe9005ef59d55f6a",
+      "日本経済新聞：債券15時 長期金利、一時3.095%に上昇 5年債利回りは過去最高（出来事 2026-09-28 / 公開 2026-09-28）https://www.nikkei.com/article/DGXZQOFL2838B0Y6A920C2000000/",
+      "日本経済新聞：NVIDIA、過去最大の24兆円自社株買い（出来事 2026-09-28 / 公開 2026-09-28）https://www.nikkei.com/article/DGXZQOGN289UK0Y6A920C2000000/",
+      "共同通信：エヌビディア、23兆円超の自社株買い追加へ（出来事 2026-09-28 / 公開 2026-09-28）https://www.kyoto-np.co.jp/articles/biz/1798624"
+    ],
+    "url": "https://github.com/knishida00/morning-news/releases/download/ep-2026-09-29/2026-09-29.mp3",
+    "bytes": 5305617,
+    "seconds": 663,
+    "sha": "ff5486133f88fb2d29fefddff8a9024e5615b32b",
+    "rev": 1
+  },
+  {
     "date": "2026-09-28",
     "title": "9月28日 日米が円安是正協議、米金利19年ぶり高水準",
     "summary": "日米の財務相が円安是正について協議し為替市場が反応、米長期金利は19年ぶりの高水準に上昇しました。AI活用コラムはGemini Notebookでアンケートやレビューの自由回答を要約する方法です。",
