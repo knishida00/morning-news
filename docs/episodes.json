@@ -1,26 +1,27 @@
 [
   {
     "date": "2026-09-28",
-    "title": "9月28日 米長期金利07年来の高水準と原油乱高下",
-    "summary": "アメリカの長期金利が2007年以来の水準まで上昇し、中東情勢の緊迫による原油の乱高下や円安も重なっています。AI活用コラムはGoogle MeetのGemini自動議事録機能で会議の議事録作成を効率化する方法です。",
+    "title": "9月28日 日米が円安是正協議、米金利19年ぶり高水準",
+    "summary": "日米の財務相が円安是正について協議し為替市場が反応、米長期金利は19年ぶりの高水準に上昇しました。AI活用コラムはGemini Notebookでアンケートやレビューの自由回答を要約する方法です。",
     "sources": [
-      "NHKニュース：ホルムズ開放に向けたイラン提案 トランプ大統領が拒否の報道（出来事2026年9月24〜26日／公開2026年9月26日）https://news.web.nhk/newsweb/na/nd-20260926de52568",
-      "NHKニュース：イラン外相 トランプ大統領の反応認識も仲介国待ち対応判断（出来事2026年9月27日／公開2026年9月27日）https://news.web.nhk/newsweb/na/nd-20260927de52673",
-      "NHKニュース：米トランプ大統領 今週イランと協議の見通し示す 米報道（出来事2026年9月28日／公開2026年9月28日）https://news.web.nhk/newsweb/na/nd-20260928de52755",
-      "共同通信（Yahoo!ニュース）：トランプ氏、イランの海峡開放提案拒否か（出来事2026年9月26日／公開2026年9月26日）https://news.yahoo.co.jp/articles/8f668f23b51ba46fd1d2a1980c3af90a3a8ddb05",
-      "時事通信（Yahoo!ファイナンス）：〔NY石油〕WTI反落、93ドル台（25日午前）（出来事・公開ともに2026年9月25日）https://finance.yahoo.co.jp/news/detail/cfd33002981e0282ba14b0e2367ba93c7a3a371e",
-      "共同通信（Yahoo!ニュース）：NY株式25日終値（出来事・公開ともに2026年9月25日）https://news.yahoo.co.jp/articles/cd91a4e790708837c56f6b4a1f05fc410f11d674",
-      "日本経済新聞：米長期金利、切り上がる市場の目線 AIブームに利上げは効くか（出来事・公開ともに2026年9月25日）https://www.nikkei.com/article/DGXZQOFL25BLL0V20C26A9000000/",
-      "日本経済新聞：アメリカ消費支出物価（PCE）、8月2.7％上昇 市場予想通り（出来事2026年9月26日／公開2026年9月26日）https://www.nikkei.com/article/DGXZQOGN26BQR0W5A920C2000000/",
-      "日本経済新聞：日経平均大引け 5日続伸 850円高の6万6364円（出来事・公開ともに2026年9月25日）https://www.nikkei.com/article/DGXZQOFL254TJ0V20C26A9000000/",
-      "時事通信（Yahoo!ファイナンス）：〔東京株式〕堅調＝半導体の一角値上がり（25日後場寄り付き）（出来事・公開ともに2026年9月25日）https://news.yahoo.co.jp/articles/a64de09766468fb62b41c9dc7b91af31770483b6",
-      "nippon.com（時事通信配信）：為替相場 26日（日本時間7時）（出来事2026年9月25〜26日／公開2026年9月26日）https://www.nippon.com/ja/news/kd1476277831139443218/",
-      "Google Workspace Updates：New Google Meet 'Take notes for me' settings for admins and end users take effect September 29th（公開2026年9月）https://workspaceupdates.googleblog.com/2026/09/new-google-meet-take-notes-for-me-settings-for-admins-and-end-users-take-effect-September-29th.html"
+      "共同通信（Yahoo!ニュース）：日米財務相、円安を協議（出来事・公開ともに2026年9月25日）https://news.yahoo.co.jp/articles/bbbd56d7d5f67a91e027e7a8630378652bd293dc",
+      "時事通信（Yahoo!ニュース）：〔NY外為〕円急伸、一時156円台＝再度の日米協調介入警戒（25日）（出来事・公開ともに2026年9月25日）https://news.yahoo.co.jp/articles/62f721b8cad4dd283b442a28332a76561f5ad24e",
+      "日本経済新聞：「トランプ氏が円安懸念」日米首脳会談で 片山財務相が明かす（出来事2026年9月22日／公開2026年9月25日）https://www.nikkei.com/article/DGXZQOUA252300V20C26A9000000/",
+      "日本経済新聞：FRBが3年ぶり利上げ決定、年内あと1回予想 議長「インフレ高すぎる」（出来事2026年9月16日／公開2026年9月17日）https://www.nikkei.com/article/DGXZQOGN14A180U6A910C2000000/",
+      "財経新聞：NY債券：もみ合い、イールドカーブはやや急角度に（出来事2026年9月25日／公開2026年9月26日）https://www.zaikei.co.jp/article/20260926/871286.html",
+      "日本経済新聞：イラン外相「ホルムズ海峡を7日以内に開放」 米国が提案受諾なら（出来事2026年9月24日／公開2026年9月25日）https://www.nikkei.com/article/DGXZQOGR25ADD0V20C26A9000000/",
+      "Bloomberg：トランプ氏、イランのホルムズ開放提案を拒否－フーシ派はサウジ攻撃（出来事・公開ともに2026年9月26日）https://www.bloomberg.com/jp/news/articles/2026-09-26/TLY492T9NJLS00",
+      "OANDA市況ニュース：WTI原油見通し ホルムズ海峡の開放期待が高まった影響で、原油価格は3営業日ぶりに下落（出来事・公開ともに2026年9月28日）https://www.oanda.jp/lab-education/market_news/2026_09_28_wtioil/",
+      "日本経済新聞：東証大引け 日経平均は5日続伸 AI・半導体関連が押し上げ 中間配当の権利取りも追い風（出来事・公開ともに2026年9月25日）https://www.nikkei.com/article/DGXZQOFL254TF0V20C26A9000000/",
+      "共同通信（Yahoo!ニュース）：NY株式 25日終値（出来事2026年9月25日／公開2026年9月26日）https://news.yahoo.co.jp/articles/cd91a4e790708837c56f6b4a1f05fc410f11d674",
+      "中日新聞Web：東証、５３３円高 午前９時１５分現在（出来事・公開ともに2026年9月28日）https://www.chunichi.co.jp/article/1317451",
+      "Google公式ヘルプ：Gemini Notebook でチャットを使用する（NotebookLM ヘルプ）https://support.google.com/notebooklm/answer/16179559?hl=ja"
     ],
     "url": "https://github.com/knishida00/morning-news/releases/download/ep-2026-09-28/2026-09-28.mp3",
-    "bytes": 4235433,
-    "seconds": 529,
-    "sha": "8a18e9f25a572bbf9c9966009d322e39ddf72d28"
+    "bytes": 4794453,
+    "seconds": 599,
+    "sha": "eca6c7f8f5a3859de0b033a248d4118fb664820b",
+    "rev": 2
   },
   {
     "date": "2026-09-27",
