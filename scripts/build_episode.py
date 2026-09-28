@@ -141,7 +141,7 @@ def chunk_lines(lines, limit):
 
 
 # ---------------------------------------------------------------- TTS
-def tts_gemini(chunk, cfg, api_key):
+def tts_gemini(chunk, cfg, api_key, models=None):
     prompt = cfg["tts_style"] + "\n\n" + "\n".join(chunk)
     speakers = [
         {"speaker": s, "voiceConfig": {"prebuiltVoiceConfig": {"voiceName": v}}}
@@ -155,9 +155,9 @@ def tts_gemini(chunk, cfg, api_key):
         },
     }
     last_err = None
-    for model in cfg["tts_models"]:
+    for model in (models or cfg["tts_models"]):
         url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
-        for attempt in range(5):
+        for attempt in range(8):
             req = urllib.request.Request(
                 url,
                 data=json.dumps(body).encode(),
@@ -169,7 +169,7 @@ def tts_gemini(chunk, cfg, api_key):
                 parts = data["candidates"][0]["content"]["parts"]
                 b64 = next(p["inlineData"]["data"] for p in parts if "inlineData" in p)
                 log(f"  TTS OK model={model}")
-                return base64.b64decode(b64)
+                return base64.b64decode(b64), model
             except urllib.error.HTTPError as e:
                 msg = e.read().decode(errors="ignore")[:300]
                 last_err = f"{model} HTTP {e.code}: {msg}"
@@ -396,12 +396,29 @@ def main():
         log(f"  {len(lines)}行 / {sum(len(l) for l in lines)}文字 / {len(chunks)}回に分けて音声化")
 
         silence = b"\x00\x00" * int(SAMPLE_RATE * 0.35)
-        pcm = b""
-        for i, ch in enumerate(chunks, 1):
-            log(f"  音声化 {i}/{len(chunks)}")
-            pcm += (tts_dummy(ch) if args.dry_run else tts_gemini(ch, cfg, api_key)) + silence
-            if not args.dry_run and i < len(chunks):
-                time.sleep(8)  # 分あたりの上限対策
+        # 声の質感をそろえるため、1回分はすべて同じモデルで音声化する。
+        # 途中でそのモデルが使えなくなったら、次のモデルで最初から作り直す。
+        pcm = None
+        models = list(cfg["tts_models"])
+        while pcm is None:
+            pcm, used = b"", None
+            try:
+                for i, ch in enumerate(chunks, 1):
+                    log(f"  音声化 {i}/{len(chunks)}")
+                    if args.dry_run:
+                        audio = tts_dummy(ch)
+                    else:
+                        audio, used = tts_gemini(ch, cfg, api_key, [used] if used else models)
+                    pcm += audio + silence
+                    if not args.dry_run and i < len(chunks):
+                        time.sleep(8)  # 分あたりの上限対策
+            except RuntimeError:
+                if used and used in models and models.index(used) + 1 < len(models):
+                    log(f"  {used} が途中で使えなくなったため、次のモデルで最初から作り直します")
+                    models = models[models.index(used) + 1:]
+                    pcm = None
+                    continue
+                raise
 
         mp3 = os.path.join(BUILD, f"{date}.mp3")
         build_mp3(pcm, mp3, cfg["mp3_bitrate"], cfg)
