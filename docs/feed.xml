@@ -5,14 +5,14 @@
 <link>https://knishida00.github.io/morning-news/</link>
 <atom:link href="https://knishida00.github.io/morning-news/feed.xml" rel="self" type="application/rss+xml"/>
 <language>ja</language>
-<description>毎朝7時ごろ更新。日本経済の重要ニュース5〜7本と今日のAIニュースを、2人の掛け合いで因果関係から解説します。AIが自動生成しているため、重要な判断の前には一次情報を確認してください。</description>
+<description>毎朝7時ごろ更新。日本経済の重要ニュース、マーケ業務に役立つAI活用コラム、今日のまとめを、2人の掛け合いで約10分でお届けします。AIが自動生成しているため、重要な判断の前には一次情報を確認してください。</description>
 <itunes:author>Morning Brief</itunes:author>
-<itunes:summary>毎朝7時ごろ更新。日本経済の重要ニュース5〜7本と今日のAIニュースを、2人の掛け合いで因果関係から解説します。AIが自動生成しているため、重要な判断の前には一次情報を確認してください。</itunes:summary>
+<itunes:summary>毎朝7時ごろ更新。日本経済の重要ニュース、マーケ業務に役立つAI活用コラム、今日のまとめを、2人の掛け合いで約10分でお届けします。AIが自動生成しているため、重要な判断の前には一次情報を確認してください。</itunes:summary>
 <itunes:image href="https://knishida00.github.io/morning-news/cover.png"/>
 <itunes:category text="News"><itunes:category text="Business News"/></itunes:category>
 <itunes:explicit>false</itunes:explicit>
 <itunes:block>Yes</itunes:block>
-<lastBuildDate>Mon, 28 Sep 2026 10:57:17 +0900</lastBuildDate>
+<lastBuildDate>Mon, 28 Sep 2026 12:24:19 +0900</lastBuildDate>
 <item>
 <title>9月28日 米長期金利07年来の高水準と原油乱高下</title>
 <description><![CDATA[<p>アメリカの長期金利が2007年以来の水準まで上昇し、中東情勢の緊迫による原油の乱高下や円安も重なっています。AI活用コラムはGoogle MeetのGemini自動議事録機能で会議の議事録作成を効率化する方法です。</p><p>主な情報源</p><ul><li>NHKニュース：ホルムズ開放に向けたイラン提案 トランプ大統領が拒否の報道（出来事2026年9月24〜26日／公開2026年9月26日）https://news.web.nhk/newsweb/na/nd-20260926de52568</li><li>NHKニュース：イラン外相 トランプ大統領の反応認識も仲介国待ち対応判断（出来事2026年9月27日／公開2026年9月27日）https://news.web.nhk/newsweb/na/nd-20260927de52673</li><li>NHKニュース：米トランプ大統領 今週イランと協議の見通し示す 米報道（出来事2026年9月28日／公開2026年9月28日）https://news.web.nhk/newsweb/na/nd-20260928de52755</li><li>共同通信（Yahoo!ニュース）：トランプ氏、イランの海峡開放提案拒否か（出来事2026年9月26日／公開2026年9月26日）https://news.yahoo.co.jp/articles/8f668f23b51ba46fd1d2a1980c3af90a3a8ddb05</li><li>時事通信（Yahoo!ファイナンス）：〔NY石油〕WTI反落、93ドル台（25日午前）（出来事・公開ともに2026年9月25日）https://finance.yahoo.co.jp/news/detail/cfd33002981e0282ba14b0e2367ba93c7a3a371e</li><li>共同通信（Yahoo!ニュース）：NY株式25日終値（出来事・公開ともに2026年9月25日）https://news.yahoo.co.jp/articles/cd91a4e790708837c56f6b4a1f05fc410f11d674</li><li>日本経済新聞：米長期金利、切り上がる市場の目線 AIブームに利上げは効くか（出来事・公開ともに2026年9月25日）https://www.nikkei.com/article/DGXZQOFL25BLL0V20C26A9000000/</li><li>日本経済新聞：アメリカ消費支出物価（PCE）、8月2.7％上昇 市場予想通り（出来事2026年9月26日／公開2026年9月26日）https://www.nikkei.com/article/DGXZQOGN26BQR0W5A920C2000000/</li><li>日本経済新聞：日経平均大引け 5日続伸 850円高の6万6364円（出来事・公開ともに2026年9月25日）https://www.nikkei.com/article/DGXZQOFL254TJ0V20C26A9000000/</li><li>時事通信（Yahoo!ファイナンス）：〔東京株式〕堅調＝半導体の一角値上がり（25日後場寄り付き）（出来事・公開ともに2026年9月25日）https://news.yahoo.co.jp/articles/a64de09766468fb62b41c9dc7b91af31770483b6</li><li>nippon.com（時事通信配信）：為替相場 26日（日本時間7時）（出来事2026年9月25〜26日／公開2026年9月26日）https://www.nippon.com/ja/news/kd1476277831139443218/</li><li>Google Workspace Updates：New Google Meet &#x27;Take notes for me&#x27; settings for admins and end users take effect September 29th（公開2026年9月）https://workspaceupdates.googleblog.com/2026/09/new-google-meet-take-notes-for-me-settings-for-admins-and-end-users-take-effect-September-29th.html</li></ul>]]></description>

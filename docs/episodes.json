@@ -19,7 +19,8 @@
     ],
     "url": "https://github.com/knishida00/morning-news/releases/download/ep-2026-09-28/2026-09-28.mp3",
     "bytes": 4235433,
-    "seconds": 529
+    "seconds": 529,
+    "sha": "8a18e9f25a572bbf9c9966009d322e39ddf72d28"
   },
   {
     "date": "2026-09-27",
@@ -41,6 +42,7 @@
     ],
     "url": "https://github.com/knishida00/morning-news/releases/download/ep-2026-09-27/2026-09-27.mp3",
     "bytes": 3492719,
-    "seconds": 437
+    "seconds": 437,
+    "sha": "f7aefe2df554d99a06720e7550d7c4c2033fb0f3"
   }
 ]
