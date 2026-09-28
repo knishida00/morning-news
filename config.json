@@ -1,7 +1,7 @@
 {
   "podcast_title": "朝の日本経済・AIニュース",
   "podcast_author": "Morning Brief",
-  "podcast_description": "毎朝7時ごろ更新。日本経済の重要ニュース5〜7本と今日のAIニュースを、2人の掛け合いで因果関係から解説します。AIが自動生成しているため、重要な判断の前には一次情報を確認してください。",
+  "podcast_description": "毎朝7時ごろ更新。日本経済の重要ニュース、マーケ業務に役立つAI活用コラム、今日のまとめの3部構成で、2人の掛け合いでお届けします。AIが自動生成しているため、重要な判断の前には一次情報を確認してください。",
   "language": "ja",
   "tts_models": [
     "gemini-3.8-flash-tts",
@@ -15,5 +15,9 @@
   "tts_style": "以下は日本語の朝の経済ニュース番組での、AkiとKenの自然な会話です。落ち着いて聞き取りやすく、やや明るいトーンで、ラジオ番組のように読み上げてください。",
   "chunk_chars": 1400,
   "mp3_bitrate": "64k",
+  "opening_audio": "assets/opening.mp3",
+  "ending_audio": "assets/ending.mp3",
+  "opening_overlap_sec": 1.0,
+  "ending_gap_sec": 0.6,
   "keep_episodes": 365
 }

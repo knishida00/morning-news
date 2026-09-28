@@ -187,16 +187,54 @@ def tts_dummy(chunk):
     return b"".join(struct.pack("<h", int(3000 * math.sin(2 * math.pi * 440 * i / SAMPLE_RATE))) for i in range(n))
 
 
-def build_mp3(pcm, out_path, bitrate):
+def audio_seconds(path):
+    out = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", path],
+                         capture_output=True, text=True, check=True).stdout.strip()
+    return float(out)
+
+
+def build_mp3(pcm, out_path, bitrate, cfg):
+    """会話音声を整音し、あれば OP / ED ジングルを前後に付けて mp3 にする"""
     raw = os.path.join(BUILD, "tmp.pcm")
+    voice = os.path.join(BUILD, "voice.wav")
     with open(raw, "wb") as f:
         f.write(pcm)
     subprocess.run(
         ["ffmpeg", "-y", "-loglevel", "error", "-f", "s16le", "-ar", str(SAMPLE_RATE), "-ac", "1",
-         "-i", raw, "-af", "loudnorm=I=-16:TP=-1.5:LRA=11", "-ar", "44100", "-b:a", bitrate, out_path],
+         "-i", raw, "-af", "loudnorm=I=-16:TP=-1.5:LRA=11", "-ar", "44100", "-ac", "1", voice],
         check=True,
     )
     os.remove(raw)
+
+    op = os.path.join(ROOT, cfg.get("opening_audio", "")) if cfg.get("opening_audio") else ""
+    ed = os.path.join(ROOT, cfg.get("ending_audio", "")) if cfg.get("ending_audio") else ""
+    op = op if op and os.path.isfile(op) else ""
+    ed = ed if ed and os.path.isfile(ed) else ""
+    if not op and not ed:
+        subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", voice, "-b:a", bitrate, out_path], check=True)
+        os.remove(voice)
+        return
+
+    # 配置：OP → （OP の余韻に少し重ねて）会話 → 少し間をあけて ED
+    overlap = float(cfg.get("opening_overlap_sec", 1.0))
+    gap = float(cfg.get("ending_gap_sec", 0.6))
+    inputs, parts, t = [], [], 0.0
+    if op:
+        inputs += ["-i", op]
+        parts.append((len(parts), 0.0))
+        t = max(0.0, audio_seconds(op) - overlap)
+    inputs += ["-i", voice]
+    parts.append((len(parts), t))
+    t += audio_seconds(voice) + gap
+    if ed:
+        inputs += ["-i", ed]
+        parts.append((len(parts), t))
+    chains = [f"[{i}:a]aformat=sample_rates=44100:channel_layouts=mono,adelay={int(d * 1000)}:all=1[a{i}]"
+              for i, d in parts]
+    mix = "".join(f"[a{i}]" for i, _ in parts) + f"amix=inputs={len(parts)}:duration=longest:normalize=0[out]"
+    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", *inputs, "-filter_complex", ";".join(chains + [mix]),
+                    "-map", "[out]", "-ar", "44100", "-ac", "1", "-b:a", bitrate, out_path], check=True)
+    os.remove(voice)
 
 
 # ---------------------------------------------------------------- 公開
@@ -343,8 +381,8 @@ def main():
                 time.sleep(8)  # 分あたりの上限対策
 
         mp3 = os.path.join(BUILD, f"{date}.mp3")
-        build_mp3(pcm, mp3, cfg["mp3_bitrate"])
-        seconds = len(pcm) / (SAMPLE_RATE * 2)
+        build_mp3(pcm, mp3, cfg["mp3_bitrate"], cfg)
+        seconds = audio_seconds(mp3)
         title = meta.get("title") or f"{date} 朝の日本経済・AIニュース"
         url = f"https://github.com/{repo}/releases/download/ep-{date}/{date}.mp3" if args.dry_run \
             else publish_release(repo, date, mp3, title)
