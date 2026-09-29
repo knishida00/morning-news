@@ -15,10 +15,12 @@ import math
 import os
 import re
 import struct
+import shutil
 import subprocess
 import sys
 import time
 import urllib.error
+import urllib.parse
 import urllib.request
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -141,7 +143,7 @@ def chunk_lines(lines, limit):
 
 
 # ---------------------------------------------------------------- TTS
-def tts_gemini(chunk, cfg, api_key, models=None):
+def tts_gemini(chunk, cfg, api_key, models=None, attempts=8):
     prompt = cfg["tts_style"] + "\n\n" + "\n".join(chunk)
     speakers = [
         {"speaker": s, "voiceConfig": {"prebuiltVoiceConfig": {"voiceName": v}}}
@@ -154,17 +156,22 @@ def tts_gemini(chunk, cfg, api_key, models=None):
             "speechConfig": {"multiSpeakerVoiceConfig": {"speakerVoiceConfigs": speakers}},
         },
     }
+    # 声のブレを抑える：乱数（seed）を固定し、揺らぎ（temperature）を控えめにする
+    if cfg.get("tts_seed") is not None:
+        body["generationConfig"]["seed"] = int(cfg["tts_seed"])
+    if cfg.get("tts_temperature") is not None:
+        body["generationConfig"]["temperature"] = float(cfg["tts_temperature"])
     last_err = None
     for model in (models or cfg["tts_models"]):
         url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
-        for attempt in range(8):
+        for attempt in range(attempts):
             req = urllib.request.Request(
                 url,
                 data=json.dumps(body).encode(),
                 headers={"Content-Type": "application/json", "x-goog-api-key": api_key},
             )
             try:
-                with urllib.request.urlopen(req, timeout=300) as r:
+                with urllib.request.urlopen(req, timeout=900) as r:
                     data = json.load(r)
                 parts = data["candidates"][0]["content"]["parts"]
                 b64 = next(p["inlineData"]["data"] for p in parts if "inlineData" in p)
@@ -185,6 +192,137 @@ def tts_gemini(chunk, cfg, api_key, models=None):
                 log(f"  TTS error: {last_err}")
                 time.sleep(15)
     raise RuntimeError(f"TTS に失敗しました（無料枠の上限の可能性あり）: {last_err}")
+
+
+# ---------------------------------------------------------------- AivisSpeech（無料・ローカル実行）
+# AivisSpeech Engine を GitHub Actions 上で起動して読み上げる。
+# 同じ音声合成モデル・スタイルを使うので、1本の中でも毎日でも声がそろう。
+# 有料の Aivis Cloud API は使わない。
+AIVIS_PORT = 10101
+_aivis_proc = None
+
+
+def aivis_http(method, path, data=None, form=None, timeout=600):
+    url = f"http://127.0.0.1:{AIVIS_PORT}{path}"
+    headers = {}
+    body = None
+    if form is not None:
+        body = urllib.parse.urlencode(form).encode()
+        headers["Content-Type"] = "application/x-www-form-urlencoded"
+    elif data is not None:
+        body = json.dumps(data).encode()
+        headers["Content-Type"] = "application/json"
+    req = urllib.request.Request(url, data=body, headers=headers, method=method)
+    opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))  # ローカル接続はプロキシを通さない
+    with opener.open(req, timeout=timeout) as r:
+        return r.read()
+
+
+def start_aivis(acfg):
+    global _aivis_proc
+    base = os.path.join(BUILD, "aivis")
+    runner = None
+    for root, _dirs, files in os.walk(base) if os.path.isdir(base) else []:
+        if "run" in files and "engine_internal" in _dirs:
+            runner = os.path.join(root, "run")
+            break
+    if runner is None:
+        os.makedirs(base, exist_ok=True)
+        archive = os.path.join(base, "engine.7z")
+        log("  AivisSpeech Engine をダウンロード")
+        run(["curl", "-sSL", "--retry", "3", "-o", archive, acfg["engine_url"]])
+        if not shutil.which("7z"):
+            run(["sudo", "apt-get", "install", "-y", "-q", "p7zip-full"], check=False)
+        run(["7z", "x", "-y", f"-o{base}", archive])
+        os.remove(archive)
+        for root, _dirs, files in os.walk(base):
+            if "run" in files and "engine_internal" in _dirs:
+                runner = os.path.join(root, "run")
+                break
+    if runner is None:
+        raise RuntimeError("AivisSpeech Engine の実行ファイルが見つかりません")
+    os.chmod(runner, 0o755)
+    logf = open(os.path.join(BUILD, "aivis_engine.log"), "w")
+    _aivis_proc = subprocess.Popen([runner, "--host", "127.0.0.1", "--port", str(AIVIS_PORT)],
+                                   stdout=logf, stderr=subprocess.STDOUT)
+    import atexit
+    atexit.register(stop_aivis)
+    log("  AivisSpeech Engine を起動中（初回は読み上げ用データの取得に数分かかります）")
+    for _ in range(300):
+        if _aivis_proc.poll() is not None:
+            raise RuntimeError("AivisSpeech Engine が起動できませんでした（build/aivis_engine.log を確認）")
+        try:
+            aivis_http("GET", "/version", timeout=5)
+            return
+        except Exception:
+            time.sleep(3)
+    raise RuntimeError("AivisSpeech Engine の起動がタイムアウトしました")
+
+
+def stop_aivis():
+    global _aivis_proc
+    if _aivis_proc and _aivis_proc.poll() is None:
+        _aivis_proc.terminate()
+        try:
+            _aivis_proc.wait(timeout=20)
+        except Exception:
+            _aivis_proc.kill()
+    _aivis_proc = None
+
+
+def aivis_style_ids(acfg):
+    """設定した話者（モデル）を入れて、Aki / Ken のスタイル ID を調べる"""
+    installed = json.loads(aivis_http("GET", "/aivm_models"))
+    for name, sp in acfg["speakers"].items():
+        if sp["model"] not in installed:
+            log(f"  {name} の音声モデルをインストール（{sp['model']}）")
+            aivis_http("POST", "/aivm_models/install",
+                       form={"url": f"https://hub.aivis-project.com/aivm-models/{sp['model']}"}, timeout=1800)
+    speakers = json.loads(aivis_http("GET", "/speakers"))
+    ids = {}
+    for name, sp in acfg["speakers"].items():
+        cand = [x for x in speakers if x.get("speaker_uuid") == sp.get("speaker_uuid")] or \
+               [x for x in speakers if x.get("name") == sp.get("speaker_name")]
+        if not cand:
+            raise RuntimeError(f"{name} の話者が見つかりません: {sp}")
+        styles = cand[0]["styles"]
+        st = next((x for x in styles if x["name"] == sp.get("style")), styles[0])
+        ids[name] = st["id"]
+        log(f"  {name} = {cand[0]['name']}（{st['name']} / ID {st['id']}）")
+    return ids
+
+
+def tts_aivis_episode(lines, cfg):
+    """台本を1行ずつ読み上げ、24kHz / 16bit / mono の PCM を返す"""
+    import io
+    import wave
+    acfg = cfg["aivis"]
+    start_aivis(acfg)
+    try:
+        ids = aivis_style_ids(acfg)
+        gap = b"\x00\x00" * int(SAMPLE_RATE * float(acfg.get("line_gap_sec", 0.3)))
+        pcm = b""
+        for i, line in enumerate(lines, 1):
+            name, text = line.split(":", 1)
+            name, text = name.strip(), text.strip()
+            sp = acfg["speakers"][name]
+            sid = ids[name]
+            q = json.loads(aivis_http("POST", "/audio_query?" + urllib.parse.urlencode({"text": text, "speaker": sid})))
+            q.update(outputSamplingRate=SAMPLE_RATE, outputStereo=False, prePhonemeLength=0.05, postPhonemeLength=0.1)
+            for key, conf in (("speedScale", "speed"), ("intonationScale", "style_strength"),
+                              ("tempoDynamicsScale", "tempo_dynamics"), ("pitchScale", "pitch")):
+                if conf in sp:
+                    q[key] = sp[conf]
+            wav = aivis_http("POST", f"/synthesis?speaker={sid}", data=q)
+            with wave.open(io.BytesIO(wav)) as w:
+                if w.getframerate() != SAMPLE_RATE or w.getnchannels() != 1 or w.getsampwidth() != 2:
+                    raise RuntimeError("AivisSpeech の出力形式が想定外です")
+                pcm += w.readframes(w.getnframes()) + gap
+            if i % 10 == 0 or i == len(lines):
+                log(f"  読み上げ {i}/{len(lines)} 行")
+        return pcm
+    finally:
+        stop_aivis()
 
 
 def tts_dummy(chunk):
@@ -269,6 +407,94 @@ def prune(items, keep, repo, dry):
     return items[:keep]
 
 
+# ---------------------------------------------------------------- 音声の配信（GitHub Pages）
+# GitHub Releases は mp3 を「application/octet-stream」で返すため、
+# iPhone の Podcast アプリはダウンロードせずに再生（ストリーミング）できない。
+# そこで直近の回の mp3 を gh-pages ブランチに置き、GitHub Pages から
+# 正しい種類（audio/mpeg）で配信する。gh-pages は毎回履歴なしで作り直し、
+# リポジトリが肥大化しないようにする。Releases は保管庫として残す。
+PAGES_BRANCH = "gh-pages"
+PAGES_MARKER = "pages-source.txt"
+
+
+def pages_ready(site):
+    """GitHub Pages が gh-pages ブランチから配信されているか（目印ファイルの有無で判定）"""
+    import urllib.request
+    try:
+        with urllib.request.urlopen(site + PAGES_MARKER + f"?t={int(time.time())}", timeout=15) as r:
+            return r.status == 200
+    except Exception:
+        return False
+
+
+def pages_audio_dates(items, cfg):
+    keep = int(cfg.get("pages_audio_episodes", 120))
+    return {it["date"] for it in sorted(items, key=lambda x: x["date"], reverse=True)[:keep]}
+
+
+def set_play_urls(items, cfg, site, ready):
+    on_pages = pages_audio_dates(items, cfg) if ready else set()
+    for it in items:
+        it["play_url"] = f"{site}audio/{it['date']}.mp3" if it["date"] in on_pages else it["url"]
+
+
+def sync_pages(items, cfg, repo, built_dates, dry):
+    site_dir = os.path.join(BUILD, "site")
+    shutil.rmtree(site_dir, ignore_errors=True)
+    os.makedirs(os.path.join(site_dir, "audio"))
+
+    # 前回までに置いた音声を引き継ぐ
+    if run(["git", "rev-parse", "--verify", "--quiet", f"origin/{PAGES_BRANCH}"], check=False):
+        tar = subprocess.run(["git", "archive", f"origin/{PAGES_BRANCH}", "audio"], cwd=ROOT, capture_output=True)
+        if tar.returncode == 0 and tar.stdout:
+            subprocess.run(["tar", "-x", "-C", site_dir], input=tar.stdout, check=True)
+
+    # サイト本体（docs の中身）を最新にする
+    for name in os.listdir(DOCS):
+        src = os.path.join(DOCS, name)
+        if os.path.isfile(src):
+            shutil.copy2(src, os.path.join(site_dir, name))
+    open(os.path.join(site_dir, ".nojekyll"), "w").close()
+    with open(os.path.join(site_dir, PAGES_MARKER), "w") as f:
+        f.write("gh-pages\n")
+
+    # 直近の回の音声をそろえ、それより古いものは消す
+    want = pages_audio_dates(items, cfg)
+    audio_dir = os.path.join(site_dir, "audio")
+    for name in os.listdir(audio_dir):
+        if name[:-4] not in want:
+            os.remove(os.path.join(audio_dir, name))
+    for d in sorted(want):
+        dst = os.path.join(audio_dir, f"{d}.mp3")
+        local = os.path.join(BUILD, f"{d}.mp3")
+        if d in built_dates and os.path.isfile(local):
+            shutil.copy2(local, dst)
+        elif not os.path.isfile(dst) and not dry:
+            run(["gh", "release", "download", f"ep-{d}", "--repo", repo, "--pattern", f"{d}.mp3",
+                 "--dir", audio_dir, "--clobber"], check=False)
+    log(f"Pages に置く音声: {len(os.listdir(audio_dir))} 回分")
+
+    if dry:
+        return
+    # 履歴を持たない1コミットとして gh-pages を置き換える
+    env = dict(os.environ, GIT_INDEX_FILE=os.path.join(BUILD, "pages.index"),
+               GIT_AUTHOR_NAME="podcast-bot", GIT_AUTHOR_EMAIL="podcast-bot@users.noreply.github.com",
+               GIT_COMMITTER_NAME="podcast-bot", GIT_COMMITTER_EMAIL="podcast-bot@users.noreply.github.com")
+    if os.path.exists(env["GIT_INDEX_FILE"]):
+        os.remove(env["GIT_INDEX_FILE"])
+    g = lambda *a: subprocess.run(["git", f"--work-tree={site_dir}", *a], cwd=ROOT, env=env, check=True,
+                                  capture_output=True, text=True).stdout.strip()
+    g("add", "-A", ".")
+    tree = g("write-tree")
+    old = run(["git", "rev-parse", "--verify", "--quiet", f"origin/{PAGES_BRANCH}^{{tree}}"], check=False).strip()
+    if old == tree:
+        log("Pages は変更なし")
+        return
+    commit = g("commit-tree", tree, "-m", f"配信用サイトを更新 {dt.datetime.now(JST):%Y-%m-%d %H:%M}")
+    run(["git", "push", "--force", "origin", f"{commit}:refs/heads/{PAGES_BRANCH}"])
+    log("Pages（gh-pages）を更新")
+
+
 def fmt_duration(sec):
     sec = int(sec)
     return f"{sec // 3600:02d}:{sec % 3600 // 60:02d}:{sec % 60:02d}"
@@ -304,7 +530,7 @@ def write_feed(items, cfg, site):
             f"<description><![CDATA[{desc}]]></description>",
             f"<pubDate>{pub}</pubDate>",
             f'<guid isPermaLink="false">morning-news-{it["date"]}{"-r" + str(it["rev"]) if it.get("rev", 1) > 1 else ""}</guid>',
-            f'<enclosure url="{it["url"]}" length="{it["bytes"]}" type="audio/mpeg"/>',
+            f'<enclosure url="{it.get("play_url", it["url"])}" length="{it["bytes"]}" type="audio/mpeg"/>',
             f"<itunes:duration>{fmt_duration(it['seconds'])}</itunes:duration>",
             "</item>",
         ]
@@ -315,7 +541,7 @@ def write_feed(items, cfg, site):
 
 def write_index_html(items, cfg, site):
     rows = "".join(
-        f'<li><time>{it["date"]}</time><a href="{it["url"]}">{html.escape(it["title"])}</a>'
+        f'<li><time>{it["date"]}</time><a href="{it.get("play_url", it["url"])}">{html.escape(it["title"])}</a>'
         f'<span>{fmt_duration(it["seconds"])[3:]}</span></li>'
         for it in sorted(items, key=lambda x: x["date"], reverse=True)
     ) or "<li>まだ放送はありません。最初の回は翌朝に届きます。</li>"
@@ -382,8 +608,11 @@ def main():
     log(f"検出した台本: {sorted(candidates)} / 今回作る回: {todo}")
 
     api_key = os.environ.get("GEMINI_API_KEY", "")
+    engine = cfg.get("tts_engine", "gemini")
     if todo and not args.dry_run and not api_key:
-        sys.exit("GEMINI_API_KEY が設定されていません（GitHub の Secrets を確認）")
+        if engine == "gemini":
+            sys.exit("GEMINI_API_KEY が設定されていません（GitHub の Secrets を確認）")
+        log("注意: GEMINI_API_KEY がないため、AivisSpeech が失敗したときの予備（Gemini）は使えません")
 
     processed_refs = set()
     for date in todo[-3:]:  # 取りこぼしがあっても最大3回分まで（無料枠保護）
@@ -396,29 +625,58 @@ def main():
         log(f"  {len(lines)}行 / {sum(len(l) for l in lines)}文字 / {len(chunks)}回に分けて音声化")
 
         silence = b"\x00\x00" * int(SAMPLE_RATE * 0.35)
-        # 声の質感をそろえるため、1回分はすべて同じモデルで音声化する。
-        # 途中でそのモデルが使えなくなったら、次のモデルで最初から作り直す。
+
+        def synthesize(parts, attempts=8):
+            # 声の質感をそろえるため、1回分はすべて同じモデルで音声化する。
+            # 途中でそのモデルが使えなくなったら、次のモデルで最初から作り直す。
+            models = list(cfg["tts_models"])
+            while True:
+                pcm, used = b"", None
+                try:
+                    for i, ch in enumerate(parts, 1):
+                        log(f"  音声化 {i}/{len(parts)}")
+                        if args.dry_run:
+                            audio = tts_dummy(ch)
+                        else:
+                            audio, used = tts_gemini(ch, cfg, api_key, [used] if used else models, attempts)
+                        pcm += audio + silence
+                        if not args.dry_run and i < len(parts):
+                            time.sleep(8)  # 分あたりの上限対策
+                    return pcm
+                except RuntimeError:
+                    if used and used in models and models.index(used) + 1 < len(models):
+                        log(f"  {used} が途中で使えなくなったため、次のモデルで最初から作り直します")
+                        models = models[models.index(used) + 1:]
+                        continue
+                    raise
+
         pcm = None
-        models = list(cfg["tts_models"])
-        while pcm is None:
-            pcm, used = b"", None
+        total_chars = sum(len(l) for l in lines)
+        if engine == "aivis" and not args.dry_run:
+            log("  AivisSpeech で音声化します")
             try:
-                for i, ch in enumerate(chunks, 1):
-                    log(f"  音声化 {i}/{len(chunks)}")
-                    if args.dry_run:
-                        audio = tts_dummy(ch)
-                    else:
-                        audio, used = tts_gemini(ch, cfg, api_key, [used] if used else models)
-                    pcm += audio + silence
-                    if not args.dry_run and i < len(chunks):
-                        time.sleep(8)  # 分あたりの上限対策
-            except RuntimeError:
-                if used and used in models and models.index(used) + 1 < len(models):
-                    log(f"  {used} が途中で使えなくなったため、次のモデルで最初から作り直します")
-                    models = models[models.index(used) + 1:]
-                    pcm = None
-                    continue
-                raise
+                pcm = tts_aivis_episode(lines, cfg)
+            except Exception as e:
+                if not api_key:
+                    raise
+                log(f"  AivisSpeech での音声化に失敗 → 予備として Gemini で音声化します（{e}）")
+        if pcm is None and cfg.get("single_pass", True) and len(chunks) > 1 and not args.dry_run:
+            # まず台本全体を1回で音声化する（分割の境目で声が変わるのを防ぐ）
+            log("  台本全体を1回で音声化します")
+            try:
+                whole = synthesize([lines], attempts=3)
+                got = len(whole) / (SAMPLE_RATE * 2)
+                expected = total_chars / 6.5  # 1秒あたり約6.5文字
+                if got >= expected * 0.75:
+                    pcm = whole
+                else:
+                    log(f"  音声が途中で切れた可能性（{got:.0f}秒 / 想定{expected:.0f}秒）→ 分割方式に切り替えます")
+            except RuntimeError as e:
+                log(f"  1回での音声化に失敗 → 分割方式に切り替えます（{e}）")
+            if pcm is None:
+                time.sleep(15)
+        if pcm is None:
+            pcm = synthesize(chunks)
 
         mp3 = os.path.join(BUILD, f"{date}.mp3")
         build_mp3(pcm, mp3, cfg["mp3_bitrate"], cfg)
@@ -448,9 +706,13 @@ def main():
         log(f"  完成: {fmt_duration(seconds)} / {os.path.getsize(mp3) // 1024} KB")
 
     items = prune(items, cfg["keep_episodes"], repo, args.dry_run)
+    ready = False if args.dry_run else pages_ready(site)
+    log("音声の配信元: " + ("GitHub Pages" if ready else "GitHub Releases（Pages 未切り替え）"))
+    set_play_urls(items, cfg, site, ready)
     save_index(items)
     write_feed(items, cfg, site)
     write_index_html(items, cfg, site)
+    sync_pages(items, cfg, repo, set(todo[-3:]), args.dry_run)
 
     if args.delete_branches and not args.dry_run:
         for ref in processed_refs:
