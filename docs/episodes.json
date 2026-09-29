@@ -22,7 +22,7 @@
     "seconds": 663,
     "sha": "ff5486133f88fb2d29fefddff8a9024e5615b32b",
     "rev": 1,
-    "play_url": "https://github.com/knishida00/morning-news/releases/download/ep-2026-09-29/2026-09-29.mp3"
+    "play_url": "https://knishida00.github.io/morning-news/audio/2026-09-29.mp3"
   },
   {
     "date": "2026-09-28",
@@ -47,7 +47,7 @@
     "seconds": 599,
     "sha": "eca6c7f8f5a3859de0b033a248d4118fb664820b",
     "rev": 2,
-    "play_url": "https://github.com/knishida00/morning-news/releases/download/ep-2026-09-28/2026-09-28.mp3"
+    "play_url": "https://knishida00.github.io/morning-news/audio/2026-09-28.mp3"
   },
   {
     "date": "2026-09-27",
@@ -71,6 +71,6 @@
     "bytes": 3492719,
     "seconds": 437,
     "sha": "f7aefe2df554d99a06720e7550d7c4c2033fb0f3",
-    "play_url": "https://github.com/knishida00/morning-news/releases/download/ep-2026-09-27/2026-09-27.mp3"
+    "play_url": "https://knishida00.github.io/morning-news/audio/2026-09-27.mp3"
   }
 ]
