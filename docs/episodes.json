@@ -1,5 +1,30 @@
 [
   {
+    "date": "2026-09-30",
+    "title": "9月30日 米AI企業が自主規制で合意、原油1か月ぶり安値ほか",
+    "summary": "米AI企業のトップが自主的な安全対策に署名、日経平均は続落、原油は約1か月ぶりの安値に。AI活用コラムはWorkspace Studioでメールから商品の数字をスプレッドシートへ自動で記録する方法です。",
+    "sources": [
+      "CBS News：Trump and major AI executives sign \"morally binding\" voluntary controls（出来事・公開ともに2026年9月29日）https://www.cbsnews.com/news/trump-ai-constitution-tech-execs-openai-anthropic-voluntary-controls/",
+      "CNBC：Trump says he and tech leaders signed AI agreement that is 'morally binding'（出来事・公開ともに2026年9月29日）https://www.cnbc.com/2026/09/29/tech-white-house-ai-lunch-trump.html",
+      "日本経済新聞：日経平均終値396円安 揺れるAI評価（出来事・公開ともに2026年9月29日）https://www.nikkei.com/article/DGXZQOFL291HATZ20C26A9000000/",
+      "共同通信（Yahoo!ニュース）：東証終値396円安（出来事・公開ともに2026年9月29日）https://news.yahoo.co.jp/articles/8ba12f5c14774c9ee539c26a9a12d61d0b2d5918",
+      "共同通信（Yahoo!ニュース）：NY株式 29日終値（出来事2026年9月29日／公開2026年9月30日）https://news.yahoo.co.jp/articles/50ec3b37f0e501219059f86d10a85a48a09e1ff7",
+      "共同通信（Yahoo!ニュース）：NY原油、1カ月ぶり安値 終値89ドル台（出来事2026年9月29日／公開2026年9月30日）https://news.yahoo.co.jp/articles/6bf373e574f5baa8f9a9f0a731c1eb0358f7d255",
+      "ダイヤモンド・ザイ：9月29日のNY為替・原油概況（出来事2026年9月29日／公開2026年9月30日）https://zai.diamond.jp/articles/-/496425",
+      "日本経済新聞：債券12時50分 長期金利、3.090%に上昇（出来事・公開ともに2026年9月29日）https://www.nikkei.com/article/DGXZQOFL290LQ0Z20C26A9000000/",
+      "経済産業省：統計公表スケジュール（鉱工業指数速報は2026年9月30日公表予定）https://www.meti.go.jp/statistics/toppage/kohyo.html",
+      "中日新聞（共同）：製造業景況感、改善か 大企業、日銀短観（短観公表予定は2026年10月1日／公開は9月下旬）https://www.chunichi.co.jp/article/1316295",
+      "Impress Watch：「Google Workspace Studio」が日本語対応（出来事2026年5月／公開2026年5月）https://forest.watch.impress.co.jp/docs/news/2107592.html",
+      "Google公式ヘルプ：Google Workspace Studio の使用を開始する（コラム・確度の確認用）https://support.google.com/workspace-studio/answer/16444479?hl=ja"
+    ],
+    "url": "https://github.com/knishida00/morning-news/releases/download/ep-2026-09-30/2026-09-30.mp3",
+    "bytes": 4775645,
+    "seconds": 597,
+    "sha": "36d3d3ad581bf27a52a4512fdf4611b15b5e45ab",
+    "rev": 1,
+    "play_url": "https://knishida00.github.io/morning-news/audio/2026-09-30.mp3"
+  },
+  {
     "date": "2026-09-29",
     "title": "9月29日 米長期金利5.2%台と円157円台ほか",
     "summary": "米長期金利が19年ぶりの高水準、原油高と日銀の利上げ論、Nvidiaの巨額自社株買いを解説。AI活用コラムはClaude in Excelで月次レポートの集計を半自動化する方法。",
