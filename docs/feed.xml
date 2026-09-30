@@ -5,14 +5,14 @@
 <link>https://knishida00.github.io/morning-news/</link>
 <atom:link href="https://knishida00.github.io/morning-news/feed.xml" rel="self" type="application/rss+xml"/>
 <language>ja</language>
-<description>毎朝7時ごろ更新。日本経済の重要ニュース、マーケ業務に役立つAI活用コラム、今日のまとめを、2人の掛け合いで約10分でお届けします。AIが自動生成しているため、重要な判断の前には一次情報を確認してください。 音声：AivisSpeech（まお／阿井田 茂）</description>
+<description>毎朝7時ごろ更新。日本経済の重要ニュース、マーケ業務に役立つAI活用コラム、今日のまとめを、2人の掛け合いで約10分でお届けします。AIが自動生成しているため、重要な判断の前には一次情報を確認してください。</description>
 <itunes:author>Morning Brief</itunes:author>
-<itunes:summary>毎朝7時ごろ更新。日本経済の重要ニュース、マーケ業務に役立つAI活用コラム、今日のまとめを、2人の掛け合いで約10分でお届けします。AIが自動生成しているため、重要な判断の前には一次情報を確認してください。 音声：AivisSpeech（まお／阿井田 茂）</itunes:summary>
+<itunes:summary>毎朝7時ごろ更新。日本経済の重要ニュース、マーケ業務に役立つAI活用コラム、今日のまとめを、2人の掛け合いで約10分でお届けします。AIが自動生成しているため、重要な判断の前には一次情報を確認してください。</itunes:summary>
 <itunes:image href="https://knishida00.github.io/morning-news/cover.png"/>
 <itunes:category text="News"><itunes:category text="Business News"/></itunes:category>
 <itunes:explicit>false</itunes:explicit>
 <itunes:block>Yes</itunes:block>
-<lastBuildDate>Wed, 30 Sep 2026 11:20:26 +0900</lastBuildDate>
+<lastBuildDate>Thu, 01 Oct 2026 01:27:59 +0900</lastBuildDate>
 <item>
 <title>9月30日 米AI企業が自主規制で合意、原油1か月ぶり安値ほか</title>
 <description><![CDATA[<p>米AI企業のトップが自主的な安全対策に署名、日経平均は続落、原油は約1か月ぶりの安値に。AI活用コラムはWorkspace Studioでメールから商品の数字をスプレッドシートへ自動で記録する方法です。</p><p>主な情報源</p><ul><li>CBS News：Trump and major AI executives sign &quot;morally binding&quot; voluntary controls（出来事・公開ともに2026年9月29日）https://www.cbsnews.com/news/trump-ai-constitution-tech-execs-openai-anthropic-voluntary-controls/</li><li>CNBC：Trump says he and tech leaders signed AI agreement that is &#x27;morally binding&#x27;（出来事・公開ともに2026年9月29日）https://www.cnbc.com/2026/09/29/tech-white-house-ai-lunch-trump.html</li><li>日本経済新聞：日経平均終値396円安 揺れるAI評価（出来事・公開ともに2026年9月29日）https://www.nikkei.com/article/DGXZQOFL291HATZ20C26A9000000/</li><li>共同通信（Yahoo!ニュース）：東証終値396円安（出来事・公開ともに2026年9月29日）https://news.yahoo.co.jp/articles/8ba12f5c14774c9ee539c26a9a12d61d0b2d5918</li><li>共同通信（Yahoo!ニュース）：NY株式 29日終値（出来事2026年9月29日／公開2026年9月30日）https://news.yahoo.co.jp/articles/50ec3b37f0e501219059f86d10a85a48a09e1ff7</li><li>共同通信（Yahoo!ニュース）：NY原油、1カ月ぶり安値 終値89ドル台（出来事2026年9月29日／公開2026年9月30日）https://news.yahoo.co.jp/articles/6bf373e574f5baa8f9a9f0a731c1eb0358f7d255</li><li>ダイヤモンド・ザイ：9月29日のNY為替・原油概況（出来事2026年9月29日／公開2026年9月30日）https://zai.diamond.jp/articles/-/496425</li><li>日本経済新聞：債券12時50分 長期金利、3.090%に上昇（出来事・公開ともに2026年9月29日）https://www.nikkei.com/article/DGXZQOFL290LQ0Z20C26A9000000/</li><li>経済産業省：統計公表スケジュール（鉱工業指数速報は2026年9月30日公表予定）https://www.meti.go.jp/statistics/toppage/kohyo.html</li><li>中日新聞（共同）：製造業景況感、改善か 大企業、日銀短観（短観公表予定は2026年10月1日／公開は9月下旬）https://www.chunichi.co.jp/article/1316295</li><li>Impress Watch：「Google Workspace Studio」が日本語対応（出来事2026年5月／公開2026年5月）https://forest.watch.impress.co.jp/docs/news/2107592.html</li><li>Google公式ヘルプ：Google Workspace Studio の使用を開始する（コラム・確度の確認用）https://support.google.com/workspace-studio/answer/16444479?hl=ja</li></ul>]]></description>
