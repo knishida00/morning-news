@@ -32,6 +32,7 @@ JST = dt.timezone(dt.timedelta(hours=9))
 SAMPLE_RATE = 24000  # Gemini TTS は 24kHz / 16bit / mono PCM を返す
 DATE_RE = re.compile(r"^episodes/(\d{4}-\d{2}-\d{2})\.md$")
 COLUMN_LOG = "episodes/column_log.md"
+LOG_FILES = [COLUMN_LOG, "episodes/bright_log.md"]
 REBUILD_DAYS = 7  # 台本が書き換えられたら作り直す対象期間（無料枠保護のため直近のみ）
 
 
@@ -652,7 +653,10 @@ def main():
 
         pcm = None
         total_chars = sum(len(l) for l in lines)
-        if engine == "aivis" and not args.dry_run:
+        # 台本の先頭（front matter）に tts_engine: gemini / aivis があれば、その回だけ読み上げ方式を変える
+        ep_engine = (meta.get("tts_engine") or engine).lower()
+        log(f"  読み上げ方式: {ep_engine}")
+        if ep_engine == "aivis" and not args.dry_run:
             log("  AivisSpeech で音声化します")
             try:
                 pcm = tts_aivis_episode(lines, cfg)
@@ -661,19 +665,38 @@ def main():
                     raise
                 log(f"  AivisSpeech での音声化に失敗 → 予備として Gemini で音声化します（{e}）")
         if pcm is None and cfg.get("single_pass", True) and len(chunks) > 1 and not args.dry_run:
-            # まず台本全体を1回で音声化する（分割の境目で声が変わるのを防ぐ）
-            log("  台本全体を1回で音声化します")
-            try:
-                whole = synthesize([lines], attempts=3)
-                got = len(whole) / (SAMPLE_RATE * 2)
-                expected = total_chars / 6.5  # 1秒あたり約6.5文字
-                if got >= expected * 0.75:
-                    pcm = whole
-                else:
-                    log(f"  音声が途中で切れた可能性（{got:.0f}秒 / 想定{expected:.0f}秒）→ 分割方式に切り替えます")
-            except RuntimeError as e:
-                log(f"  1回での音声化に失敗 → 分割方式に切り替えます（{e}）")
-            if pcm is None:
+            # 声をそろえるため、できるだけ少ない回数で音声化する：
+            #   ① 台本全体を1回で → ② コラムの前後で2回に分けて → ③ 通常の分割
+            def split_two(ls):
+                k = next((n for n, l in enumerate(ls) if "AI活用コラム" in l and n > len(ls) // 4), None)
+                if k is None:
+                    half, acc, k = sum(len(l) for l in ls) / 2, 0, 0
+                    for n, l in enumerate(ls):
+                        acc += len(l)
+                        if acc >= half:
+                            k = n + 1
+                            break
+                return [ls[:k], ls[k:]]
+
+            for label, parts in (("台本全体を1回で", [lines]), ("コラムの前後で2回に分けて", split_two(lines))):
+                log(f"  {label}音声化します")
+                try:
+                    out, ok = b"", True
+                    for part in parts:
+                        audio = synthesize([part], attempts=3)
+                        got = len(audio) / (SAMPLE_RATE * 2)
+                        expected = sum(len(l) for l in part) / 6.5  # 1秒あたり約6.5文字
+                        if got < expected * 0.75:
+                            log(f"  音声が途中で切れた可能性（{got:.0f}秒 / 想定{expected:.0f}秒）")
+                            ok = False
+                            break
+                        out += audio
+                        time.sleep(8)
+                    if ok:
+                        pcm = out
+                        break
+                except RuntimeError as e:
+                    log(f"  {label}の音声化に失敗（{e}）")
                 time.sleep(15)
         if pcm is None:
             pcm = synthesize(chunks)
@@ -690,11 +713,12 @@ def main():
         with open(os.path.join(ROOT, path), "w", encoding="utf-8") as f:
             f.write(text)
 
-        # コラムの記録（episodes/column_log.md）も main に反映する
-        log_text = run(["git", "show", f"{ref}:{COLUMN_LOG}"], check=False)
-        if log_text:
-            with open(os.path.join(ROOT, COLUMN_LOG), "w", encoding="utf-8") as f:
-                f.write(log_text)
+        # コーナーの記録（episodes/*_log.md）も main に反映する
+        for log_path in LOG_FILES:
+            log_text = run(["git", "show", f"{ref}:{log_path}"], check=False)
+            if log_text:
+                with open(os.path.join(ROOT, log_path), "w", encoding="utf-8") as f:
+                    f.write(log_text)
 
         rev = by_date[date].get("rev", 1) + 1 if date in by_date else 1
         items = [it for it in items if it["date"] != date] + [{
