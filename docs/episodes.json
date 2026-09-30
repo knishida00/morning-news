@@ -1,5 +1,30 @@
 [
   {
+    "date": "2026-10-01",
+    "title": "10月1日 日経平均反発とOpenAI調達報道ほか",
+    "summary": "日経平均はAI・半導体株に買われ大幅反発、OpenAIの大型調達報道と日銀短観を解説。明日が楽しみになるニュースはレトロゲーム専門店の好調、AI活用コラムはGeminiのジェムで広告表現を一次チェックする方法です。",
+    "sources": [
+      "日本経済新聞：東証大引け 日経平均は3日ぶり反発 半導体に買い、9月月間で上昇（出来事・公開ともに2026年9月30日）https://www.nikkei.com/article/DGXZQOFL305E90Q6A930C2000000/",
+      "財形ニュース（Fisco）：日経平均寄与度ランキング（大引け）ソフトバンクGが約317円分押し上げ（出来事・公開ともに2026年9月30日）https://www.zaikei.co.jp/article/20260930/871800.html",
+      "TechCrunch：OpenAI reportedly in talks to raise $30B round at $1.4T valuation（出来事・公開ともに2026年9月29日、米国時間。Bloomberg報道）https://techcrunch.com/2026/09/29/openai-reportedly-in-talks-to-raise-30b-round-at-1-4t-valuation/",
+      "US News（ロイター配信）：OpenAI Targets $30 Billion Funding at $1.4 Trillion Valuation, Bloomberg News Reports（出来事・公開ともに2026年9月29日、米国時間）https://money.usnews.com/investing/news/articles/2026-09-29/openai-targets-30-billion-funding-at-1-4-trillion-valuation-bloomberg-news-reports",
+      "共同通信：NY株式 30日終値（出来事2026年9月30日／公開2026年9月30日、米国時間）https://news.yahoo.co.jp/articles/4e619040f781d3fc458eef1f5a6ed8877f14d40c",
+      "共同通信：NY原油反発、終値90ドル台（出来事2026年9月30日／公開同日、米国時間）https://news.yahoo.co.jp/articles/ae00a39a52273758c5ade7d3ccb848ed50e6dc13",
+      "日本経済新聞：8月の鉱工業生産指数1.7%低下、2カ月連続の下落（出来事・公開ともに2026年9月30日）https://www.nikkei.com/article/DGXZQOUA29BU90Z20C26A9000000/",
+      "共同通信：製造業景況感、改善か 大企業、日銀短観（短観公表予定は2026年10月1日／公開は9月下旬）https://news.yahoo.co.jp/articles/427f49700cecad71e50ea74c814c410ad6a77b03",
+      "厚生労働省・日本年金機構：短時間労働者の適用要件「賃金要件の撤廃」施行期日は令和8年10月1日（施行日2026年10月1日）https://www.mhlw.go.jp/content/12601000/001253857.pdf",
+      "日本経済新聞：ゲオHD、レトロゲーム強化の新業態 ソフト売り上げは通常ゲオの5倍（出来事・公開ともに2026年9月24日）https://www.nikkei.com/article/DGXZQOUC248V50U6A920C2000000/",
+      "GameBusiness.jp：ゲオがレトロゲームの取り扱いを再開！新業態「ゲオデジタルベース」メディア向け内覧会レポート（2026年4月末／公開2026年5月1日）https://www.gamebusiness.jp/article/2026/05/01/26826.html",
+      "Google Workspace Updates：Customize Gemini with Gems（提供開始2024年8月／公開2024年8月、コラムの機能確認用）https://workspaceupdates.googleblog.com/2024/08/customize-gemini-with-gems.html"
+    ],
+    "url": "https://github.com/knishida00/morning-news/releases/download/ep-2026-10-01/2026-10-01.mp3",
+    "bytes": 5445216,
+    "seconds": 681,
+    "sha": "b588e3831718d1b524d403f72d08e03c313e1581",
+    "rev": 1,
+    "play_url": "https://knishida00.github.io/morning-news/audio/2026-10-01.mp3"
+  },
+  {
     "date": "2026-09-30",
     "title": "9月30日 米AI企業が自主規制で合意、原油1か月ぶり安値ほか",
     "summary": "米AI企業のトップが自主的な安全対策に署名、日経平均は続落、原油は約1か月ぶりの安値に。AI活用コラムはWorkspace Studioでメールから商品の数字をスプレッドシートへ自動で記録する方法です。",
