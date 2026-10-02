@@ -1,5 +1,30 @@
 [
   {
+    "date": "2026-10-02",
+    "title": "10月2日 短観は8年半ぶり高水準、米金利5.3%台ほか",
+    "summary": "日銀短観は大企業製造業が8年半ぶりの高水準、日経平均はマイクロン決算を受け大幅続伸、米長期金利は一時5.3%台、円は158円台。明日が楽しみになるニュースは次世代の薄い太陽電池、AI活用コラムはGeminiの新機能スキルで制作会社への修正指示を言語化する方法。",
+    "sources": [
+      "日本経済新聞：大企業製造業の景況感、6四半期連続改善 日銀9月短観（2026年10月1日 / 2026年10月1日）https://www.nikkei.com/article/DGXZQOUB299ZG0Z20C26A9000000/",
+      "日本経済新聞：9月日銀短観、利上げ継続も設備投資に堅調さ 26年度計画は7.6%増（2026年10月1日 / 2026年10月1日）https://www.nikkei.com/article/DGXZQOUB308YK0Q6A930C2000000/",
+      "大和総研：企業部門の堅調さを再確認（日銀短観・9月調査）（2026年10月1日 / 2026年10月1日）https://www.dlri.co.jp/report/macro/666167.html",
+      "8and：日経平均が2203円高の6万8956円 半導体株がけん引し1日で3.3％上昇（2026年10月1日 / 2026年10月1日）https://8and.jp/2026/10/01/",
+      "日本経済新聞：マイクロン、9〜11月の売上高4.5倍 メモリー逼迫（2026年9月30日米国時間 / 2026年10月1日）https://www.nikkei.com/article/DGXZQOGN293T80Z20C26A9000000/",
+      "ITmedia NEWS：米Micron、AI需要で売上高は前年同期比4.8倍、純利益は11.8倍（2026年9月30日米国時間 / 2026年10月1日）https://news.yahoo.co.jp/articles/5db8208a5201de1b455724b680ca4ac5e3ee3764",
+      "Bloomberg：米10年債利回り5.34%、2007年のピーク上回る 原油高で債券に売り圧力（2026年10月1日 / 2026年10月1日）https://bloomberg.com/jp/news/articles/2026-10-01/TM7WUBT96OSI00",
+      "中日新聞（共同通信）：NY株4日ぶり反発20ドル高（2026年10月1日米国時間 / 2026年10月2日）https://chunichi.co.jp/article/1319450",
+      "Bloomberg：158円台に円下落、利上げ期待後退 日経平均は大幅続伸（2026年10月1日 / 2026年10月1日）https://www.bloomberg.com/jp/news/articles/2026-10-01/TM77J9KK3NY800",
+      "日本経済新聞：ペロブスカイト太陽電池、前年比2倍超に 世界の市場規模（2026年9月29日 / 2026年9月29日）https://www.nikkei.com/article/DGXZQOUC299P00Z20C26A9000000/",
+      "ITmedia：ペロブスカイト太陽電池の世界市場予測、2040年に3.7兆円規模に（2026年9月29日 / 2026年9月30日）https://www.itmedia.co.jp/smartjapan/articles/2609/30/news055.html",
+      "Google：Gemini アプリのスキルを作成、管理する（公式ヘルプ）https://support.google.com/gemini/answer/17094296?hl=ja-jp"
+    ],
+    "url": "https://github.com/knishida00/morning-news/releases/download/ep-2026-10-02/2026-10-02.mp3",
+    "bytes": 8350659,
+    "seconds": 1044,
+    "sha": "829d6b053c36410006ea5e49d43f61ff4492cd24",
+    "rev": 1,
+    "play_url": "https://knishida00.github.io/morning-news/audio/2026-10-02.mp3"
+  },
+  {
     "date": "2026-10-01",
     "title": "10月1日 日経平均反発とOpenAI調達報道ほか",
     "summary": "日経平均はAI・半導体株に買われ大幅反発、OpenAIの大型調達報道と日銀短観を解説。明日が楽しみになるニュースはレトロゲーム専門店の好調、AI活用コラムはGeminiのジェムで広告表現を一次チェックする方法です。",
