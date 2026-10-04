@@ -1,5 +1,30 @@
 [
   {
+    "date": "2026-10-04",
+    "title": "10月4日 週末版 日銀の次の一手と臨時国会ほか",
+    "summary": "日銀の10月追加利上げ観測が後退、日経平均は3週連続の上昇、あす召集の臨時国会、OpenAIの低価格モデルを振り返り、来週の予定も整理します。明日が楽しみになるニュースはプリンターの月額サービス、AI活用コラムはGeminiのカスタム指示でメールの型を固定する方法です。",
+    "sources": [
+      "日本経済新聞：10月連続利上げ、日米で織り込み後退 円安修正進む（出来事 2026-09-30 / 公開 2026-09-30）https://www.nikkei.com/article/DGXZQOFL300JCTQ6A930C2000000/",
+      "日本経済新聞：日経平均終値647円安、投資家「リスクオン」なりきれず 金利高が重荷（出来事 2026-10-02 / 公開 2026-10-02）https://nikkei.com/article/DGXZQOUB01965TR01C26A0000000",
+      "株探：日経平均 大引け 3日ぶり反落（出来事 2026-10-02 / 公開 2026-10-02）https://kabutan.jp/news/marketnews/?b=n202610020940",
+      "日本経済新聞：高市首相、市場動向に機動的対応 所信表明演説の原案（出来事 2026-09-30 / 公開 2026-09-30）https://www.nikkei.com/article/DGXZQOUA304L90Q6A930C2000000/",
+      "NHK：参議院 5日に高市首相の所信表明演説 代表質問で合意（出来事 2026-09-30 / 公開 2026-09-30）https://news.web.nhk/newsweb/na/nd-20260930de53366",
+      "時事通信：臨時国会、10月5日召集 消費税・定数減が焦点（出来事 2026-09-18 / 公開 2026-09-18）https://www.jiji.com/jc/article?k=2026091800485&g=pol",
+      "日銀の9月会合に関する各社リポート（出来事 2026-09-18 / 公開 2026-09-18）https://www.dlri.co.jp/report/macro/665928.html",
+      "みんかぶ：来週の注目材料 米FOMC議事要旨など（公開 2026-10-03）https://fx.minkabu.jp/news/380677",
+      "TheNextWeb：OpenAI releases GPT-6.1 Sol at a fifth of GPT-6 Astra's token prices（出来事 2026-09-29 / 公開 2026-09-29前後）https://thenextweb.com/news/openai-gpt-6-1-sol-price-astra-devday",
+      "Decrypt：OpenAI Gave AI Agents Their Own Computers at DevDay 2026（出来事 2026-09-29 / 公開 2026-09-29前後）https://decrypt.co/379584/openai-ai-agents-computers-devday-2026-everything-announced",
+      "Microsoft：What's New in Microsoft Copilot September 2026（出来事 2026-09 / 公開 2026-09）https://techcommunity.microsoft.com/blog/microsoft-copilot-blog/what%E2%80%99s-new-in-microsoft-copilot--september-2026/4559107",
+      "エプソン：必要な時に使えるプリンターの月額サブスクリプションサービス『ReadyPrint』を開始（出来事 2026-10-01 / 公開 2026-10-01）https://www.epson.jp/osirase/2026/261001-2.htm"
+    ],
+    "url": "https://github.com/knishida00/morning-news/releases/download/ep-2026-10-04/2026-10-04.mp3",
+    "bytes": 5326724,
+    "seconds": 666,
+    "sha": "34055549d0435d7b4bec5da32d3b8f66a788be39",
+    "rev": 1,
+    "play_url": "https://knishida00.github.io/morning-news/audio/2026-10-04.mp3"
+  },
+  {
     "date": "2026-10-03",
     "title": "10月3日 週末版 米雇用の急減速と日経平均ほか",
     "summary": "米国の9月雇用統計が急減速し追加利上げ観測が後退、日経平均は2日ぶりに反落、ソフトバンクグループのOpenAI追加出資が完了。来週の注目予定も整理します。明日が楽しみになるニュースは宇宙船の最短ドッキング、AI活用コラムはGoogle Meetの議事録メモ機能です。",
