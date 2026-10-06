@@ -1,5 +1,30 @@
 [
   {
+    "date": "2026-10-07",
+    "title": "10月7日 国債利率30年ぶり3.1％と円158円台ほか",
+    "summary": "10年物国債の表面利率が約30年ぶりの3.1％に、円相場は158円台、日経平均は終値で7万円超え、OpenAIとアトラシアンの提携拡大を紹介。明日が楽しみになるニュースは室温で約140％伸びる鉄鋼材料、AI活用コラムはGoogleフォームのGeminiで調査票のたたき台を作る方法。",
+    "sources": [
+      "共同通信（Yahoo!ニュース）：10年物国債の表面利率30年ぶり3.1％（出来事 2026-10-06 / 公開 2026-10-06） https://news.yahoo.co.jp/articles/bcdcb23adfa845f7803b02de122406316d732b8d",
+      "nippon.com（共同通信）：10年物国債、利率3.1％ 金利上昇、30年ぶり高水準（出来事 2026-10-06 / 公開 2026-10-06） https://www.nippon.com/ja/news/kd1480021497050956607/",
+      "日本経済新聞：外為12時 円相場、下落 158円ちょうど近辺 GPIF巡る報道で（出来事 2026-10-06 / 公開 2026-10-06） https://nikkei.com/article/DGXZQOFL062LO0W6A001C2000000",
+      "中日新聞（共同通信）：東京円、157円台後半（出来事 2026-10-06 / 公開 2026-10-06） https://www.chunichi.co.jp/article/1321406",
+      "みんかぶ：ドル高円安がやや優勢＝東京為替概況（出来事 2026-10-06 / 公開 2026-10-06） https://fx.minkabu.jp/news/380860",
+      "財経新聞：日経平均は続伸、アドバンテが約148円分押し上げ（出来事 2026-10-06 / 公開 2026-10-06） https://www.zaikei.co.jp/article/20261006/872495.html",
+      "財経新聞：日経平均は続伸、7万円台で小動き／ランチタイムコメント（出来事 2026-10-06 / 公開 2026-10-06） https://www.zaikei.co.jp/article/20261006/872490.html",
+      "共同通信（Yahoo!ニュース）：NY株3日続伸、90ドル上昇 ハイテク株高、原油安好感（出来事 2026-10-05 米国時間 / 公開 2026-10-06） https://news.yahoo.co.jp/articles/df45f9e696a3404650619212a91f920b79f5eb5a",
+      "日本経済新聞：NYダウは続伸し90ドル高 ナスダック最高値、スペースX株が8%高（出来事 2026-10-05 米国時間 / 公開 2026-10-06） https://www.nikkei.com/article/DGXZQOFL0600P0W6A001C2000000/",
+      "株探：米国市場データ NYダウは90ドル高と3日続伸（出来事 2026-10-05 米国時間 / 公開 2026-10-06） https://kabutan.jp/news/marketnews/?b=n202610060096",
+      "日本銀行：【挨拶】植田総裁（全国証券大会）（出来事 2026-10-06 / 全文公表予定 2026-10-07） https://www.boj.or.jp/about/press/koen_2026/ko261006a.htm",
+      "OpenAI：Atlassian and OpenAI expand partnership to turn enterprise knowledge into action（出来事 2026-10-06 / 公開 2026-10-06） https://openai.com/index/atlassian-partnership/"
+    ],
+    "url": "https://github.com/knishida00/morning-news/releases/download/ep-2026-10-07/2026-10-07.mp3",
+    "bytes": 4492687,
+    "seconds": 562,
+    "sha": "e2f129411cfec56821d8d54e95ae0883cda2ff1a",
+    "rev": 1,
+    "play_url": "https://knishida00.github.io/morning-news/audio/2026-10-07.mp3"
+  },
+  {
     "date": "2026-10-06",
     "title": "10月6日 首相の所信表明と日経平均7万円ほか",
     "summary": "首相の所信表明演説（食料品の消費減税）、日経平均が約3か月ぶりに取引時間中で7万円超え、オープンAIのEU向け文章透かしを紹介。明日が楽しみになるニュースは民放BS5社の4K無料配信、AI活用コラムはClaudeのコワークで毎週の定点観測を自動化する方法。",
