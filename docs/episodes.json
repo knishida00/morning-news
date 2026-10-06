@@ -1,5 +1,30 @@
 [
   {
+    "date": "2026-10-06",
+    "title": "10月6日 首相の所信表明と日経平均7万円ほか",
+    "summary": "首相の所信表明演説（食料品の消費減税）、日経平均が約3か月ぶりに取引時間中で7万円超え、オープンAIのEU向け文章透かしを紹介。明日が楽しみになるニュースは民放BS5社の4K無料配信、AI活用コラムはClaudeのコワークで毎週の定点観測を自動化する方法。",
+    "sources": [
+      "NHK：【所信表明全文】臨時国会 高市首相が演説（出来事 2026-10-05 / 公開 2026-10-05） https://news.web.nhk/newsweb/na/nd-20261005de54430",
+      "時事通信：高市首相、経済成長に総力 国会で所信表明演説（出来事 2026-10-05 / 公開 2026-10-05） https://www.jiji.com/jc/article?k=2026100500067&g=pol",
+      "東京新聞（共同通信配信）：消費減税、市場信認確保を強調 首相、強い経済へ成長実行計画（出来事 2026-10-05 / 公開 2026-10-05） https://www.tokyo-np.co.jp/article/519740",
+      "日本経済新聞：消費税国会が開会 野党対案は現金給付（出来事 2026-10-05 / 公開 2026-10-05） https://www.nikkei.com/article/DGXZQOUA0111U0R01C26A0000000/",
+      "日本経済新聞：東証前引け 日経平均は反発 取引時間中で3カ月ぶり7万円上回る 米利上げ観測後退（出来事 2026-10-05 / 公開 2026-10-05） https://www.nikkei.com/article/DGXZQOFL042VW0U6A001C2000000/",
+      "Fisco（investing.com）：日経平均大引け 前週末比1637.40円高の69946.86円（出来事 2026-10-05 / 公開 2026-10-05） https://jp.investing.com/news/forex-news/article-1700851",
+      "OANDA証券：NYダウの振り返りと見通し（出来事 2026-10-05 / 公開 2026-10-05） https://www.oanda.jp/lab-education/market_news/2026_10_05_us30/",
+      "みんかぶ：ダウ平均はプラスで終える 利回りと原油にらみ＝米国株概況（出来事 2026-10-05 / 公開 2026-10-06） https://fx.minkabu.jp/news/380801",
+      "TechCrunch：OpenAI will start watermarking ChatGPT's text in the EU（出来事 2026-10-05 / 公開 2026-10-05） https://techcrunch.com/2026/10/05/openai-will-start-watermarking-chatgpts-text-in-the-eu/",
+      "The Next Web：OpenAI brings text watermarking to ChatGPT and Codex in the EU（出来事 2026-10-05 / 公開 2026-10-05） https://thenextweb.com/news/openai-text-watermarking-chatgpt-codex-eu-ai-act",
+      "WOWOW：「WOWOWオンデマンド」で10月1日より無料で「BS4K配信サービス」を開始（出来事 2026-10-01 / 公開 2026年9月〜10月1日） https://news.wowow.co.jp/5758.html",
+      "テレビ東京 WBS：4K配信をスタート BS民放5社（出来事 2026-10-01 / 公開 2026-10-01） https://txbiz.tv-tokyo.co.jp/wbs/news/post_349734"
+    ],
+    "url": "https://github.com/knishida00/morning-news/releases/download/ep-2026-10-06/2026-10-06.mp3",
+    "bytes": 5326724,
+    "seconds": 666,
+    "sha": "20d71cd5a8aff0d5a0f771473f2873da49d1ad57",
+    "rev": 1,
+    "play_url": "https://knishida00.github.io/morning-news/audio/2026-10-06.mp3"
+  },
+  {
     "date": "2026-10-05",
     "title": "10月5日 月曜版 原油とOPEC+、エヌビディア最高値ほか",
     "summary": "月曜版。OPECプラスの据え置きと原油91ドル台、エヌビディアの最高値、AI安全をめぐる米政権と業界の動きを紹介。明日が楽しみになるニュースは15分で結果が出る全自動の感染症検査装置、AI活用コラムはClaude for PowerPointで取引先向けの資料づくりを速くする方法。",
