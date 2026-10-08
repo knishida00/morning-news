@@ -4,21 +4,33 @@
 
 GitHub Actions から実行される。ローカル確認用に --dry-run（APIを呼ばずテスト音を生成）あり。
 依存：Python 3 標準ライブラリ、ffmpeg、gh CLI（Actions ランナーに標準搭載）
+
+音声化の流れ（Gemini の場合）
+  1. 台本をパートごとに分ける（オープニング＋経済ニュース／資産形成コラム／AI活用コラム＋まとめ）
+  2. パートごとに音声化し、その場で検査する
+       ① 長さ（文字数から見て短すぎ・長すぎでないか）
+       ② 波形（途中からの無音・雑音がないか）
+       ③ 書き起こし（同じ部分の読み直し・読み飛ばしがないか）※無料枠の Gemini を使用
+  3. 検査に通らないパートだけ作り直す。通ったものをつないで mp3 にする
+  制限時間（time_budget_min）を超えそうなときは中断し、次の自動実行（7:40 / 8:40）に任せる。
 """
 import argparse
+import array
 import base64
 import datetime as dt
+import difflib
 import email.utils
 import html
 import json
 import math
 import os
 import re
-import struct
 import shutil
+import struct
 import subprocess
 import sys
 import time
+import unicodedata
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -32,8 +44,21 @@ JST = dt.timezone(dt.timedelta(hours=9))
 SAMPLE_RATE = 24000  # Gemini TTS は 24kHz / 16bit / mono PCM を返す
 DATE_RE = re.compile(r"^episodes/(\d{4}-\d{2}-\d{2})\.md$")
 COLUMN_LOG = "episodes/column_log.md"
-LOG_FILES = [COLUMN_LOG, "episodes/bright_log.md"]
-REBUILD_DAYS = 7  # 台本が書き換えられたら作り直す対象期間（無料枠保護のため直近のみ）
+LOG_FILES = [COLUMN_LOG, "episodes/bright_log.md", "episodes/money_log.md"]
+REBUILD_DAYS = 7  # 台本が書き換えられたら作り直す対象期間の既定値（config.json の rebuild_days で変更可）
+START_TIME = time.time()
+
+
+class BudgetExceeded(Exception):
+    """制限時間を超えそうなので中断する"""
+
+
+class EpisodeFailed(Exception):
+    """この回の音声を作れなかった（ほかの回の処理は続ける）"""
+
+
+class TTSUnavailable(RuntimeError):
+    """指定したモデルがどれも使えない（無料枠の上限、モデルの終了など）"""
 
 
 def text_hash(text):
@@ -43,6 +68,21 @@ def text_hash(text):
 
 def log(*a):
     print(*a, flush=True)
+
+
+def warn(msg):
+    """GitHub Actions の実行結果ページに黄色い注意として表示する"""
+    log(f"::warning::{msg}")
+
+
+def remaining_sec(cfg):
+    return float(cfg.get("time_budget_min", 48)) * 60 - (time.time() - START_TIME)
+
+
+def sleep_in_budget(cfg, seconds):
+    if remaining_sec(cfg) - seconds < float(cfg.get("finish_reserve_sec", 300)):
+        raise BudgetExceeded("待ち時間を入れると制限時間を超えます")
+    time.sleep(max(0.0, seconds))
 
 
 def run(cmd, check=True, capture=True):
@@ -143,8 +183,99 @@ def chunk_lines(lines, limit):
     return chunks
 
 
+# ---------------------------------------------------------------- パート分け
+# 台本の「決まったセリフ」（CLAUDE.md の 8.）を目印に、話題の変わり目で分ける。
+# 声は音声化1回ごとにわずかに変わるので、切れ目を話題の変わり目に置いて目立たなくする。
+PART_MARKERS = [
+    ("news", ("経済ニュースからです", "経済ニュースの振り返りからです")),
+    ("bright", ("明日が楽しみになるニュースです",)),  # 旧構成の台本を作り直すとき用
+    ("money", ("資産形成コラムです",)),
+    ("ai", ("AI活用コラムのお時間です",)),
+    ("summary", ("今日のまとめです", "今週のまとめです")),
+    ("ending", ("朝の日本経済・AIニュースでした",)),
+]
+
+
+def spoken(line):
+    """話者名を除いた、実際に読まれる部分"""
+    return line.split(":", 1)[1].strip() if ":" in line else line.strip()
+
+
+def spoken_chars(lines):
+    return sum(len(spoken(l)) for l in lines)
+
+
+def find_markers(lines):
+    """各パートの始まりの行番号を返す {種類: 行番号}。順番がおかしいものは無視する"""
+    found, last = {}, -1
+    for n, l in enumerate(lines):
+        if not l.startswith("Aki:"):
+            continue
+        text = spoken(l)
+        if len(text) > 45:
+            continue
+        for order, (kind, phrases) in enumerate(PART_MARKERS):
+            if kind not in found and order > last and any(p in text for p in phrases):
+                found[kind] = n
+                last = order
+                break
+    return found
+
+
+def split_even(lines, limit, prefer=()):
+    """文字数が limit を超えるかたまりを、ほぼ同じ長さに分ける。
+    切れ目は prefer（パートの始まり）に近ければそこ、なければ Aki の発言の前に置く"""
+    total = sum(len(l) for l in lines)
+    n = math.ceil(total / limit)
+    if n <= 1 or len(lines) < 2 * n:
+        return [lines]
+    cum = [0]
+    for l in lines:
+        cum.append(cum[-1] + len(l))
+    cuts, last = [], 0
+    for k in range(1, n):
+        target = total * k / n
+        cands = [i for i in range(last + 1, len(lines)) if lines[i].startswith("Aki:")] \
+            or list(range(last + 1, len(lines)))
+        if not cands:
+            break
+        best = min(cands, key=lambda i: abs(cum[i] - target))
+        near = [i for i in prefer if last < i < len(lines) and abs(cum[i] - target) <= total * 0.12]
+        if near:
+            best = min(near, key=lambda i: abs(cum[i] - target))
+        cuts.append(best)
+        last = best
+    return [p for p in (lines[a:b] for a, b in zip([0] + cuts, cuts + [len(lines)])) if p]
+
+
+def split_parts(lines, cfg):
+    """台本を音声化の単位に分ける。戻り値: [(名前, 行のリスト), ...]"""
+    limit = int(cfg.get("part_max_chars", 1700))
+    m = find_markers(lines)
+    if "ai" not in m:
+        # 決まったセリフが見つからない台本（古い形式など）は、長さだけで分ける
+        pieces = split_even(lines, limit)
+        return [(f"台本 {i}/{len(pieces)}", p) for i, p in enumerate(pieces, 1)]
+    a = m["ai"]
+    if "money" in m and 0 < m["money"] < a:
+        groups = [("オープニング＋経済ニュース", 0, m["money"]), ("資産形成コラム", m["money"], a),
+                  ("AI活用コラム＋まとめ", a, len(lines))]
+    else:
+        groups = [("オープニング＋経済ニュース", 0, a), ("AI活用コラム＋まとめ", a, len(lines))]
+    out = []
+    for name, s, e in groups:
+        if e <= s:
+            continue
+        prefer = [i - s for i in m.values() if s < i < e]
+        pieces = split_even(lines[s:e], limit, prefer)
+        for i, p in enumerate(pieces, 1):
+            out.append((name if len(pieces) == 1 else f"{name} {i}/{len(pieces)}", p))
+    return out
+
+
 # ---------------------------------------------------------------- TTS
-def tts_gemini(chunk, cfg, api_key, models=None, attempts=8):
+def tts_gemini(chunk, cfg, api_key, models=None, seed_shift=0, attempts=4):
+    """Gemini TTS で1回分を音声化する。戻り値: (PCM, 使ったモデル名)"""
     prompt = cfg["tts_style"] + "\n\n" + "\n".join(chunk)
     speakers = [
         {"speaker": s, "voiceConfig": {"prebuiltVoiceConfig": {"voiceName": v}}}
@@ -157,42 +288,55 @@ def tts_gemini(chunk, cfg, api_key, models=None, attempts=8):
             "speechConfig": {"multiSpeakerVoiceConfig": {"speakerVoiceConfigs": speakers}},
         },
     }
-    # 声のブレを抑える：乱数（seed）を固定し、揺らぎ（temperature）を控えめにする
+    # 声のブレを抑える：乱数（seed）を固定し、揺らぎ（temperature）を控えめにする。
+    # 検査に通らず作り直すときだけ seed を1つずらす（同じ seed だと同じ失敗を繰り返すため）
     if cfg.get("tts_seed") is not None:
-        body["generationConfig"]["seed"] = int(cfg["tts_seed"])
+        body["generationConfig"]["seed"] = int(cfg["tts_seed"]) + int(seed_shift)
     if cfg.get("tts_temperature") is not None:
         body["generationConfig"]["temperature"] = float(cfg["tts_temperature"])
+    reserve = float(cfg.get("finish_reserve_sec", 300))
     last_err = None
     for model in (models or cfg["tts_models"]):
         url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
         for attempt in range(attempts):
+            # 1回の待ち時間に上限をつける（以前は最長15分待ち、全体が60分で強制終了された）
+            timeout = min(float(cfg.get("tts_call_timeout_sec", 420)), remaining_sec(cfg) - reserve)
+            if timeout < 60:
+                raise BudgetExceeded("音声化を始めると制限時間を超えます")
             req = urllib.request.Request(
                 url,
                 data=json.dumps(body).encode(),
                 headers={"Content-Type": "application/json", "x-goog-api-key": api_key},
             )
             try:
-                with urllib.request.urlopen(req, timeout=900) as r:
+                with urllib.request.urlopen(req, timeout=timeout) as r:
                     data = json.load(r)
                 parts = data["candidates"][0]["content"]["parts"]
                 b64 = next(p["inlineData"]["data"] for p in parts if "inlineData" in p)
                 log(f"  TTS OK model={model}")
                 return base64.b64decode(b64), model
             except urllib.error.HTTPError as e:
-                msg = e.read().decode(errors="ignore")[:300]
-                last_err = f"{model} HTTP {e.code}: {msg}"
+                msg = e.read().decode(errors="ignore")[:3000]
+                last_err = f"{model} HTTP {e.code}: {msg[:300]}"
                 log(f"  TTS error: {last_err}")
-                if e.code in (404, 400) and ("not found" in msg.lower() or "not supported" in msg.lower()):
-                    break  # このモデルは使えない → 次のモデルへ
-                if e.code == 429 or e.code >= 500:
-                    time.sleep(min(90, 20 * (attempt + 1)))
+                if e.code == 429:
+                    if "PerDay" in msg or "per day" in msg.lower():
+                        log(f"  {model} は今日の無料枠を使い切りました")
+                        break  # 待っても回復しない → 次のモデルへ
+                    mm = re.search(r'"retryDelay":\s*"(\d+)', msg)
+                    sleep_in_budget(cfg, min(90, int(mm.group(1)) + 3 if mm else 30 * (attempt + 1)))
                     continue
-                break
-            except Exception as e:  # ネットワーク等
+                if e.code >= 500:
+                    sleep_in_budget(cfg, min(60, 20 * (attempt + 1)))
+                    continue
+                break  # 400 / 403 / 404 など：このモデルは使えない → 次のモデルへ
+            except BudgetExceeded:
+                raise
+            except Exception as e:  # ネットワーク、時間切れ、音声が返らなかった など
                 last_err = f"{model}: {e}"
                 log(f"  TTS error: {last_err}")
-                time.sleep(15)
-    raise RuntimeError(f"TTS に失敗しました（無料枠の上限の可能性あり）: {last_err}")
+                sleep_in_budget(cfg, 15)
+    raise TTSUnavailable(f"TTS に失敗しました（無料枠の上限の可能性あり）: {last_err}")
 
 
 # ---------------------------------------------------------------- AivisSpeech（無料・ローカル実行）
@@ -326,11 +470,345 @@ def tts_aivis_episode(lines, cfg):
         stop_aivis()
 
 
+_DUMMY = {}
+
+
 def tts_dummy(chunk):
-    """dry-run 用：文字数に比例した長さの小さなビープ音"""
-    seconds = max(1.0, sum(len(l) for l in chunk) / 6.0 / 10)
-    n = int(SAMPLE_RATE * seconds)
-    return b"".join(struct.pack("<h", int(3000 * math.sin(2 * math.pi * 440 * i / SAMPLE_RATE))) for i in range(n))
+    """dry-run 用：声に似せたテスト音（強弱と息つぎの間がある）。長さは文字数に比例する"""
+    if not _DUMMY:
+        n = int(SAMPLE_RATE * 0.1)
+        for amp in (0, 2000, 4000, 7000, 10000):
+            _DUMMY[amp] = b"".join(struct.pack("<h", int(amp * math.sin(2 * math.pi * 220 * i / SAMPLE_RATE)))
+                                   for i in range(n))
+    out, k = [], 0
+    for line in chunk:
+        for _ in range(max(3, round(len(spoken(line)) / 6.5 * 10) - 4)):
+            k += 1
+            out.append(_DUMMY[(2000, 7000, 4000, 10000, 4000, 7000)[k % 6] if k % 9 else 0])
+        out += [_DUMMY[0]] * 4
+    return b"".join(out)
+
+
+# ---------------------------------------------------------------- パートごとの音声化（検査つき）
+SHARED = {"last_call": 0.0}  # 回をまたいで共有する状態（直前の呼び出し時刻、書き起こしに使えるモデル）
+
+
+def tts_call(seg, st, seed_shift=0):
+    cfg = st["cfg"]
+    if st["dry"]:
+        return tts_dummy(seg)
+    if st["calls"] >= int(cfg.get("max_tts_calls_per_episode", 9)):
+        raise EpisodeFailed("音声化のやり直しが上限回数に達しました（無料枠を守るため中止）")
+    # 無料枠は1分あたりの回数が少ないので、呼び出しの間隔をあける
+    wait = float(cfg.get("tts_min_interval_sec", 21)) - (time.time() - SHARED["last_call"])
+    if wait > 0:
+        sleep_in_budget(cfg, wait)
+    st["calls"] += 1
+    SHARED["last_call"] = time.time()
+    # 声の質感をそろえるため、1回分はすべて同じモデルで音声化する
+    audio, used = tts_gemini(seg, cfg, st["api_key"], [st["model"]] if st["model"] else st["models"], seed_shift)
+    st["model"] = used
+    return audio
+
+
+def synth_segment(name, seg, st, depth=0):
+    """1パートを音声化して検査する。通らなければ作り直し、それでもだめなら小さく分けてやり直す"""
+    cfg = st["cfg"]
+    attempts = int(cfg.get("segment_attempts", 3)) if depth == 0 else 2
+    doubtful = []  # 波形は正常だが、書き起こし検品で疑いが出た音声
+    for attempt in range(1, attempts + 1):
+        log(f"  音声化：{name}（{sum(len(l) for l in seg)}文字" + (f"・{attempt}回目" if attempt > 1 else "") + "）")
+        audio = tts_call(seg, st, seed_shift=(attempt - 1) + depth * 10)
+        audio, problems = check_audio(audio, seg, cfg)
+        if problems:
+            log("  検査で不合格：" + " ／ ".join(problems))
+            continue
+        found = check_transcript(audio, seg, cfg, st["api_key"], SHARED) if st["transcript"] else None
+        if not found:
+            log(f"  検査OK（{pcm_seconds(audio):.0f}秒）")
+            return audio
+        log("  書き起こし検品で疑い：" + " ／ ".join(found))
+        doubtful.append((len(found), audio))
+        if len(doubtful) > int(cfg.get("transcript_retries", 1)):
+            break
+    if doubtful:
+        if cfg.get("transcript_strict", False):
+            raise EpisodeFailed(f"{name} が書き起こし検品に通りませんでした")
+        warn(f"{st['date']} {name}：書き起こし検品の疑いが残りましたが、波形は正常なので採用しました。念のため聴いて確認してください")
+        return min(doubtful, key=lambda x: x[0])[1]
+    if depth == 0:
+        total = sum(len(l) for l in seg)
+        small = split_even(seg, min(int(cfg.get("chunk_chars", 1400)), max(400, total // 2 + 60)))
+        if len(small) > 1:
+            log(f"  {name} を {len(small)} つに分けてやり直します")
+            gap = b"\x00\x00" * int(SAMPLE_RATE * 0.35)
+            return gap.join(synth_segment(f"{name}・分割{i}", s, st, 1) for i, s in enumerate(small, 1))
+    raise EpisodeFailed(f"{name} の音声が検査に通りませんでした（無音・雑音・長さの異常）")
+
+
+def synthesize_gemini(lines, cfg, api_key, dry, date):
+    """台本1本を Gemini で音声化する。戻り値: 24kHz / 16bit / mono の PCM"""
+    if cfg.get("split_mode", "parts") == "parts":
+        parts = split_parts(lines, cfg)
+    else:
+        chunks = chunk_lines(lines, int(cfg.get("chunk_chars", 1400)))
+        parts = [(f"台本 {i}/{len(chunks)}", c) for i, c in enumerate(chunks, 1)]
+    log("  分け方：" + "、".join(f"{n}（{sum(len(l) for l in p)}文字）" for n, p in parts))
+    st = dict(cfg=cfg, api_key=api_key, dry=dry, date=date, calls=0, model=None, models=list(cfg["tts_models"]),
+              transcript=bool(cfg.get("transcript_check", True)) and not dry and bool(api_key))
+    gap = b"\x00\x00" * int(SAMPLE_RATE * float(cfg.get("part_gap_sec", 0.5)))
+    while True:
+        try:
+            out = [synth_segment(n, p, st) for n, p in parts]
+            if not dry:
+                log(f"  使ったモデル：{st['model']}／音声化 {st['calls']} 回")
+            return gap.join(out)
+        except TTSUnavailable as e:
+            used, models = st["model"], st["models"]
+            if used and used in models and models.index(used) + 1 < len(models):
+                log(f"  {used} が途中で使えなくなったため、次のモデルで最初から作り直します")
+                st["models"] = models[models.index(used) + 1:]
+                st["model"] = None
+                continue
+            raise EpisodeFailed(str(e))
+
+
+# ---------------------------------------------------------------- 音声の検査
+# 基準は、実際に配信した回（正常な回と、無音・雑音が入った回）の波形を比べて決めた。
+#   正常な回：無音は最長1秒ほど／15秒ごとに必ず息つぎの静かな瞬間がある／音量の強弱が大きい
+#   壊れた回：数十秒〜数分の無音、または「静かな瞬間がない」「強弱がない」音が続く
+def pcm_seconds(pcm):
+    return len(pcm) / (SAMPLE_RATE * 2)
+
+
+def frame_levels(pcm, frame_sec=0.1, step=4):
+    """0.1秒ごとの音量（RMS）のリスト。速くするためサンプルを間引いて計算する"""
+    a = array.array("h")
+    a.frombytes(pcm[:len(pcm) // 2 * 2])
+    if sys.byteorder == "big":
+        a.byteswap()
+    n = int(SAMPLE_RATE * frame_sec)
+    out = []
+    for i in range(0, len(a) - n + 1, n):
+        f = a[i:i + n:step]
+        out.append(math.sqrt(sum(x * x for x in f) / len(f)))
+    return out
+
+
+def _pct(values, p):
+    s = sorted(values)
+    return s[min(len(s) - 1, int(len(s) * p))]
+
+
+def _ratio(db):
+    return 10 ** (db / 20)
+
+
+def trim_silence(pcm, levels=None):
+    """前後の無音を切り落とす（途中で声が消えたまま終わった音声は、これで短くなり長さの検査で見つかる）"""
+    r = levels or frame_levels(pcm)
+    if len(r) < 10:
+        return pcm
+    ref = _pct(r, 0.90)
+    sil = max(ref * _ratio(-35), 20)
+    voiced = [i for i, x in enumerate(r) if x >= sil]
+    if not voiced:
+        return pcm
+    n = int(SAMPLE_RATE * 0.1) * 2  # 0.1秒ぶんのバイト数
+    start = max(0, voiced[0] - 2) * n
+    end = min(len(r), voiced[-1] + 3) * n
+    return pcm[start:end]
+
+
+def check_waveform(pcm, cfg):
+    """無音・雑音を波形から見つける（API を使わないので無料）。問題の説明のリストを返す。空なら合格"""
+    r = frame_levels(pcm)
+    if len(r) < 30:
+        return ["音声が3秒未満です"]
+    ref = _pct(r, 0.90)  # 声が出ているときの音量の目安
+    if ref < 150:
+        return ["全体がほぼ無音です"]
+    problems = []
+
+    # ① 長い無音（正常な回は最長でも1秒ほど）
+    sil = ref * _ratio(-35)
+    run = best = end = 0
+    for i, x in enumerate(r):
+        run = run + 1 if x < sil else 0
+        if run > best:
+            best, end = run, i
+    if best / 10 >= float(cfg.get("max_silence_sec", 3.0)):
+        problems.append(f"{(end - best + 1) / 10:.0f}秒付近から {best / 10:.0f}秒間の無音")
+
+    # ② 雑音・異常な音（15秒の窓を5秒ずつずらして調べる）
+    W = min(150, len(r))
+    starts = list(range(0, len(r) - W + 1, 50))
+    if starts[-1] != len(r) - W:
+        starts.append(len(r) - W)
+    bad = []
+    for i in starts:
+        w = r[i:i + W]
+        mean = sum(w) / len(w)
+        cv = math.sqrt(sum((x - mean) ** 2 for x in w) / len(w)) / max(mean, 1.0)
+        if _pct(w, 0.75) < sil:
+            continue  # 無音の窓は ① で扱う
+        if _pct(w, 0.03) > ref * _ratio(-25):
+            bad.append((i, "静かな瞬間がない（雑音が乗っている）"))
+        elif cv < 0.40:
+            bad.append((i, "音量の強弱がない（声ではない音）"))
+        elif _pct(w, 0.75) < ref * _ratio(-20):
+            bad.append((i, "音量が大きく落ちている"))
+    if len(bad) >= 2:
+        problems.append(f"{bad[0][0] / 10:.0f}秒付近から異常な音：{bad[0][1]}（{len(bad)}か所）")
+    return problems
+
+
+def check_audio(pcm, lines, cfg):
+    """1回分の音声を検査する。戻り値: (前後の無音を除いた音声, 問題のリスト)"""
+    pcm = trim_silence(pcm)
+    problems = []
+    expected = spoken_chars(lines) / float(cfg.get("chars_per_sec", 6.5))
+    lo, hi = cfg.get("part_length_ratio", [0.65, 1.4])
+    got = pcm_seconds(pcm)
+    if expected > 0 and not (lo <= got / expected <= hi):
+        kind = "短すぎます（途中で切れた可能性）" if got < expected else "長すぎます（読み直しの可能性）"
+        problems.append(f"長さが{kind}：{got:.0f}秒 / 想定{expected:.0f}秒")
+    if cfg.get("waveform_check", True):
+        problems += check_waveform(pcm, cfg)
+    return pcm, problems
+
+
+# ---------------------------------------------------------------- 書き起こし検品（無料枠の Gemini）
+# 音声を文字に起こして台本と比べ、「同じ部分の読み直し（ループ）」「読み飛ばし」を見つける。
+# 波形では見つけられない失敗のための検査。モデルが使えないときは、この検査だけ飛ばす。
+TRANSCRIBE_PROMPT = ("この音声は、日本語の2人の掛け合いによるニュース番組です。聞こえたとおりに、最初から最後まで"
+                     "文字起こししてください。話者名・時刻・説明・要約は付けず、話された言葉だけを出力してください。"
+                     "同じ内容が繰り返し話されている場合は、省略せず、繰り返されたとおりに書いてください。")
+
+
+def normalize_text(s):
+    s = unicodedata.normalize("NFKC", s).lower()
+    return "".join(ch for ch in s if ch.isalnum())
+
+
+def transcribe(pcm, cfg, api_key, state):
+    """戻り値: 書き起こした文字列。検品できなかったときは None"""
+    models = state.setdefault("transcript_models",
+                              list(cfg.get("transcript_models", ["gemini-flash-latest", "gemini-2.5-flash"])))
+    if not models:
+        return None
+    raw = os.path.join(BUILD, "check.pcm")
+    mp3 = os.path.join(BUILD, "check.mp3")
+    with open(raw, "wb") as f:
+        f.write(pcm)
+    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-f", "s16le", "-ar", str(SAMPLE_RATE), "-ac", "1",
+                    "-i", raw, "-b:a", "32k", mp3], check=True)
+    with open(mp3, "rb") as f:
+        audio = base64.b64encode(f.read()).decode()
+    os.remove(raw)
+    os.remove(mp3)
+    body = {
+        "contents": [{"parts": [{"text": TRANSCRIBE_PROMPT},
+                                {"inlineData": {"mimeType": "audio/mp3", "data": audio}}]}],
+        "generationConfig": {"temperature": 0},
+    }
+    for model in list(models):
+        url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
+        for attempt in range(2):
+            timeout = min(180.0, remaining_sec(cfg) - float(cfg.get("finish_reserve_sec", 300)))
+            if timeout < 30:
+                return None
+            req = urllib.request.Request(url, data=json.dumps(body).encode(),
+                                         headers={"Content-Type": "application/json", "x-goog-api-key": api_key})
+            try:
+                with urllib.request.urlopen(req, timeout=timeout) as r:
+                    data = json.load(r)
+                cand = data["candidates"][0]
+                if cand.get("finishReason") not in (None, "STOP"):
+                    log(f"  書き起こしが途中で終わりました（{cand.get('finishReason')}）")
+                    return None
+                text = "".join(p.get("text", "") for p in cand["content"]["parts"] if not p.get("thought"))
+                return text or None
+            except urllib.error.HTTPError as e:
+                msg = e.read().decode(errors="ignore")[:1500]
+                log(f"  書き起こし error: {model} HTTP {e.code}: {msg[:200]}")
+                if e.code == 429 and "PerDay" not in msg and attempt == 0 and remaining_sec(cfg) > 600:
+                    time.sleep(25)
+                    continue
+                models.remove(model)  # このモデルは今回はもう使わない
+                break
+            except Exception as e:
+                log(f"  書き起こし error: {model}: {e}")
+                break
+    return None
+
+
+def compare_transcript(script_lines, transcript, cfg):
+    """台本と書き起こしを比べる。問題の説明のリストを返す。空なら合格"""
+    S = normalize_text("".join(spoken(l) for l in script_lines))
+    T = normalize_text(transcript)
+    if not S or not T:
+        return []
+    problems = []
+    ratio = len(T) / len(S)
+    if ratio < 0.75:
+        problems.append(f"書き起こしが台本よりかなり短い（{ratio:.0%}）")
+    elif ratio > 1.30:
+        problems.append(f"書き起こしが台本よりかなり長い（{ratio:.0%}）")
+    loop_min = int(cfg.get("loop_min_chars", 40))
+    skip_min = int(cfg.get("skip_min_chars", 60))
+
+    def grams(text, n):
+        d = {}
+        for i in range(len(text) - n + 1):
+            g = text[i:i + n]
+            d[g] = d.get(g, 0) + 1
+        return d
+
+    s4, t4, t3 = grams(S, 4), grams(T, 4), grams(T, 3)
+    sm = difflib.SequenceMatcher(None, S, T, autojunk=False)
+    # 台本と書き起こしが食い違う区間を取り出す。書き起こしには細かなゆれ（漢字・かな、聞き間違い）が
+    # あるので、10文字未満の一致をはさんで続く食い違いは、ひとつの区間としてまとめる
+    regions, cur = [], None
+    for tag, i1, i2, j1, j2 in sm.get_opcodes():
+        if tag == "equal" and (i2 - i1) >= 10:
+            if cur:
+                regions.append(cur)
+                cur = None
+            continue
+        if tag == "equal" and cur is None:
+            continue
+        cur = [cur[0], i2, cur[2], j2] if cur else [i1, i2, j1, j2]
+    if cur:
+        regions.append(cur)
+    for i1, i2, j1, j2 in regions:
+        ds, dt_ = i2 - i1, j2 - j1
+        if dt_ - ds >= loop_min:
+            # 台本にない文章が音声に入っている。それが「台本より多い回数」出てくるなら読み直し
+            region = T[j1:j2]
+            gs = [region[k:k + 4] for k in range(len(region) - 3)]
+            extra = sum(1 for g in gs if t4.get(g, 0) > max(1, s4.get(g, 0)))
+            if gs and extra / len(gs) >= 0.25:
+                problems.append(f"同じ部分の読み直し（約{dt_ - ds}文字ぶん）：「{region[:24]}…」")
+        if ds - dt_ >= skip_min:
+            # 台本にある文章が音声にない。書き起こしのどこにも出てこないなら読み飛ばし
+            region = S[i1:i2]
+            gs = [region[k:k + 3] for k in range(len(region) - 2)]
+            hit = sum(1 for g in gs if g in t3)
+            if gs and hit / len(gs) < 0.5:
+                problems.append(f"読み飛ばし（約{ds - dt_}文字ぶん）：「{region[:24]}…」")
+    return problems
+
+
+def check_transcript(pcm, lines, cfg, api_key, state):
+    """戻り値: 問題のリスト（空なら合格）。検品できなかったときは None"""
+    text = transcribe(pcm, cfg, api_key, state)
+    if text is None:
+        if not state.get("transcript_skipped"):
+            log("  書き起こし検品は使えないため、今回は飛ばします（波形検査は実施済み）")
+            state["transcript_skipped"] = True
+        return None
+    return compare_transcript(lines, text, cfg)
 
 
 def audio_seconds(path):
@@ -576,6 +1054,68 @@ a{{color:inherit}}
 
 
 # ---------------------------------------------------------------- メイン
+def build_one(date, ref, path, text, cfg, args, api_key, repo, items, by_date):
+    """1回分を音声化して公開する。戻り値: 更新後の items"""
+    engine = cfg.get("tts_engine", "gemini")
+    meta, lines, sources = parse_episode(text)
+    lines = validate_lines(lines, cfg["speakers"])
+    log(f"  {len(lines)}行 / {sum(len(l) for l in lines)}文字")
+
+    pcm = None
+    # 台本の先頭（front matter）に tts_engine: gemini / aivis があれば、その回だけ読み上げ方式を変える
+    ep_engine = (meta.get("tts_engine") or engine).lower()
+    log(f"  読み上げ方式: {ep_engine}")
+    if ep_engine == "aivis" and not args.dry_run:
+        log("  AivisSpeech で音声化します")
+        try:
+            pcm = tts_aivis_episode(lines, cfg)
+            for p in check_waveform(pcm, cfg):
+                warn(f"{date}（AivisSpeech）：{p}")
+        except Exception as e:
+            if not api_key:
+                raise
+            log(f"  AivisSpeech での音声化に失敗 → 予備として Gemini で音声化します（{e}）")
+            pcm = None
+    if pcm is None:
+        pcm = synthesize_gemini(lines, cfg, api_key, args.dry_run, date)
+
+    # 全体の長さの確認（パートごとの検査は済んでいるので、ここは注意の表示だけ）
+    expected = spoken_chars(lines) / float(cfg.get("chars_per_sec", 6.5))
+    lo, hi = cfg.get("length_ratio", [0.7, 1.25])
+    got = pcm_seconds(pcm)
+    if not (lo <= got / expected <= hi):
+        warn(f"{date}：全体の長さが想定と離れています（{got:.0f}秒 / 想定{expected:.0f}秒）。"
+             "毎回出る場合は config.json の chars_per_sec を見直してください")
+
+    mp3 = os.path.join(BUILD, f"{date}.mp3")
+    build_mp3(pcm, mp3, cfg["mp3_bitrate"], cfg)
+    seconds = audio_seconds(mp3)
+    title = meta.get("title") or f"{date} 朝の日本経済・AIニュース"
+    url = f"https://github.com/{repo}/releases/download/ep-{date}/{date}.mp3" if args.dry_run \
+        else publish_release(repo, date, mp3, title)
+
+    # 台本を main に保存（記録用）
+    os.makedirs(EPISODES_DIR, exist_ok=True)
+    with open(os.path.join(ROOT, path), "w", encoding="utf-8") as f:
+        f.write(text)
+
+    # コラムなどの記録（episodes/*_log.md）も main に反映する
+    for log_path in LOG_FILES:
+        log_text = run(["git", "show", f"{ref}:{log_path}"], check=False)
+        if log_text:
+            with open(os.path.join(ROOT, log_path), "w", encoding="utf-8") as f:
+                f.write(log_text)
+
+    rev = by_date[date].get("rev", 1) + 1 if date in by_date else 1
+    items = [it for it in items if it["date"] != date] + [{
+        "date": date, "title": title, "summary": meta.get("summary", ""),
+        "sources": sources[:12], "url": url, "bytes": os.path.getsize(mp3), "seconds": round(seconds),
+        "sha": text_hash(text), "rev": rev,
+    }]
+    log(f"  完成: {fmt_duration(seconds)} / {os.path.getsize(mp3) // 1024} KB")
+    return items
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--dry-run", action="store_true", help="APIもGitHubも呼ばずにテスト")
@@ -597,6 +1137,7 @@ def main():
                 it["sha"] = text_hash(head)
 
     today = dt.datetime.now(JST).date()
+    rebuild_days = int(cfg.get("rebuild_days", REBUILD_DAYS))
     todo, texts = [], {}
     for d in sorted(candidates):
         ref, path = candidates[d]
@@ -604,130 +1145,38 @@ def main():
         if d not in by_date:
             todo.append(d)
         elif by_date[d].get("sha") != text_hash(texts[d]) and \
-                (today - dt.date.fromisoformat(d)).days <= REBUILD_DAYS:
+                (today - dt.date.fromisoformat(d)).days <= rebuild_days:
             todo.append(d)  # 台本が作り直された回
-    log(f"検出した台本: {sorted(candidates)} / 今回作る回: {todo}")
+    # 新しい回を先に作る（時間や無料枠が足りなくなっても、今日の回を優先するため）。1回の実行で作る数にも上限
+    queue = sorted(todo, reverse=True)[:int(cfg.get("max_episodes_per_run", 3))]
+    log(f"検出した台本: {sorted(candidates)} / 作る必要がある回: {todo} / 今回作る回: {queue}")
 
     api_key = os.environ.get("GEMINI_API_KEY", "")
     engine = cfg.get("tts_engine", "gemini")
-    if todo and not args.dry_run and not api_key:
+    if queue and not args.dry_run and not api_key:
         if engine == "gemini":
             sys.exit("GEMINI_API_KEY が設定されていません（GitHub の Secrets を確認）")
         log("注意: GEMINI_API_KEY がないため、AivisSpeech が失敗したときの予備（Gemini）は使えません")
 
-    processed_refs = set()
-    for date in todo[-3:]:  # 取りこぼしがあっても最大3回分まで（無料枠保護）
+    processed_refs, built, failed, stopped = set(), [], [], False
+    for date in queue:
         ref, path = candidates[date]
+        if not args.dry_run and remaining_sec(cfg) < float(cfg.get("episode_min_sec", 600)):
+            stopped = True
+            warn(f"{date}：残り時間が少ないため、今回は作りません（次の自動実行で作ります）")
+            break
         log(f"== {date} を処理（{ref}）")
-        text = texts[date]
-        meta, lines, sources = parse_episode(text)
-        lines = validate_lines(lines, cfg["speakers"])
-        chunks = chunk_lines(lines, cfg["chunk_chars"])
-        log(f"  {len(lines)}行 / {sum(len(l) for l in lines)}文字 / {len(chunks)}回に分けて音声化")
-
-        silence = b"\x00\x00" * int(SAMPLE_RATE * 0.35)
-
-        def synthesize(parts, attempts=8):
-            # 声の質感をそろえるため、1回分はすべて同じモデルで音声化する。
-            # 途中でそのモデルが使えなくなったら、次のモデルで最初から作り直す。
-            models = list(cfg["tts_models"])
-            while True:
-                pcm, used = b"", None
-                try:
-                    for i, ch in enumerate(parts, 1):
-                        log(f"  音声化 {i}/{len(parts)}")
-                        if args.dry_run:
-                            audio = tts_dummy(ch)
-                        else:
-                            audio, used = tts_gemini(ch, cfg, api_key, [used] if used else models, attempts)
-                        pcm += audio + silence
-                        if not args.dry_run and i < len(parts):
-                            time.sleep(8)  # 分あたりの上限対策
-                    return pcm
-                except RuntimeError:
-                    if used and used in models and models.index(used) + 1 < len(models):
-                        log(f"  {used} が途中で使えなくなったため、次のモデルで最初から作り直します")
-                        models = models[models.index(used) + 1:]
-                        continue
-                    raise
-
-        pcm = None
-        total_chars = sum(len(l) for l in lines)
-        # 台本の先頭（front matter）に tts_engine: gemini / aivis があれば、その回だけ読み上げ方式を変える
-        ep_engine = (meta.get("tts_engine") or engine).lower()
-        log(f"  読み上げ方式: {ep_engine}")
-        if ep_engine == "aivis" and not args.dry_run:
-            log("  AivisSpeech で音声化します")
-            try:
-                pcm = tts_aivis_episode(lines, cfg)
-            except Exception as e:
-                if not api_key:
-                    raise
-                log(f"  AivisSpeech での音声化に失敗 → 予備として Gemini で音声化します（{e}）")
-        if pcm is None and cfg.get("single_pass", True) and len(chunks) > 1 and not args.dry_run:
-            # 声をそろえるため、できるだけ少ない回数で音声化する：
-            #   ① 台本全体を1回で → ② コラムの前後で2回に分けて → ③ 通常の分割
-            def split_two(ls):
-                k = next((n for n, l in enumerate(ls) if "AI活用コラム" in l and n > len(ls) // 4), None)
-                if k is None:
-                    half, acc, k = sum(len(l) for l in ls) / 2, 0, 0
-                    for n, l in enumerate(ls):
-                        acc += len(l)
-                        if acc >= half:
-                            k = n + 1
-                            break
-                return [ls[:k], ls[k:]]
-
-            for label, parts in (("台本全体を1回で", [lines]), ("コラムの前後で2回に分けて", split_two(lines))):
-                log(f"  {label}音声化します")
-                try:
-                    out, ok = b"", True
-                    for part in parts:
-                        audio = synthesize([part], attempts=3)
-                        got = len(audio) / (SAMPLE_RATE * 2)
-                        expected = sum(len(l) for l in part) / 6.5  # 1秒あたり約6.5文字
-                        if got < expected * 0.75:
-                            log(f"  音声が途中で切れた可能性（{got:.0f}秒 / 想定{expected:.0f}秒）")
-                            ok = False
-                            break
-                        out += audio
-                        time.sleep(8)
-                    if ok:
-                        pcm = out
-                        break
-                except RuntimeError as e:
-                    log(f"  {label}の音声化に失敗（{e}）")
-                time.sleep(15)
-        if pcm is None:
-            pcm = synthesize(chunks)
-
-        mp3 = os.path.join(BUILD, f"{date}.mp3")
-        build_mp3(pcm, mp3, cfg["mp3_bitrate"], cfg)
-        seconds = audio_seconds(mp3)
-        title = meta.get("title") or f"{date} 朝の日本経済・AIニュース"
-        url = f"https://github.com/{repo}/releases/download/ep-{date}/{date}.mp3" if args.dry_run \
-            else publish_release(repo, date, mp3, title)
-
-        # 台本を main に保存（記録用）
-        os.makedirs(EPISODES_DIR, exist_ok=True)
-        with open(os.path.join(ROOT, path), "w", encoding="utf-8") as f:
-            f.write(text)
-
-        # コーナーの記録（episodes/*_log.md）も main に反映する
-        for log_path in LOG_FILES:
-            log_text = run(["git", "show", f"{ref}:{log_path}"], check=False)
-            if log_text:
-                with open(os.path.join(ROOT, log_path), "w", encoding="utf-8") as f:
-                    f.write(log_text)
-
-        rev = by_date[date].get("rev", 1) + 1 if date in by_date else 1
-        items = [it for it in items if it["date"] != date] + [{
-            "date": date, "title": title, "summary": meta.get("summary", ""),
-            "sources": sources[:12], "url": url, "bytes": os.path.getsize(mp3), "seconds": round(seconds),
-            "sha": text_hash(text), "rev": rev,
-        }]
-        processed_refs.add(ref)
-        log(f"  完成: {fmt_duration(seconds)} / {os.path.getsize(mp3) // 1024} KB")
+        try:
+            items = build_one(date, ref, path, texts[date], cfg, args, api_key, repo, items, by_date)
+            built.append(date)
+            processed_refs.add(ref)
+        except BudgetExceeded as e:
+            stopped = True
+            warn(f"{date}：制限時間が近いため中断しました。次の自動実行で作り直します（{e}）")
+            break
+        except Exception as e:  # この回はあきらめ、ほかの回と配信の更新は続ける
+            failed.append(date)
+            log(f"::error::{date} の音声を作れませんでした：{e}")
 
     items = prune(items, cfg["keep_episodes"], repo, args.dry_run)
     ready = False if args.dry_run else pages_ready(site)
@@ -736,13 +1185,16 @@ def main():
     save_index(items)
     write_feed(items, cfg, site)
     write_index_html(items, cfg, site)
-    sync_pages(items, cfg, repo, set(todo[-3:]), args.dry_run)
+    sync_pages(items, cfg, repo, set(built), args.dry_run)
 
     if args.delete_branches and not args.dry_run:
         for ref in processed_refs:
             if ref.startswith("origin/claude/"):
                 run(["git", "push", "origin", "--delete", ref[len("origin/"):]], check=False)
-    log("完了")
+    log(f"完了（作った回: {built or 'なし'} / 作れなかった回: {failed or 'なし'}"
+        + (" / 時間切れで中断あり" if stopped else "") + "）")
+    if (failed or stopped) and not built:
+        sys.exit(1)  # 何も作れなかったときは失敗として表示する（7:40 / 8:40 の自動実行で再挑戦）
 
 
 if __name__ == "__main__":
