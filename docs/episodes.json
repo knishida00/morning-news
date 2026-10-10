@@ -1,5 +1,30 @@
 [
   {
+    "date": "2026-10-11",
+    "title": "10月11日 週末版 AI株安と金利・原油ほか",
+    "summary": "今週の振り返りは、オープンAIの売上報道によるAI関連株安、米金利と原油、国家公務員の給与引き上げ、ゲームの新作ヒット、来週の注目予定。資産形成コラムは会社員が持つ公的な保障「傷病手当金」、AI活用コラムはClaude Designで商品ページ画像のワイヤーフレームを作る方法。",
+    "sources": [
+      "時事通信：日経平均、11円19銭安の6万9030円92銭で終了＝東京株式（2026-10-09 / 2026-10-09）https://news.yahoo.co.jp/articles/b10472140f1f278a2fb952d63f315410f71df0f5",
+      "株探：＜週末コメント＞ 来週の相場展望（2026-10-09 / 2026-10-09）https://finance.yahoo.co.jp/news/detail/747594d1f7e6518ae19f815b68efa6107fc675ac",
+      "Bloomberg：【米国市況】S&P500続落、AI懸念で半導体株に売り－国債利回り低下（2026-10-08 / 2026-10-08）https://www.bloomberg.com/jp/news/articles/2026-10-08/TMLEE7KJH6V400",
+      "CNBC：Nvidia, Oracle, CoreWeave and other AI stocks sink on OpenAI revenue report（2026-10-08 / 2026-10-08）https://www.cnbc.com/2026/10/08/open-ai-revenue-nvidia-oracle-coreweave.html",
+      "財経新聞：8日の米国株式市場はまちまち OpenAI売上報道でAI関連株に売り（2026-10-08 / 2026-10-09）https://www.zaikei.co.jp/article/20261009/872931.html",
+      "共同通信：NY株式 9日終値（2026-10-09 / 2026-10-10）https://news.yahoo.co.jp/articles/6ff54c593ac538341b10c43e5b7f5ec664d7e2b1",
+      "株探：NY原油先物 小幅反落、米大統領の対イラン攻撃見送り表明で上値が重い（2026-10-09 / 2026-10-10）https://kabutan.jp/news/marketnews/?b=n202610100128",
+      "共同通信：国家公務員の給与増額決定 2年連続で3％超（2026-10-09 / 2026-10-09）https://news.yahoo.co.jp/articles/75d1c0206570797c4669a1f0cffc59725545e83b",
+      "ファミ通：ソフト＆ハード週間販売数 『エースコンバット8』が首位スタート【9/28～10/4】（2026-09-28〜10-04 / 2026-10）https://www.famitsu.com/article/202610/90441",
+      "みんかぶ：来週の主な予定 ウォーシュFRB議長に植田日銀総裁 米CPIと小売売上高（2026-10-10 / 2026-10-10）https://fx.minkabu.jp/news/381282",
+      "全国健康保険協会（協会けんぽ）：傷病手当金 https://www.kyoukaikenpo.or.jp/benefit/injury_and_sickness_allowance/index.html",
+      "Anthropic：Build live dashboards and animate explainers with Claude（2026-10-08 / 2026-10-08）https://claude.com/resources/articles/dashboards-and-motion"
+    ],
+    "url": "https://github.com/knishida00/morning-news/releases/download/ep-2026-10-11/2026-10-11.mp3",
+    "bytes": 5398195,
+    "seconds": 675,
+    "sha": "b914debbd6f134e41ebde253c7a0175003bb6003",
+    "rev": 1,
+    "play_url": "https://knishida00.github.io/morning-news/audio/2026-10-11.mp3"
+  },
+  {
     "date": "2026-10-08",
     "title": "10月8日 米長期金利24年ぶり高水準と実質賃金ほか",
     "summary": "米長期金利が約24年ぶりの高さに、原油も100ドル超え。8月の実質賃金は8か月連続プラス、景気動向指数は6か月ぶり悪化、日経平均は反落、オープンAIの資金調達協議を紹介。明日が楽しみになるニュースはコンビニのもちもちパン、AI活用コラムはClaude for Wordで説明文書の改訂を速くする方法。",
