@@ -1,5 +1,30 @@
 [
   {
+    "date": "2026-10-14",
+    "title": "10月14日 日経平均1253円安と物価・円相場ほか",
+    "summary": "連休明けの日経平均が1253円安で4日続落、9月の企業物価は6.8％上昇、円相場と日銀の利上げ観測、NTTデータの大阪でのAIデータセンター計画、CEATEC開幕を紹介。資産形成コラムは年末調整と基礎控除の引き上げ、AI活用コラムはスプレッドシートのAI関数でレビューを分類する方法",
+    "sources": [
+      "共同通信：東証終値1253円安（2026年10月13日 / 10月13日）https://news.yahoo.co.jp/articles/02974e5a8d68918ba2e76ba3d152f70084114a0c",
+      "NHK：株価 大きく値下がり AI・半導体産業 競争激化の警戒感など（2026年10月13日 / 10月13日）https://news.web.nhk/newsweb/na/nd-20261013de58344",
+      "共同通信：NY株式 13日終値（米国時間10月13日 / 10月14日）https://news.yahoo.co.jp/articles/c3b997ae14586a93e9f9bee069ce7fd125a5c123",
+      "時事通信：9月の企業物価指数は前年同月比6.8％上昇（2026年10月13日 / 10月13日）https://www.jiji.com/jc/article?k=2026101300202&g=flash",
+      "ロイター：家計の物価予想、5年後「上がる」は86.5％ 日銀9月調査（2026年10月13日 / 10月13日）https://finance.yahoo.co.jp/news/detail/66832e4b21b24b92ac9e59c920c41ec1d9aade10",
+      "みんかぶFX：ドル円激しく振幅、日銀は今月会合で利上げ見送る公算大の報道（2026年10月13日 / 10月13日）https://fx.minkabu.jp/news/381420",
+      "日本経済新聞：NTTがアンソロピック向けデータセンター 大阪で開設へ（2026年10月13日ごろ報道 / 10月13日）https://www.nikkei.com/article/DGXZQOUC059W20V01C26A0000000/",
+      "ロイター：NTT Data in final talks to build Anthropic's first data centre in Japan（2026年10月13日ごろ報道 / 10月12日）https://www.933thedrive.com/2026/10/12/ntt-data-in-final-talks-to-build-anthropics-first-data-centre-in-japan-nikkei-reports/",
+      "Impress Watch：CEATEC 2026 開幕 最新技術が幕張メッセに集結（2026年10月13日 / 10月13日）https://www.watch.impress.co.jp/docs/news/2147468.html",
+      "日本経済新聞：CEATEC開幕 日立や三菱電機がフィジカルAI（2026年10月13日 / 10月13日）https://www.nikkei.com/article/DGXZQOUC077FC0X01C26A0000000/",
+      "国税庁：令和８年度税制改正による所得税の基礎控除の引上げ等について（令和8年度改正 / 公開日は未確認）https://www.nta.go.jp/users/gensen/2026kiso/index.htm",
+      "Google ドキュメント エディタ ヘルプ：Google スプレッドシートで AI 関数を使用する（機能は提供中 / 公開日は未確認）https://support.google.com/docs/answer/15877199?hl=ja"
+    ],
+    "url": "https://github.com/knishida00/morning-news/releases/download/ep-2026-10-14/2026-10-14.mp3",
+    "bytes": 5025376,
+    "seconds": 628,
+    "sha": "4557b41ad41cf2e0570196f6165e157d3628f90d",
+    "rev": 1,
+    "play_url": "https://knishida00.github.io/morning-news/audio/2026-10-14.mp3"
+  },
+  {
     "date": "2026-10-11",
     "title": "10月11日 週末版 AI株安と金利・原油ほか",
     "summary": "今週の振り返りは、オープンAIの売上報道によるAI関連株安、米金利と原油、国家公務員の給与引き上げ、ゲームの新作ヒット、来週の注目予定。資産形成コラムは会社員が持つ公的な保障「傷病手当金」、AI活用コラムはClaude Designで商品ページ画像のワイヤーフレームを作る方法。",
