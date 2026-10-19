@@ -1,5 +1,30 @@
 [
   {
+    "date": "2026-10-20",
+    "title": "10月20日 首相の国債発言と原油103ドル台ほか",
+    "summary": "高市首相の減税財源をめぐる国債発言、日米の株価の動き、WTI原油が約1か月ぶりの高値、アンソロピックの株式5％拠出、全固体電池モジュールの量産計画を紹介。資産形成コラムは複利と時間、AI活用コラムはClaudeのスキルで表示チェックを下書きする方法",
+    "sources": [
+      "時事通信：高市首相、減税財源「国債否定せず」 円の信認向上目指す―参院予算委（出来事 2026-10-19 / 公開 2026-10-19）https://www.jiji.com/jc/article?k=2026101900098&g=pol",
+      "日本経済新聞：高市早苗首相、予算編成全体で「国債発行否定せず」 Xに投稿（出来事 2026-10-19 / 公開 2026-10-19）https://www.nikkei.com/article/DGXZQOUA199JZ0Z11C26A0000000/",
+      "産経新聞（Yahoo!ニュース配信）：高市首相「国債発行額を適切にコントロール」 消費減税の財源巡り国債発行否定せず（出来事 2026-10-19 / 公開 2026-10-19）https://news.yahoo.co.jp/articles/7ee37b71a9f018a4bcdaa8582386660631822dc0",
+      "日本経済新聞：日経平均株価、反落 終値は407円安の6万4916円（出来事 2026-10-19 / 公開 2026-10-19）https://www.nikkei.com/article/DGXZQOFL190CX0Z11C26A0000000/",
+      "読売新聞（Infoseek配信）：日経平均反落、終値407円安の6万4916円…一時1400円超下落の後持ち直し（出来事 2026-10-19 / 公開 2026-10-19）https://news.infoseek.co.jp/article/yomiuri_20261019_gyt1t00251/",
+      "共同通信（Yahoo!ニュース配信）：NY株続落、36ドル安 AI関連銘柄は買い戻し（出来事 2026-10-19 米国時間 / 公開 2026-10-20）https://news.yahoo.co.jp/articles/3c36a9e1b263d13a07350af54257b73b3b0199cd",
+      "共同通信（Yahoo!ニュース配信）：NY原油、1カ月ぶり高値 103ドル台、中東供給不安（出来事 2026-10-19 米国時間 / 公開 2026-10-20）https://news.yahoo.co.jp/articles/d1f312257ec0a92b5d5f0d6e43f8dd145b8f33e5",
+      "日本経済新聞：NY商品、原油続伸し1カ月ぶり高値 中東の衝突拡大への懸念 金反落（出来事 2026-10-19 米国時間 / 公開 2026-10-20）https://nikkei.com/article/DGXZQOFL19A720Z11C26A0000000",
+      "日本経済新聞：アンソロピック、株式5％を公益基金へ AI失業者支援などに活用（出来事 2026-10-18 米国時間 / 公開 2026-10-19）https://www.nikkei.com/article/DGXZQOGN182N70Y6A011C2000000/",
+      "ビジネス+IT：米アンソロピック、自社株の5％を新設の公益ファンドへ拠出と発表 株主承認が条件（出来事 2026-10-18 米国時間 / 公開 2026-10-19）https://www.sbbit.jp/article/cont1/187566",
+      "MONOist：マクセルの全固体電池バックアップモジュール量産（出来事 2026-10-14 / 公開 2026-10-15）https://monoist.itmedia.co.jp/mn/articles/2610/15/news080.html",
+      "Claude Platform Docs：Agent Skills（公開 2026）https://platform.claude.com/docs/ja/agents-and-tools/agent-skills/overview"
+    ],
+    "url": "https://github.com/knishida00/morning-news/releases/download/ep-2026-10-20/2026-10-20.mp3",
+    "bytes": 5419720,
+    "seconds": 677,
+    "sha": "337ac39fe0c4c922c5167b0f715c45aaf0a07fec",
+    "rev": 1,
+    "play_url": "https://knishida00.github.io/morning-news/audio/2026-10-20.mp3"
+  },
+  {
     "date": "2026-10-18",
     "title": "10月18日 週末版 日本の対米半導体投資とIMF見通しほか",
     "summary": "今週の振り返りは、日本が最大210億ドルを出す米国の半導体工場計画、IMFが日本の成長率を0.7％に引き上げた見通し、AI企業の7〜9月期売上の報道、AIエージェントの子育てメニュー、来週の注目予定。資産形成コラムは公的年金の見込額の確かめ方、AI活用コラムはMeetの会議後のメール下書きとタスク登録",
