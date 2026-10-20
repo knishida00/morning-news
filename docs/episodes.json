@@ -25,6 +25,31 @@
     "play_url": "https://knishida00.github.io/morning-news/audio/2026-10-20.mp3"
   },
   {
+    "date": "2026-10-19",
+    "title": "10月19日 月曜版 AI株安と原油100ドルほか",
+    "summary": "金曜のAI関連株安と原油100ドル前後、中国AIの新モデル公開、AI向けロボット導入を狙う大型買収の検討報道、新給付制度案、火星衛星探査機の打ち上げ予定を紹介。資産形成コラムは固定費の見直し、AI活用コラムは資料の数字の食い違いをAIで点検する方法",
+    "sources": [
+      "日本経済新聞：日経平均大引け 7日ぶり反発 898円高の6万5324円（16日 / 16日） https://www.nikkei.com/article/DGXZQOFL160EV0W6A011C2000000/",
+      "共同通信：NY株反落、175ドル安 AI懸念ハイテク株に売り（16日米国時間 / 17日） https://news.yahoo.co.jp/articles/19844e142d35824f26a3bd7c85218318c4e7504c",
+      "時事通信：〔米株式〕ダウ反落、175ドル安＝原油高やAI投資不安（16日米国時間 / 17日） https://finance.yahoo.co.jp/news/detail/1720fc40c40299a285edbe79974d611b5d907a7f",
+      "フィスコ（株探）：NY原油先物 6営業日続伸、約1カ月ぶりに100ドル台を回復（16日米国時間 / 17日） https://kabutan.jp/news/marketnews/?b=n202610170132",
+      "PC Watch：Opus 5に迫る「DeepSeek-V4.1-Flash」無償公開（17日 / 17日前後） https://pc.watch.impress.co.jp/docs/news/2140010.html",
+      "Bloomberg：ソフトバンクG、米警備サービス最大手アライドの買収検討（16日 / 16日） https://www.bloomberg.com/jp/news/articles/2026-10-16/TN0KE2KJH6V400",
+      "時事通信：ソフトバンクグループ、米警備大手買収検討 AIロボ導入狙う（16日報道 / 17日） https://www.jiji.com/jc/article?k=2026101700256&g=int",
+      "共同通信：新給付制度、平均3万円案を提示（17日 / 17日） https://373news.com/news/national/detail/2026101701000781/",
+      "ITmedia NEWS：JAXA、火星衛星探査機「MMX」を10月20日打ち上げ（20日予定 / 8月公開） https://www.itmedia.co.jp/news/article/2608/20/2000000661/",
+      "マイナビニュース：火星衛星探査機「MMX」10月20日4時41分打上げ（20日予定 / 18日） https://news.mynavi.jp/techplus/article/20261018-5150201/",
+      "Google Research：Analyzing technical documents with Deep Review（14日 / 14日） https://research.google/blog/analyzing-technical-documents-with-deep-review/",
+      "金融広報中央委員会 知るぽると：家計管理・貯蓄の基礎情報（参照ページ） https://www.shiruporuto.jp/"
+    ],
+    "url": "https://github.com/knishida00/morning-news/releases/download/ep-2026-10-19/2026-10-19.mp3",
+    "bytes": 5771851,
+    "seconds": 721,
+    "sha": "780a6b3b6fc806e71d26d4da95fd0f015ec6de8a",
+    "rev": 1,
+    "play_url": "https://knishida00.github.io/morning-news/audio/2026-10-19.mp3"
+  },
+  {
     "date": "2026-10-18",
     "title": "10月18日 週末版 日本の対米半導体投資とIMF見通しほか",
     "summary": "今週の振り返りは、日本が最大210億ドルを出す米国の半導体工場計画、IMFが日本の成長率を0.7％に引き上げた見通し、AI企業の7〜9月期売上の報道、AIエージェントの子育てメニュー、来週の注目予定。資産形成コラムは公的年金の見込額の確かめ方、AI活用コラムはMeetの会議後のメール下書きとタスク登録",
@@ -73,6 +98,31 @@
     "sha": "e423241e7bb1181dc971cbfc3e7fdb81ee7a7631",
     "rev": 1,
     "play_url": "https://knishida00.github.io/morning-news/audio/2026-10-17.mp3"
+  },
+  {
+    "date": "2026-10-16",
+    "title": "10月16日 日経平均3318円安とTSMC決算ほか",
+    "summary": "日経平均が歴代3位の下げ幅となった「コアウィーブ・ショック」、米9月の卸売物価と日銀の利上げ観測、TSMCの過去最高決算、機械受注と対米投資第3弾、宇宙ステーションへの補給を紹介。資産形成コラムは値下がりしたときの考え方、AI活用コラムはスプレッドシートでClaudeに売上集計を任せる方法",
+    "sources": [
+      "日本経済新聞：日経平均大引け 6日続落 3318円安の6万4425円（出来事の日付 2026-10-15 / 公開日 2026-10-15）https://www.nikkei.com/article/DGXZQOFL150CJ0V11C26A0000000/",
+      "日本経済新聞：日経平均3318円安 「コアウィーブ・ショック」で下げ幅歴代3位（2026-10-15 / 2026-10-15）https://www.nikkei.com/article/DGXZQOUB150HLTV11C26A0000000/",
+      "Bloomberg：CoreWeave Bonds Plunge to Distress Levels（2026-10-14 米国時間 / 2026-10-14）https://www.bloomberg.com/news/articles/2026-10-14/coreweave-bonds-tumble-into-distress-drawing-yikes-from-musk",
+      "ブルームバーグ：米PPI、9月は前月比1.3％上昇－前年比では6.3％上昇（2026-10-15 日本時間21時30分 / 2026-10-15）https://www.bloomberg.com/jp/news/articles/2026-10-15/TMY88WO32FWG00?srnd=jp-homepage",
+      "共同通信：米小売売上高0.8％増 9月、市場予想上回る（2026-10-15 / 2026-10-15）https://news.yahoo.co.jp/articles/686c20ba4d4103f70442bc5545716a3e19347fa8",
+      "日本経済新聞：外為10時 円相場、上げ幅拡大 157円台後半 株安・米金利低下に実需の円買い（2026-10-15 / 2026-10-15）https://www.nikkei.com/article/DGXZQOFL1516H0V11C26A0000000/",
+      "日本経済新聞：TSMCの純利益68.7%増 7〜9月、AI需要旺盛で最高益更新（2026-10-15 / 2026-10-15）https://www.nikkei.com/article/DGXZQOGM151UW0V11C26A0000000/",
+      "共同通信：8月機械受注5.2％増（2026-10-15 / 2026-10-15）https://www.daily.co.jp/society/economics/2026/10/15/0020929806.shtml",
+      "時事通信：赤沢経産相「AI競争優位確保に意義」＝対米投資第3弾に半導体製造（2026-10-15 / 2026-10-15）https://finance.yahoo.co.jp/news/detail/9499f6fd02b766ef0904a9c545e9558559b35c11",
+      "NASA：SpaceX Dragon Cargo Mission Approaching Station（2026-10-15 / 2026-10-15）https://www.nasa.gov/blogs/spacestation/2026/10/15/spacex-dragon-cargo-mission-approaching-station/",
+      "金融庁：資産形成の基本（NISA特設ウェブサイト、制度・考え方の参照ページ）https://www.fsa.go.jp/policy/nisa2/invest/",
+      "Anthropic：Claude for Google Workspace（ベータ版の公式紹介ページ、2026年10月上旬公開 / 確認日 2026-10-16）https://claude.com/claude-for-google-workspace"
+    ],
+    "url": "https://github.com/knishida00/morning-news/releases/download/ep-2026-10-16/2026-10-16.mp3",
+    "bytes": 6258146,
+    "seconds": 782,
+    "sha": "75588c55aab537c08cfc5582fbfc44aee46e2b92",
+    "rev": 1,
+    "play_url": "https://knishida00.github.io/morning-news/audio/2026-10-16.mp3"
   },
   {
     "date": "2026-10-15",
