@@ -1,5 +1,30 @@
 [
   {
+    "date": "2026-10-21",
+    "title": "10月21日 AI株安の東京市場と米イラン協議ほか",
+    "summary": "20日の日経平均841円安とAI・半導体株の売り、ニューヨークの株高と原油反落、オープンAIの資金調達報道、火星衛星探査機MMXの打ち上げ成功を紹介。資産形成コラムはiDeCoの上限引き上げと税金のしくみ、AI活用コラムはGeminiのディープリサーチで競合の動きを調べる方法",
+    "sources": [
+      "共同通信：東証終値、841円安（出来事 2026-10-20 / 公開 2026-10-20）https://news.yahoo.co.jp/articles/b623dc012fc0de0348c9239b0b6ec184250f3316",
+      "日本経済新聞：東証大引け 日経平均は続落 AI半導体株売られる、下げ渋る場面も（出来事 2026-10-20 / 公開 2026-10-20）https://www.nikkei.com/article/DGXZQOFL2006H0Q6A021C2000000/",
+      "ウエルスアドバイザー（Yahoo!ファイナンス配信）：キオクシアなど半導体株が下落、韓国SKハイニックス急落やAI債務懸念が重しに（出来事 2026-10-20 / 公開 2026-10-20）https://finance.yahoo.co.jp/news/detail/070a0ff48713a8fdfd4b13a25679002297d475e0",
+      "共同通信：NY株反発、529ドル高 原油相場の上昇一服を好感（出来事 2026-10-20 米国時間 / 公開 2026-10-21）https://news.yahoo.co.jp/articles/0983eacd09c8dd988482d359c312117d3ae58844",
+      "日本経済新聞：NYダウ反発 原油安など（出来事 2026-10-20 米国時間 / 公開 2026-10-21）https://www.nikkei.com/article/DGXZQOFL210110R21C26A0000000/",
+      "みんかぶ：原油は1.80％安＝NY原油終値（出来事 2026-10-20 米国時間 / 公開 2026-10-21）https://fx.minkabu.jp/news/382128",
+      "ザイFX：NY外為 ドル売り後退、関係筋は米イラン合意に近いとの報道を否定（出来事 2026-10-20 米国時間 / 公開 2026-10-21）https://zai.diamond.jp/articles/-/497597",
+      "ロイター（ニューズウィーク日本版配信）：オープンAI、アンソロピックIPO控え資金調達を加速＝関係筋（出来事 2026-10-19 米国時間 / 公開 2026-10-20）https://www.newsweekjapan.jp/articles/-/337407",
+      "ロイター（CP24配信）：OpenAI seeks to accelerate fundraising ahead of Anthropic IPO, sources say（出来事 2026-10-19 米国時間 / 公開 2026-10-20）https://www.cp24.com/news/money/2026/10/20/openai-seeks-to-accelerate-fundraising-ahead-of-anthropic-ipo-sources-say-reuters-exclusive/",
+      "マイナビニュース：H3ロケット10号機打上げ成功、火星衛星探査機MMXは約5年の旅路へ（出来事 2026-10-20 / 公開 2026-10-20）https://news.mynavi.jp/techplus/article/20261020-5156160/",
+      "sorae：JAXAがH3ロケット10号機を打ち上げ MMXの軌道投入に成功（出来事 2026-10-20 / 公開 2026-10-20）https://sorae.info/ssn/20261020-h3f10-mmx.html",
+      "政府広報オンライン：iDeCoが大きく変わる！2026年12月制度改正のポイント（公開 2024-12）https://www.gov-online.go.jp/article/202412/entry-6825.html"
+    ],
+    "url": "https://github.com/knishida00/morning-news/releases/download/ep-2026-10-21/2026-10-21.mp3",
+    "bytes": 5362668,
+    "seconds": 670,
+    "sha": "33c5c8a4cba2cc0bd89a854c4e69ea0b913ed879",
+    "rev": 1,
+    "play_url": "https://knishida00.github.io/morning-news/audio/2026-10-21.mp3"
+  },
+  {
     "date": "2026-10-20",
     "title": "10月20日 首相の国債発言と原油103ドル台ほか",
     "summary": "高市首相の減税財源をめぐる国債発言、日米の株価の動き、WTI原油が約1か月ぶりの高値、アンソロピックの株式5％拠出、全固体電池モジュールの量産計画を紹介。資産形成コラムは複利と時間、AI活用コラムはClaudeのスキルで表示チェックを下書きする方法",
@@ -173,6 +198,31 @@
     "sha": "4557b41ad41cf2e0570196f6165e157d3628f90d",
     "rev": 1,
     "play_url": "https://knishida00.github.io/morning-news/audio/2026-10-14.mp3"
+  },
+  {
+    "date": "2026-10-12",
+    "title": "10月12日 週末版 FRB議事要旨とAI投資の物価ほか",
+    "summary": "今週の振り返りは、FRB議事要旨でAI投資が物価の押し上げ要因に、8月の経常収支は4.1兆円の黒字、ChatGPTのGPT-6が無料版にも、衛星と5Gをつなぐ試験設備、来週の注目予定。資産形成コラムは公的年金の見込み額の知り方、AI活用コラムはスプレッドシートのAI関数でレビューを分類する方法",
+    "sources": [
+      "Axios：Fed officials feared inflation pressures could spread, minutes show（2026-10-07 / 2026-10-07）https://www.axios.com/2026/10/07/fed-warsh-minutes-rates",
+      "Kitco：FOMC minutes show the Fed ready to hike again in 2026 as AI buildout replaces tariffs as main driver of core prices（2026-10-07 / 2026-10-07）https://www.kitco.com/news/article/2026-10-07/fomc-minutes-show-fed-ready-hike-again-2026-ai-buildout-replaces-tariffs",
+      "RISMedia：Notes From Fed Meeting Cite AI, Tariffs and Geopolitical Conflicts for Rate Hike（2026-10-07 / 2026-10-07）https://www.rismedia.com/2026/10/07/notes-from-fed-meeting-cite-ai-tariffs-and-geopolitical-conflicts-for-rate-hike/",
+      "外為どっとコム：来週のドル円相場はどうなる？10/12週のイベント予定（2026-10-11 / 2026-10-11）https://gaitame.com/media/entry/2026/10/11/070000",
+      "NHK：8月経常収支 4兆620億円の黒字 海外からの配当増加などで（2026-10-08 / 2026-10-08）https://news.web.nhk/newsweb/na/nd-20261008de56259",
+      "共同通信：8月の経常黒字4兆620億円（2026-10-08 / 2026-10-08）https://news.yahoo.co.jp/articles/eb8d4aebcad715e3fde74439a29b66ab78aa38cf",
+      "日本経済新聞：8月経常黒字、12%増の4兆620億円 海外投資益の黒字拡大が寄与（2026-10-08 / 2026-10-08）https://www.nikkei.com/article/DGXZQOUA071DV0X01C26A0000000/",
+      "ITmedia NEWS：ChatGPT、無料版を含む全ユーザーに「GPT-6」（2026-10-07 / 2026-10-08）https://www.itmedia.co.jp/news/article/2610/08/2000002119/",
+      "PC Watch：無料版ChatGPTにもGPT-6導入！回答に操作できるUIを生成（2026-10-07 / 2026-10-08）https://pc.watch.impress.co.jp/docs/news/2147113.html",
+      "電波新聞デジタル：NICTとシャープ、5G衛星通信の実証設備構築 鹿島宇宙技術センターに（2026-10-09 / 2026-10-09）https://dempa-digital.com/?p=727403",
+      "みんかぶ：【来週の注目材料】今後の金融政策動向をにらみ、米物価統計に注目（2026-10-10 / 2026-10-10）https://fx.minkabu.jp/news/381284",
+      "株探：来週の相場で注目すべき3つのポイント：IMF世界経済見通し、国外大手半導体決算、米CPI（2026-10-10 / 2026-10-10）https://kabutan.jp/news/marketnews/?b=n202610100179"
+    ],
+    "url": "https://github.com/knishida00/morning-news/releases/download/ep-2026-10-12/2026-10-12.mp3",
+    "bytes": 5630580,
+    "seconds": 704,
+    "sha": "6cd6f7715b60b76ad100eef61e0e8f4720a7c779",
+    "rev": 1,
+    "play_url": "https://knishida00.github.io/morning-news/audio/2026-10-12.mp3"
   },
   {
     "date": "2026-10-11",
