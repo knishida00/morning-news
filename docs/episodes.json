@@ -1,5 +1,30 @@
 [
   {
+    "date": "2026-10-24",
+    "title": "10月24日 週末版 AI株安の週と物価2.1％ほか",
+    "summary": "今週の振り返りは、日経平均が2週連続の大幅安となった週とニューヨークの金曜の動き、9月の全国物価2.1％、OpenAIのモデルがGoogle Cloudにも、ロボットの反射を機構で再現した研究、来週のFRBと日銀の会合。資産形成コラムは育児休業中のお金のしくみ、AI活用コラムはWorkspace Studioで依頼管理表の変更を自動で知らせる方法",
+    "sources": [
+      "日本経済新聞：日経平均終値214円安 拭えぬAIへの疑心、ともる需給警戒サイン（出来事2026-10-23 / 公開2026-10-23）https://www.nikkei.com/article/DGXZQOUB230JSTT21C26A0000000/",
+      "NHK：株価 値下がり AI投資への懸念浮上で売り注文広がる（出来事2026-10-23 / 公開2026-10-23）https://news.web.nhk/newsweb/na/nd-20261023de64167",
+      "CNBC：Dow tumbles more than 600 points as oil prices rise and market sell-off hits most sectors（出来事2026-10-23 / 公開2026-10-23）https://www.cnbc.com/2026/10/22/stock-market-today-live-update.html",
+      "時事通信：９月消費者物価、２．１％上昇 ９カ月ぶり２％超―総務省（出来事2026-10-23 / 公開2026-10-23）https://www.jiji.com/jc/article?k=2026102300210&g=eco",
+      "OpenAI：OpenAI models are coming to Google Cloud（出来事2026-10-21 / 公開2026-10-21）https://openai.com/index/openai-models-google-cloud/",
+      "9to5Google：OpenAI GPT models are coming to Google Antigravity 'soon,' Cloud 'in the coming weeks'（出来事2026-10-21 / 公開2026-10-21）https://9to5google.com/2026/10/21/openai-gpt-models-google-antigravity-cloud/",
+      "東北大学：複雑な電子回路を排し「伸びたら縮む」筋骨格ロボット用反射モジュールを開発（出来事2026-10-22 / 公開2026-10-22）https://www.tohoku.ac.jp/japanese/2026/10/press20261022-02-reflexive.html",
+      "テレ東BIZ：日銀 10月利上げ見送りへ 影響見極め（出来事2026-10 / 公開2026-10）https://txbiz.tv-tokyo.co.jp/nms/news/post_351108",
+      "厚生労働省：出生後休業支援給付 制度が始まっています（2025-04 開始 / 公開2025）https://www.mhlw.go.jp/content/11900000/001599643.pdf",
+      "厚生労働省：育児休業給付金の支給率を引き上げます（制度概要）https://www.mhlw.go.jp/file/06-Seisakujouhou-11600000-Shokugyouanteikyoku/0000042797.pdf",
+      "Google公式ヘルプ：フローを使用してシートを監視、管理する - Workspace Studio ヘルプ https://support.google.com/workspace-studio/answer/16655443?hl=ja",
+      "Google公式ヘルプ：Google Workspace Studio の使用を開始する https://support.google.com/workspace-studio/answer/16444479?hl=ja"
+    ],
+    "url": "https://github.com/knishida00/morning-news/releases/download/ep-2026-10-24/2026-10-24.mp3",
+    "bytes": 5795465,
+    "seconds": 724,
+    "sha": "ffcdf20fe4017d6caf71835646a4ed8a97999138",
+    "rev": 1,
+    "play_url": "https://knishida00.github.io/morning-news/audio/2026-10-24.mp3"
+  },
+  {
     "date": "2026-10-23",
     "title": "10月23日 日経平均1713円安とディスコ決算ほか",
     "summary": "日経平均が1713円安で3か月ぶりの安値、ニューヨークのナスダック急落と原油100ドル目前、ディスコの決算、AIが見つけたPHPの脆弱性、水の電気分解触媒の新発見を紹介。資産形成コラムは相場が荒れた日のニュースとの付き合い方、AI活用コラムはGeminiの予約アクションで返事待ちの確認を自動化する方法",
