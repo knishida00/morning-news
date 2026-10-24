@@ -1,5 +1,30 @@
 [
   {
+    "date": "2026-10-25",
+    "title": "10月25日 週末版 ファナック上方修正と訪日客減ほか",
+    "summary": "今週の振り返りは、ファナックの業績予想の引き上げ、9月の訪日客5％減、アンソロピックの個人向けAIエージェント、ロケットエンジン開発を支える施設の一般公開、来週の決算と日米の中央銀行の会合。資産形成コラムは高額療養費制度、AI活用コラムはGeminiのサイドパネルで調査結果の要約文書を下書きする方法",
+    "sources": [
+      "ファナック（株探ニュース）：ファナック、今期経常を14％上方修正（出来事2026-10-23 / 公開2026-10-23）https://kabutan.jp/news/?b=k202610230016",
+      "財経日報：ファナックの通期経常予想3088億円に上方修正 4〜9月期38.1％増益（出来事2026-10-23 / 公開2026-10）https://news.jkn.co.kr/editions/japanese/post/1044644",
+      "トラベルボイス：訪日外国人数、2026年9月は5%減の310万人、2カ月連続の前年割れ（出来事2026-10-21 / 公開2026-10-21）https://www.travelvoice.jp/20261021-160712",
+      "訪日ラボ：【速報】9月の訪日外客数は310万人 アジア競技大会開催も多くの市場で前年減（出来事2026-10-21 / 公開2026-10-21）https://honichi.com/news/2026/10/21/inbound202609/",
+      "共同通信（熊本日日新聞掲載）：1~9月の訪日客数、前年割れ 2・9%減、3073万人（出来事2026-10-21 / 公開2026-10）https://kumanichi.com/articles/2049017",
+      "MacRumors：Anthropic Launches Claude Duet, a Proactive AI Agent（出来事2026-10-21 / 公開2026-10-21）https://macrumors.com/2026/10/21/anthropic-claude-duet/",
+      "Thurrott：Anthropic Announces Claude Duet, a Personal AI Agent（出来事2026-10-21 / 公開2026-10）https://thurrott.com/a-i/anthropic/343121/anthropic-announces-claude-duet-a-personal-ai-agent",
+      "共同通信（熊本日日新聞掲載）：ロケット開発支援の新拠点初公開 宮城・JAXA角田宇宙センター（出来事2026-10-18 / 公開2026-10-18）https://kumanichi.com/articles/2047920",
+      "日本経済新聞：FOMCや日銀の金融政策決定会合 今週の予定10月25日〜（出来事2026-10-25 / 公開2026-10-25）https://www.nikkei.com/article/DGXZQOCD221EY0S6A021C2000000/",
+      "港区：令和8年8月から高額療養費の自己負担限度額が変わります https://www.city.minato.tokyo.jp/kyufu/kurashi/hoken/kenkohoken/k-kyufu/kougakuhenkou.html",
+      "共同通信（秋田魁新報掲載）：「高額療養費」年間上限53万円 来年8月新設、平均的な所得層で（公開2025-12-23）https://www.sakigake.jp/news/article/20251223CO0161/",
+      "Gemini サイドパネルのソース追加（ヘレンテック 解説記事）https://helentech.jp/news-65546/"
+    ],
+    "url": "https://github.com/knishida00/morning-news/releases/download/ep-2026-10-25/2026-10-25.mp3",
+    "bytes": 5685750,
+    "seconds": 711,
+    "sha": "644e52228db71f6f9553f12f5958558d3d3922ba",
+    "rev": 1,
+    "play_url": "https://knishida00.github.io/morning-news/audio/2026-10-25.mp3"
+  },
+  {
     "date": "2026-10-24",
     "title": "10月24日 週末版 AI株安の週と物価2.1％ほか",
     "summary": "今週の振り返りは、日経平均が2週連続の大幅安となった週とニューヨークの金曜の動き、9月の全国物価2.1％、OpenAIのモデルがGoogle Cloudにも、ロボットの反射を機構で再現した研究、来週のFRBと日銀の会合。資産形成コラムは育児休業中のお金のしくみ、AI活用コラムはWorkspace Studioで依頼管理表の変更を自動で知らせる方法",
