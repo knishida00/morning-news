@@ -1,5 +1,29 @@
 [
   {
+    "date": "2026-10-26",
+    "title": "10月26日 ガソリン補助見直しとAI投資の資金繰りほか",
+    "summary": "首相のガソリン補助金見直し指示、計算能力を貸す新興企業とエヌビディアの資金繰り、今週の日米中央銀行の会合、NTTの光ファイバとAIによる漏水位置特定を紹介。資産形成コラムは先取り貯金、AI活用コラムはGoogle Workspace Studioで毎週のレポートを自動要約する方法",
+    "sources": [
+      "日本経済新聞：高市首相「ガソリン補助のあり方検討」 赤沢経産相に指示（2026-10-23 / 2026-10-23） https://www.nikkei.com/article/DGXZQOUA237DA0T21C26A0000000/",
+      "毎日新聞（Yahoo!ニュース）：ガソリン補助金の段階的な縮小を検討 高市首相、経産相に指示（2026-10-23 / 2026-10-23） https://news.yahoo.co.jp/articles/2fab426d931e6f36626b9b8bdae3ad90af8fbdef",
+      "共同通信（中日新聞Web）：ガソリン補助金見直しへ 首相、経産相に検討指示（2026-10-23 / 2026-10-23） https://www.chunichi.co.jp/article/1329328",
+      "読売新聞オンライン（Yahoo!ニュース）：高市首相、ガソリン補助金を見直す方針表明（2026-10-23 / 2026-10-23） https://news.yahoo.co.jp/articles/ed607121198e8e4689b27e2aca03ff164989028b",
+      "AP通信（Yahoo Finance）：How major US stock indexes fared Friday 10/23/2026（2026-10-23 / 2026-10-23） https://finance.yahoo.com/markets/world-indices/articles/major-us-stock-indexes-fared-201458598.html",
+      "共同通信（OANDA）：NY株式サマリー（23日）ダウ652.82ドル安 原油高や米長期金利上昇を嫌気（2026-10-23 / 2026-10-24） https://oanda.jp/lab-education/market_news/mn_1040513_202610240809",
+      "CNBC：Nvidia's role as AI financier faces first big test as neoclouds take market hit（2026-10-24 / 2026-10-24） https://www.cnbc.com/2026/10/24/nvidias-role-as-ai-financier-faces-first-big-test-as-neoclouds-take-market-hit.html",
+      "CNBC：CoreWeave bond yields stay near 15% as AI stocks rebound（2026-10-19 / 2026-10-19） https://www.cnbc.com/2026/10/19/coreweave-oracle-ai-credit-stress.html",
+      "NTT：世界初、光ファイバセンシングとAIにより熟練者並みの水道管漏水位置特定に成功（2026-10-21 / 2026-10-21） https://group.ntt/jp/newsrelease/2026/10/21/261021a.html",
+      "Impress Watch：NTT、光ファイバとAIで漏水位置を特定 15分で熟練者並み精度（2026-10-21 / 2026-10-21） https://www.watch.impress.co.jp/docs/news/2149987.html",
+      "Google Workspace Updates：新しいロジックと検索ステップでWorkspace Studioの自動化を拡張（2026-10-09 / 2026-10-09） https://workspaceupdates.googleblog.com/2026/10/new-logic-and-search-steps-in-workspace-Studio-help-expand-automation-capabilities.html"
+    ],
+    "url": "https://github.com/knishida00/morning-news/releases/download/ep-2026-10-26/2026-10-26.mp3",
+    "bytes": 5735278,
+    "seconds": 717,
+    "sha": "5dd74753f987a47823ec99ec6939821926074951",
+    "rev": 1,
+    "play_url": "https://knishida00.github.io/morning-news/audio/2026-10-26.mp3"
+  },
+  {
     "date": "2026-10-25",
     "title": "10月25日 週末版 ファナック上方修正と訪日客減ほか",
     "summary": "今週の振り返りは、ファナックの業績予想の引き上げ、9月の訪日客5％減、アンソロピックの個人向けAIエージェント、ロケットエンジン開発を支える施設の一般公開、来週の決算と日米の中央銀行の会合。資産形成コラムは高額療養費制度、AI活用コラムはGeminiのサイドパネルで調査結果の要約文書を下書きする方法",
