@@ -1,5 +1,30 @@
 [
   {
+    "date": "2026-10-27",
+    "title": "10月27日 日経平均3日続落とアンソロピック上場書類ほか",
+    "summary": "日経平均が3日続落し約3か月ぶりの安値水準になった背景、アンソロピックの上場書類の公開、カカクコム買収をめぐるTOB価格の引き上げ、セガのゲームの累計300万本を紹介。資産形成コラムは投資信託の信託報酬、AI活用コラムはGeminiのノートブックで調査結果のスライドを作る方法",
+    "sources": [
+      "日本経済新聞：東証大引け 日経平均は3日続落 3カ月ぶり安値、AI半導体に売り（2026-10-26 / 2026-10-26） https://www.nikkei.com/article/DGXZQOFL264LM0W6A021C2000000/",
+      "時事通信（Yahoo!ファイナンス）：〔ブル＆ベア〕続落＝AI・半導体株に売り（2026-10-26 / 2026-10-26） https://finance.yahoo.co.jp/news/detail/2e077082c3ba1dc13cde7a357a0adf7e022932be",
+      "共同通信（OANDA）：NY株反発、146ドル高（2026-10-26 / 2026-10-27） https://www.oanda.jp/lab-education/market_news/kn_2026102701000075/",
+      "みんかぶ：原油は1.46％安＝NY原油終値（2026-10-26 / 2026-10-27） https://fx.minkabu.jp/news/382622",
+      "Fortune：Anthropic's IPO prospectus shows $16.3 billion in revenue, an $80.7 billion net loss（2026-10-26 / 2026-10-26） https://fortune.com/2026/10/26/anthropics-s-1/",
+      "Yahoo Finance：Anthropic IPO live updates: S-1 filing discloses $16.3B in first-half revenue（2026-10-26 / 2026-10-26） https://finance.yahoo.com/technology/live/anthropic-ipo-live-updates-frontier-ai-lab-discloses-revenue-and-risks-in-highly-anticipated-s-1-filing-141702607.html",
+      "共同通信（熊本日日新聞）：米アンソロピック、12兆円赤字 1~6月期、会計上の損失（2026-10-26 / 2026-10-27） https://kumanichi.com/articles/2048867",
+      "日本経済新聞：LINEヤフー陣営、カカクコム買収提案価格3700円に EQT案上回る（2026-10-26 / 2026-10-26） https://www.nikkei.com/article/DGXZQOUC2631W0W6A021C2000000/",
+      "時事通信（Yahoo!ニュース）：LINEヤフー、TOB価格を変更（2026-10-26 / 2026-10-26） https://news.yahoo.co.jp/articles/0868fcad3faa782903ff8b2036109e52834a47d9",
+      "電ファミニコゲーマー：「ソニック × シャドウ ジェネレーションズ」世界累計販売本数が300万本を突破（2026-10-26 / 2026-10-26） https://news.denfaminicogamer.jp/news/261026j",
+      "ファミ通：『ソニック × シャドウ ジェネレーションズ』全世界販売本数が200万本を突破（2025-01-24 / 2025-01-31） https://www.famitsu.com/article/202501/31577",
+      "金融庁：教えて虫とり先生（第6回）信託報酬（制度の説明・公開ページ） https://www.fsa.go.jp/policy/nisa2/attention/01/01_06.html"
+    ],
+    "url": "https://github.com/knishida00/morning-news/releases/download/ep-2026-10-27/2026-10-27.mp3",
+    "bytes": 5377714,
+    "seconds": 672,
+    "sha": "6851d23784796027b738db006d9d88cfeae5cab1",
+    "rev": 1,
+    "play_url": "https://knishida00.github.io/morning-news/audio/2026-10-27.mp3"
+  },
+  {
     "date": "2026-10-26",
     "title": "10月26日 ガソリン補助見直しとAI投資の資金繰りほか",
     "summary": "首相のガソリン補助金見直し指示、計算能力を貸す新興企業とエヌビディアの資金繰り、今週の日米中央銀行の会合、NTTの光ファイバとAIによる漏水位置特定を紹介。資産形成コラムは先取り貯金、AI活用コラムはGoogle Workspace Studioで毎週のレポートを自動要約する方法",
