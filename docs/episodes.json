@@ -1,5 +1,30 @@
 [
   {
+    "date": "2026-11-03",
+    "title": "11月3日 祝日版 原油急落とキオクシア急落ほか",
+    "summary": "米イラン協議への期待による原油の急落と米国のISM製造業指数、日経平均の続落とキオクシアの決算、iQPSの衛星打ち上げ、これからの注目予定を紹介。資産形成コラムは児童手当のしくみ、AI活用コラムはGeminiのチャットで文書を直接直す機能",
+    "sources": [
+      "日本経済新聞：東証大引け 日経平均は続落 キオクシア15%安、韓国株高は支え（2026年11月2日 / 2026年11月2日）https://www.nikkei.com/article/DGXZQOFL024L10S6A101C2000000/",
+      "日本経済新聞：日経平均株価終値208円安 キオクシア急落でも売り波及は回避（2026年11月2日 / 2026年11月2日）https://www.nikkei.com/article/DGXZQOUB012JVTR01C26A1000000/",
+      "ブルームバーグ：キオクシアHD株が大幅安、3Q計画は市場期待に届かず-還元策強化も（2026年11月2日 / 2026年11月2日）https://www.bloomberg.com/jp/news/articles/2026-11-02/TNUI2AT96OSG00",
+      "AP通信（Detroit News掲載）：Wall Street rises as oil falls heading into US midterm elections（2026年11月2日 / 2026年11月2日）https://www.detroitnews.com/story/business/2026/11/02/wall-street-rises-as-oil-falls-heading-into-us-midterm-elections/92564064007/",
+      "ロイター（Infoseek掲載）：原油先物1％超下落、イランとカタールの協議継続（2026年11月2日 / 2026年11月2日）https://news.infoseek.co.jp/article/02reutersJAPAN_KCN3WD029",
+      "Benzinga：Crude Oil Tumbles 7%; ISM Manufacturing PMI Rises In October（2026年11月2日 / 2026年11月2日）https://benzinga.com/markets/market-summary/26/11/62786741/crude-oil-tumbles-7-ism-manufacturing-pmi-rises-in-october",
+      "Rocket Lab：MISSION SUCCESS: Rocket Lab Launches 99th Electron Mission（2026年11月3日現地 / 2026年11月）https://investingnews.com/mission-success-rocket-lab-launches-99th-electron-mission/",
+      "時事通信（Yahoo!ファイナンス掲載）：トヨタ、26年9月中間決算の開示は11月5日午後1時55分（2026年11月5日予定 / 2026年10月29日）https://finance.yahoo.co.jp/news/detail/6b17f9b83da2b14d3f0f64c3b6b130dc9a44c51b",
+      "窓の杜：「Gemini」アプリに各種文書ファイルを直接生成・編集・プレビューする機能が追加（2026年10月29日 / 2026年10月）https://forest.watch.impress.co.jp/docs/news/2152807.html",
+      "Google Workspace Updates：Weekly Recap - October 30, 2026（2026年10月30日 / 2026年10月30日）https://workspaceupdates.googleblog.com/2026/10/weekly-recap-10-30-2026.html",
+      "香川県：令和6年10月児童手当制度改正について（2024年10月 / 閲覧日2026年11月3日）https://www.pref.kagawa.lg.jp/kosodate/jidoteate/seidokaisei.html",
+      "労働新聞社：子育て支援金 8年度料率は0.23%に 年収400万円で月768円 こども家庭庁（2025年12月26日 / 2025年12月）https://www.rodo.co.jp/news/212009/"
+    ],
+    "url": "https://github.com/knishida00/morning-news/releases/download/ep-2026-11-03/2026-11-03.mp3",
+    "bytes": 5861711,
+    "seconds": 733,
+    "sha": "4542a20eb3938a5b2607e9768376684c6e3251db",
+    "rev": 1,
+    "play_url": "https://knishida00.github.io/morning-news/audio/2026-11-03.mp3"
+  },
+  {
     "date": "2026-11-01",
     "title": "11月1日 週末版 東京の物価と雇用・生産ほか",
     "summary": "10月の東京の物価2.6％上昇、9月の失業率と鉱工業生産、オープンAIの新モデルとAPI料金の半額化、あらせの観測成果、来週の注目予定を紹介。資産形成コラムは相続税の基礎控除、AI活用コラムはGoogleスライドでGeminiが資料全体をまとめて直す機能",
