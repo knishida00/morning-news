@@ -1,5 +1,28 @@
 [
   {
+    "date": "2026-11-04",
+    "title": "11月4日 米中間選挙と円相場、AI光部品の大型買収ほか",
+    "summary": "米中間選挙の投票と円相場・原油の警戒、マーベルによる光通信部品大手の買収、10月の新車販売の減少、人型ロボット用の固体電池を紹介。資産形成コラムはふるさと納税のしくみ、AI活用コラムはClaudeで画像を見比べて制作会社への修正指示を作る方法",
+    "sources": [
+      "日本経済新聞：根強い円売り、米中間選挙後の原油一段高に身構え イラン攻撃再開も（出来事の日付 2026年11月3日の投票前の市場 / 公開日 2026年11月初旬、記事上の日付は未確認）https://www.nikkei.com/article/DGXZQOFL0208OTS6A101C2000000/",
+      "外為どっとコム：米中間選挙でどうなるのか？ドル/円相場とS&P500の３シナリオ（出来事の日付 2026年11月3日の投票 / 公開日 2026年10月31日）https://www.gaitame.com/media/entry/2026/10/31/110000_1",
+      "みんかぶ：これからの見通し 米中間選挙の結果待ちのムード（出来事の日付 2026年11月3日 / 公開日 2026年11月3日）https://fx.minkabu.jp/news/383332",
+      "Lumentum（米国証券取引委員会提出書類 8-K）：マーベルによる買収の合意（出来事の日付 2026年11月2日 / 公開日 2026年11月2日）https://www.sec.gov/Archives/edgar/data/0001633978/000119312526442758/d163169dex991.htm",
+      "TrendForce：Marvell Eyes Lumentum Acquisition in What Could Be One of the 10 Largest Tech and Telecom Deals Ever（出来事の日付 2026年10月末の交渉報道 / 公開日 2026年10月末）https://www.trendforce.com/news/?p=65896",
+      "時事通信：新車販売台数、３．４％減＝軽が不調、モデル改良少なく―１０月（出来事の日付 2026年11月2日 / 公開日 2026年11月2日）https://news.infoseek.co.jp/article/jiji_2026110200829",
+      "中日新聞（共同通信）：１０月新車販売３・４％減 軽不振７カ月ぶりマイナス（出来事の日付 2026年11月2日 / 公開日 2026年11月2日）https://chunichi.co.jp/article/1333951",
+      "CnEVPost：Solid-state batteries for XPeng IRON enter small-batch production（出来事の日付 2026年10月28日 / 公開日 2026年10月28日）https://cnevpost.com/2026/10/28/solid-state-batteries-xpeng-iron-small-batch-production/",
+      "総務省：ふるさと納税のしくみ 税金の控除について（制度説明 / 常時公開）https://www.soumu.go.jp/main_sosiki/jichi_zeisei/czaisei/czaisei_seido/furusato/mechanism/deduction.html",
+      "東京国税局：ふるさと納税ワンストップ特例の申請書を提出された方（制度説明 / 常時公開）https://www.nta.go.jp/about/organization/tokyo/topics/furusato_nozei_onestop/index.htm"
+    ],
+    "url": "https://github.com/knishida00/morning-news/releases/download/ep-2026-11-04/2026-11-04.mp3",
+    "bytes": 5705812,
+    "seconds": 713,
+    "sha": "85bc938ee27ed70159fac015b9e4aa5fe6c1f30a",
+    "rev": 1,
+    "play_url": "https://knishida00.github.io/morning-news/audio/2026-11-04.mp3"
+  },
+  {
     "date": "2026-11-03",
     "title": "11月3日 祝日版 原油急落とキオクシア急落ほか",
     "summary": "米イラン協議への期待による原油の急落と米国のISM製造業指数、日経平均の続落とキオクシアの決算、iQPSの衛星打ち上げ、これからの注目予定を紹介。資産形成コラムは児童手当のしくみ、AI活用コラムはGeminiのチャットで文書を直接直す機能",
