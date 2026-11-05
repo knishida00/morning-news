@@ -1,5 +1,30 @@
 [
   {
+    "date": "2026-11-06",
+    "title": "11月6日 NY株急落でナスダック調整局面、トヨタ急伸ほか",
+    "summary": "AI・データセンター関連株の急落でナスダックが調整局面に入ったニューヨーク市場、日経平均の4日続落とトヨタの決算、円相場と今夜の米雇用統計、植物素材だけで作ったタマムシ色フィルムを紹介。資産形成コラムは積立投資の価格変動との付き合い方、AI活用コラムはGeminiで週次資料から数字を表にまとめる方法",
+    "sources": [
+      "CNBC：Dow drops 1,800 points; Nasdaq tumbles into correction territory on AI tech wreck（出来事の日付 米国時間11/5 / 公開 11/5）https://www.cnbc.com/2026/11/04/stock-market-today-live-updates.html",
+      "Investing.com：U.S. stocks lower at close of trade; Dow Jones Industrial Average down 3.45%（米国時間11/5 / 11/5）https://www.investing.com/news/stock-market-news/us-stocks-lower-at-close-of-trade-dow-jones-industrial-average-down-345-5005517",
+      "Reuters（devdiscourse転載）：US STOCKS-Nasdaq set to confirm correction as AI stocks tumble（米国時間11/5 / 11/5）https://www.devdiscourse.com/article/international/4002274-us-stocks-nasdaq-set-to-confirm-correction-as-ai-stocks-tumble",
+      "日本経済新聞：東証大引け 日経平均は4日続落 終値6万1077円 5カ月半ぶり安値（11/5 / 11/5）https://www.nikkei.com/article/DGXZQOFL0552T0V01C26A1000000/",
+      "株探：東京株式（大引け）＝1110円安、AI・半導体売られるもバリュー株物色旺盛（11/5 / 11/5）https://kabutan.jp/news/marketnews/?b=n202611051336",
+      "株探：トヨタ、今期最終を10％上方修正（11/5 / 11/5）https://s.kabutan.jp/news/k202611050032/",
+      "Investing.com：【決算速報】トヨタ自動車（11/5 / 11/5）https://jp.investing.com/news/earnings/article-1743609",
+      "みんかぶFX：ドル売り優勢、原油安でドル安に＝東京為替前場概況（11/5 / 11/5）https://fx.minkabu.jp/news/383606",
+      "みんかぶ：国内外の注目経済指標 米雇用統計が最大の焦点（米雇用統計は11/6 / 公開直近）https://minkabu.jp/news/4647873",
+      "科学技術振興機構：植物素材100%でタマムシの美しい翅を再現（11/4 / 11/4）https://www.jst.go.jp/pr/announce/20261104-2/index.html",
+      "Google Workspace Updates：Ask Gemini in Drive now generally available（2026年4月 / 2026年4月）https://workspaceupdates.googleblog.com/2026/04/ask-gemini-in-drive-now-generally-available.html",
+      "Google ドライブ ヘルプ：Create content, images and Audio Overviews with Gemini in Drive（随時更新）https://support.google.com/drive/answer/16685527"
+    ],
+    "url": "https://github.com/knishida00/morning-news/releases/download/ep-2026-11-06/2026-11-06.mp3",
+    "bytes": 5569767,
+    "seconds": 696,
+    "sha": "2bdf04586391916c9e7546d546c8e05b2dd3465f",
+    "rev": 1,
+    "play_url": "https://knishida00.github.io/morning-news/audio/2026-11-06.mp3"
+  },
+  {
     "date": "2026-11-05",
     "title": "11月5日 米中間選挙で民主党が上下両院、AI株と原油が急落ほか",
     "summary": "米中間選挙の結果を受けたニューヨーク株の急伸と円相場、AI・データセンター関連株の急落、原油の約1か月ぶりの安値、日経トレンディのヒット商品ベスト30を紹介。資産形成コラムは教育訓練給付制度、AI活用コラムはNotebookLMで表示の確認を根拠つきで進める方法",
