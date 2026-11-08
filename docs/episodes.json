@@ -1,5 +1,30 @@
 [
   {
+    "date": "2026-11-09",
+    "title": "11月9日 月曜版 原油が1週間で1割超下落ほか",
+    "summary": "原油価格の1週間の急落、アンソロピックの上場計画をめぐる評価額の見直し論、三菱自動車の利益見通し引き下げ、1350光年先で鉱物が蒸発した痕跡を捉えた研究を紹介。資産形成コラムは家計の把握のしかた、AI活用コラムはClaudeのプロジェクトで調査依頼書のたたき台を作る方法",
+    "sources": [
+      "共同通信（デイリースポーツ）：ＮＹ原油続伸、終値９０ドル台（米国時間11/6 / 11/7）https://daily.co.jp/society/economics/2026/11/07/0021009074.shtml",
+      "みんかぶ：続伸、戻り高値更新のあと米カタール会談で上げ幅縮小＝NY原油概況（米国時間11/6 / 11/7）https://fx.minkabu.jp/news/383834",
+      "ブルームバーグ：原油急落、ブレント一時10%安－民主党勝利でイラン戦争早期終結期待（11/4 / 11/4）https://www.bloomberg.com/jp/news/articles/2026-11-04/TNZO51T9NJLV00",
+      "日本経済新聞：NY円相場、横ばい 1ドル=158円05〜15銭 米金利の動きにらみ（米国時間11/6 / 11/7）https://www.nikkei.com/article/DGXZQOFL07C1V0X01C26A0000000/",
+      "日本経済新聞：アンソロピックIPO評価額、1.5兆ドル規模に下振れか WSJ報道（11/2 / 11/3）https://www.nikkei.com/article/DGXZQOGN0308V0T01C26A1000000/",
+      "株探：アンソロピック、想定評価額１兆５０００億ドルに懐疑論も（11/6 / 11/6）https://s.kabutan.jp/news/n202611061915/",
+      "ザイリポート：アンソロピックIPOに暗雲、ハイテク株急落で評価額1.5兆ドルに投資家が難色（11/6 / 11/7）https://www.zaikei.co.jp/article/20261107/876521.html",
+      "NHK：三菱自動車 今年度の業績見通しを下方修正（11/6 / 11/7）https://news.web.nhk/newsweb/na/nd-20261107de71983",
+      "レスポンス：三菱自動車、通期営業利益を700億円に下方修正 中間決算（11/6 / 11/6）https://response.jp/article/2026/11/06/418704.html",
+      "日刊自動車新聞（carview）：三菱自動車の2026年4～9月期決算、ASEANや豪州の販売厳しく通期見通しを下方修正（11/6 / 11/6）https://carview.yahoo.co.jp/news/detail/0009541cfa0648303957ee241ffade5c7d69ee6b",
+      "理化学研究所：1,350光年先で「蒸発した鉱物の痕跡」を捉える（11/5 / 11/5）https://www.riken.jp/press/2026/20261105_1/index.html",
+      "Claudeヘルプセンター：How can I create and manage projects?（公式ヘルプ / 随時更新）https://support.claude.com/en/articles/9519177-how-can-i-create-and-manage-projects"
+    ],
+    "url": "https://github.com/knishida00/morning-news/releases/download/ep-2026-11-09/2026-11-09.mp3",
+    "bytes": 5504983,
+    "seconds": 688,
+    "sha": "232afe39451e667168387451661442b203581aba",
+    "rev": 1,
+    "play_url": "https://knishida00.github.io/morning-news/audio/2026-11-09.mp3"
+  },
+  {
     "date": "2026-11-08",
     "title": "11月8日 週末版 実質賃金9カ月連続プラス、OpenAI調達縮小ほか",
     "summary": "9月の実質賃金が9か月連続プラスとなった統計、OpenAIの資金調達目標の引き下げ、金曜のニューヨーク市場、全固体電池の材料探索を自動化するロボットと、来週の注目予定を振り返る週末版。資産形成コラムは退職金にかかる税金、AI活用コラムはGoogle Meetの議事メモの更新で定例の議事録を半自動で配信する方法",
