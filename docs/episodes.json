@@ -1,5 +1,30 @@
 [
   {
+    "date": "2026-11-10",
+    "title": "11月10日 日経平均が急反発、古河電工のAI需要ほか",
+    "summary": "日経平均とNYダウの大幅反発、古河電工の上期最高益とAI向け需要、通信大手の決算、動画配信サービスの利用者5000万超を紹介。資産形成コラムは分散投資の考え方、AI活用コラムはGoogleスプレッドシートのキャンバス機能で売上の画面を作る方法",
+    "sources": [
+      "日本経済新聞：日経平均株価、6日ぶり反発 終値は1340円高の5万8775円（11/9 / 11/9）https://www.nikkei.com/article/DGXZQOFL0909I0Z01C26A1000000/",
+      "共同通信（Yahoo!ニュース）：東証反発、終値1340円高 前週末急落の反動で（11/9 / 11/9）https://news.yahoo.co.jp/articles/09c2a24c7b3511f7369c60f4156b9e791cd2680d",
+      "テレビ朝日系（ANN）：日経平均1340円高 一時2000円超上昇 急反発もAI規制への警戒続く（11/9 / 11/9）https://news.ksb.co.jp/ann/article/17035269",
+      "共同通信（Yahoo!ニュース）：NY株反発、1104ドル高 原油安好感、ほぼ全面高（米国時間11/9 / 11/10）https://news.yahoo.co.jp/articles/5c131bf487143a4822f374005c660c24d3cb8182",
+      "みんかぶ：原油は4.38％安＝NY原油終値（米国時間11/9 / 11/10）https://fx.minkabu.jp/news/383937",
+      "ITmedia ビジネスオンライン：古河電工「上期過去最高益」 市場からは「AI逆風」に懸念の声も（11/9 / 11/9）https://www.itmedia.co.jp/business/articles/2611/09/news078.html",
+      "株探：古河電気工業、今期経常を8％上方修正・最高益予想を上乗せ（11/9 / 11/9）https://kabutan.jp/news/?b=k202611090040",
+      "AI Watch（Impress）：古河電工、AIサーバー向け「HVLP4銅箔」を2029年度末に2倍へ増産（11/9 / 11/9）https://ai.watch.impress.co.jp/docs/news/2154860.html",
+      "日本経済新聞：ソフトバンク純利益11％増に上振れ 27年3月期（11/9 / 11/9）https://www.nikkei.com/article/DGXZQOUB0933Y0Z01C26A1000000/",
+      "マイナビニュース：ソフトバンク、エンプラ事業が2割増益 クラウド・AI成長も、子会社不正アクセスで謝罪（11/9 / 11/9）https://news.mynavi.jp/techplus/article/20261109-5288070/",
+      "Bloomberg：ソフトバンクGあす決算、AI投資に逆風（11/9 / 11/9）https://www.bloomberg.com/jp/news/articles/2026-11-09/TNY926KK3NYD00",
+      "TVer（digitalpr.jp）：TVer、月間ユーザー数が5,000万を突破（11/9 / 11/9）https://digitalpr.jp/r/147819"
+    ],
+    "url": "https://github.com/knishida00/morning-news/releases/download/ep-2026-11-10/2026-11-10.mp3",
+    "bytes": 5567468,
+    "seconds": 696,
+    "sha": "51af71c8ad2d3a4c84b88f468905b7bb2285f4bc",
+    "rev": 1,
+    "play_url": "https://knishida00.github.io/morning-news/audio/2026-11-10.mp3"
+  },
+  {
     "date": "2026-11-09",
     "title": "11月9日 月曜版 原油が1週間で1割超下落ほか",
     "summary": "原油価格の1週間の急落、アンソロピックの上場計画をめぐる評価額の見直し論、三菱自動車の利益見通し引き下げ、1350光年先で鉱物が蒸発した痕跡を捉えた研究を紹介。資産形成コラムは家計の把握のしかた、AI活用コラムはClaudeのプロジェクトで調査依頼書のたたき台を作る方法",
