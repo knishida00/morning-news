@@ -1,5 +1,30 @@
 [
   {
+    "date": "2026-11-13",
+    "title": "11月13日 エヌビディアCEO辞任、企業物価7.1%上昇ほか",
+    "summary": "米エヌビディアのフアンCEOの辞任と日米の株価、10月の企業物価の7.1％上昇と円安・原油高、大阪メトロの万博反動による減益、川崎重工などがドイツで水素専焼の発電設備を稼働させた話題を紹介。資産形成コラムは積み立てがつらいときの減額・停止・売却の違い、AI活用コラムはPowerPointのCopilotで前回の資料のデザインを参照してビジネスレビュー資料を作る方法",
+    "sources": [
+      "NVIDIA（Form 8-K / ニュースリリース）：NVIDIA Announces CEO Transition（米国時間11/12 / 11/12）https://www.sec.gov/Archives/edgar/data/0001045810/000104581026000082/nvidiaannouncesceotransiti.htm",
+      "日本経済新聞：NVIDIA、ジェンスン・ファンCEO辞任 暫定トップにクレスCFO（米国時間11/12 / 11/13）https://www.nikkei.com/article/DGXZQOGN121U30S6A111C2000000/",
+      "NHK：NVIDIA フアンCEOが辞任 業界全体に影響も（米国時間11/12 / 11/13）https://news.web.nhk/newsweb/na/nd-20261112de75078",
+      "ロイター：エヌビディアのフアンＣＥＯ辞任、暫定トップにクレスＣＦＯ（米国時間11/12 / 11/13）https://news.yahoo.co.jp/articles/5ada398af86492ddfe7957b0ce769a2ed4fbee3f",
+      "CNBC：Nvidia live updates（米国時間11/12 / 11/12）https://www.cnbc.com/2026/11/12/nvidia-jensen-huang-ceo-live-updates.html",
+      "共同通信（新潟日報）：東証終値４２９円安（11/12 / 11/12）https://www.niigata-nippo.co.jp/articles/-/941419",
+      "日本銀行：企業物価指数（2026年10月速報）（11/12 / 11/12）https://www.boj.or.jp/statistics/pi/cgpi_release/cgpi2610.pdf",
+      "共同通信（琉球新報）：１０月企業物価７・１％上昇 ２カ月ぶり７％台（11/12 / 11/12）https://ryukyushimpo.jp/kyodo/entry-5598124.html",
+      "共同通信（琉球新報）：為替相場 １３日（日本時間 ３時）（11/13 / 11/13）https://ryukyushimpo.jp/kyodo/entry-5599407.html",
+      "CNBC：Oil prices rise after Trump says no Iran deal needed（米国時間11/12 / 11/12）https://www.cnbc.com/2026/11/12/oil-prices-jump-after-trump-says-no-iran-deal-needed-weve-got-their-strait.html",
+      "共同通信（東京新聞）：大阪メトロ、純利益３５・４％減 ９月中間連結決算、万博反動で（11/12 / 11/12）https://www.tokyo-np.co.jp/article/527666",
+      "NEDO（プレスリリース）：欧州初、ドイツで30MW級水素専焼ガスタービン発電設備が稼働します（開所式11/6 / 11/9）https://prtimes.jp/main/html/rd/p/000000325.000135644.html"
+    ],
+    "url": "https://github.com/knishida00/morning-news/releases/download/ep-2026-11-13/2026-11-13.mp3",
+    "bytes": 6200885,
+    "seconds": 775,
+    "sha": "eadbd56687374c0bafc76626286d15c2b3a36df9",
+    "rev": 1,
+    "play_url": "https://knishida00.github.io/morning-news/audio/2026-11-13.mp3"
+  },
+  {
     "date": "2026-11-12",
     "title": "11月12日 米AI関連株が急反発、石油元売り最高益ほか",
     "summary": "コアウィーブの好決算をきっかけにした米国のAI関連株・半導体株の急反発、石油元売り大手3社の中間決算での過去最高益、日産の2年連続の中間赤字、ゼルダの伝説 時のオカリナの発売4日で520万本を紹介。資産形成コラムは昇給したときの手取りの増え方、AI活用コラムはGoogleフォームの回答をGeminiで分析する新機能",
