@@ -1,5 +1,30 @@
 [
   {
+    "date": "2026-11-14",
+    "title": "11月14日 週末版 円160円台で介入けん制、銀行最高益ほか",
+    "summary": "円相場の約2か月ぶりの160円台と財務相のけん制、大手銀行の中間決算での過去最高益、アンソロピックの上場の価格帯の決定、マクドナルドの新作チキンの品切れによる販売休止と、来週の注目予定を振り返る週末版。資産形成コラムは親の介護に備える介護休業と介護休業給付金、AI活用コラムはClaude Meetingsで社内の画像レビュー会議の指示を言語化する方法",
+    "sources": [
+      "ブルームバーグ：Yen Drops Below 160 Per Dollar, Heightening Risk of Intervention by Japan（11/12〜13 / 11/12）https://www.bloomberg.com/news/articles/2026-11-12/yen-falls-to-key-160-level-per-dollar-raising-intervention-risk",
+      "ロイター（Investing.com転載）：Japan's finance minister vows action as yen breaches 160 threshold（11/13 / 11/13）https://www.investing.com/news/economy-news/japans-finance-minister-vows-action-as-yen-breaches-160-threshold-5023917",
+      "毎日新聞（Yahoo!ニュース）：片山財務相、急激な円安受け「日米が連携し適切に対応」（11/13 / 11/13）https://news.yahoo.co.jp/articles/182e7d53cc1db2d3bfffac4604ea18dcb8b40754",
+      "フィスコ（株探）：【市場反応】米10月生産者物価指数（PPI）受け利上げ観測は緩和、ドル伸び悩む（米国時間11/13 / 11/13）https://kabutan.jp/news/marketnews/?b=n202611131554",
+      "QUICK Money World：日経平均は反発、海外勢の先物買いで一時1000円超高も伸び悩む（11/13 / 11/13）https://moneyworld.jp/news/detail?id=223047",
+      "共同通信（Yahoo!ニュース）：大手銀5社利益4兆円迫る 日銀利上げで利息収入拡大（11/13 / 11/13）https://news.yahoo.co.jp/articles/ebb37e69c5670e46682a7cebed5f68fb05a21984",
+      "日本経済新聞：三菱UFJなど5大銀行、4〜9月の純利益3.9兆円 金利上昇で過去最高（11/13 / 11/13）https://www.nikkei.com/article/DGXZQOUB106V70Q6A111C2000000/",
+      "Business Insider Japan：アンソロピック、IPOの価格帯を設定（米国時間11/10 / 11月）https://www.businessinsider.jp/article/2611-anthropic-sets-ipo-price-range-blockbuster-ipo-valuation/",
+      "AP（ABC7転載）：Anthropic seeks $70 to $78 a share in new IPO filing（米国時間11/10 / 11/10）https://abc7.com/story/anthropic-seeks-70-78-share-new-ipo-filing-values-13-trillion/20029820/",
+      "Fortune：Anthropic IPO price range（米国時間11/10 / 11/10）https://fortune.com/2026/11/10/anthropic-ipo-price-range-ai-stock-sell-off/",
+      "Impress Watch（グルメ Watch）：マクドナルド「ザクザクジューシーマック」“想定を上回る売れ行き”で11月13日から販売を一時休止（11/10 / 11/10）https://gourmet.watch.impress.co.jp/docs/news/2155313.html",
+      "ORICON NEWS（Yahoo!ニュース）：マクドナルド、新作チキン「7商品」の販売一時休止 11月末までの再開見込み（11/13 / 11/13）https://news.yahoo.co.jp/articles/3c3ac94942a688e11baf801f12c2392eeef5d529"
+    ],
+    "url": "https://github.com/knishida00/morning-news/releases/download/ep-2026-11-14/2026-11-14.mp3",
+    "bytes": 6179360,
+    "seconds": 772,
+    "sha": "7289bbf79769efcb26b4c20531ab728e2d49ee7d",
+    "rev": 1,
+    "play_url": "https://knishida00.github.io/morning-news/audio/2026-11-14.mp3"
+  },
+  {
     "date": "2026-11-13",
     "title": "11月13日 エヌビディアCEO辞任、企業物価7.1%上昇ほか",
     "summary": "米エヌビディアのフアンCEOの辞任と日米の株価、10月の企業物価の7.1％上昇と円安・原油高、大阪メトロの万博反動による減益、川崎重工などがドイツで水素専焼の発電設備を稼働させた話題を紹介。資産形成コラムは積み立てがつらいときの減額・停止・売却の違い、AI活用コラムはPowerPointのCopilotで前回の資料のデザインを参照してビジネスレビュー資料を作る方法",
