@@ -1,5 +1,30 @@
 [
   {
+    "date": "2026-11-16",
+    "title": "11月16日 米長期金利5％台で週越え、アジア版IEA提唱へほか",
+    "summary": "金曜の米長期金利の5％台での週越えと日米の株価・円相場、首相のASEAN・APEC出席とアジア版IEAの提唱方針、AI需要による東芝の中間期の最高益、マーケ支援ツールKARTEの不正アクセスによる全面停止、動物の細胞に藻類の全DNAを組み込んだプラニマル細胞を紹介。資産形成コラムは生活防衛資金の目安と置き場所、AI活用コラムはExcelのCopilotのスキル機能で月次レポートの定型作業をまとめる方法",
+    "sources": [
+      "読売新聞：日経平均が2営業日ぶり上昇、終値は322円高の6万1142円（11/13 / 11/13）https://news.infoseek.co.jp/article/yomiuri_20261113_gyt1t00365/",
+      "日本経済新聞：日経平均株価が反発 終値は322円高の6万1142円（11/13 / 11/13）https://www.nikkei.com/article/DGXZQOFL130J90T11C26A1000000/",
+      "AP（Washington Post掲載）：How major US stock indexes fared Friday 11/13/2026（米国時間11/13 / 11/13）https://www.washingtonpost.com/business/2026/11/13/wall-street-stocks-dow-nasdaq/f15a10e2-dfa7-11f1-912c-4fbb80d73f7f_story.html",
+      "時事通信：〔NY外為〕円、159円台後半（13日）（米国時間11/13 / 11/14）https://news.yahoo.co.jp/articles/399364a963d9115bb4a5ac4363b3b0a4b7b02708",
+      "時事通信：日中首脳会談は困難 高市首相、16日から比中訪問（11/15 / 11/15）https://www.jiji.com/jc/article?k=2026111500177&g=pol",
+      "時事通信：高市首相、アジア版IEA提唱へ 石油備蓄で連携、供給網強化―AZEC首脳会合（11/15 / 11/15）https://www.jiji.com/jc/article?k=2026111500179&g=pol",
+      "NHK：高市首相 東南アジアなどと「アジア石油安全保障タスクフォース」創設を提唱で調整（11/14 / 11/14）https://news.web.nhk/newsweb/na/nd-20261114de76011",
+      "日本経済新聞：東芝、4〜9月の営業利益最高 AI需要でHDDや送配電設備がけん引（11/13 / 11/13）https://www.nikkei.com/article/DGXZQOUC132PG0T11C26A1000000/",
+      "共同通信：東芝、中間純利益2.5兆円 キオクシア評価益は半減（11/13 / 11/13）https://news.yahoo.co.jp/articles/51312257a351f22ec7f0de3ef08c082764b43540",
+      "日本経済新聞：荏原が最高益 1〜9月純利益60％増、半導体製造装置の販売伸び（11/13 / 11/13）https://www.nikkei.com/article/DGXZQOUB136YR0T11C26A1000000/",
+      "プレイド（公式発表）：当社サービスへの不正アクセスに関するご報告（11/13 / 11/13）https://plaid.co.jp/news/20261113/",
+      "日本経済新聞：マーケ支援のプレイド、不正アクセスでサービス停止（11/13 / 11/13）https://www.nikkei.com/article/DGXZQOUC13B0E0T11C26A1000000/"
+    ],
+    "url": "https://github.com/knishida00/morning-news/releases/download/ep-2026-11-16/2026-11-16.mp3",
+    "bytes": 5956170,
+    "seconds": 744,
+    "sha": "b7f98c42c160c9955edf985ba962b1c59c15abd1",
+    "rev": 1,
+    "play_url": "https://knishida00.github.io/morning-news/audio/2026-11-16.mp3"
+  },
+  {
     "date": "2026-11-15",
     "title": "11月15日 週末版 消費減税法案が参院審議入りほか",
     "summary": "食料品の消費税を1％に下げる法案の参院での実質審議入りと支援金の対象拡大、4〜9月の経常黒字の縮小と旅行収支の過去最大、TSMCによるOpenAIとアンソロピックへの出資承認、ロボット大賞の決定と、来週の注目予定を振り返る週末版。資産形成コラムは出産にかかるお金と会社員が受けられる給付、AI活用コラムはClaude Whiteboardsで商品コンセプト案を整理する方法",
