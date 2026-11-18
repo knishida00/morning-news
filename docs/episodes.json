@@ -1,5 +1,30 @@
 [
   {
+    "date": "2026-11-19",
+    "title": "11月19日 FRB議事要旨で追加利上げ示唆、10月輸出は過去最高ほか",
+    "summary": "FOMC議事要旨でほぼ全員が追加利上げを想定し日米の株価・金利・円相場、10月の輸出額が単月で過去最高、アンソロピックの公開価格が想定を上回る83ドルで決定、オリックス系ファンドによるリクルートのスタディサプリなど学習事業の買収、レンズ不要の深紫外LEDで高速の光無線通信を紹介。資産形成コラムは冬のボーナスの手取りの計算、AI活用コラムはスプレッドシートのAI関数でECの商品説明文の表現を一括チェックする方法",
+    "sources": [
+      "CNBC：Fed minutes October 2026: Officials expect more rate hikes, worry about AI（米国時間11/18 / 11/18）https://www.cnbc.com/2026/11/18/fed-minutes-october-2026.html",
+      "Bloomberg：Fed Officials Signal More Rate Hikes Likely After October Meeting Minutes（米国時間11/18 / 11/18）https://www.bloomberg.com/news/articles/2026-11-18/fed-minutes-show-almost-all-officials-expect-more-rate-hikes",
+      "Bloomberg（swissinfo掲載）：Stocks Waver After Nvidia Results, Treasuries Rise: Markets Wrap（米国時間11/18 / 11/18）https://www.swissinfo.ch/eng/stocks-waver-after-nvidia-results,-treasuries-rise:-markets-wrap/92397458",
+      "CNBC：Stock market today: Live updates（米国時間11/18 / 11/18）https://www.cnbc.com/2026/11/17/stock-market-today-live-updates.html",
+      "日本経済新聞：日経平均株価163円高の5万9024円、NVIDIA好決算でも高揚感乏しく（11/18 / 11/18）https://www.nikkei.com/article/DGXZQOFL181SK0Y6A111C2000000/",
+      "ロイター（ニューズウィーク日本版掲載）：日経平均は3日ぶり小反発、エヌビディア決算後の上昇は短時間（11/18 / 11/18）https://www.newsweekjapan.jp/articles/-/340541",
+      "ロイター（Investing.com掲載）：Japan exports set record in October on strong chip-related demand（11/18 / 11/18）https://ca.investing.com/news/economic-indicators/japan-exports-set-record-in-october-on-strong-chiprelated-demand-4965426",
+      "CNBC：Japan exports in October surge 20.5%, beating estimates on robust chip shipments（11/18 / 11/18）https://www.cnbc.com/2026/11/18/japan-exports-october-imports-chips.html",
+      "Bloomberg：Anthropic Is Said to Price IPO at $83 Per Share（米国時間11/18 / 11/18）https://www.bloomberg.com/news/articles/2026-11-18/anthropic-is-said-to-price-ipo-at-83-per-share",
+      "CNBC：Anthropic sets IPO price range of $70 to $78, looks to start trading Nov. 19（米国時間11/10 / 11/10、背景）https://www.cnbc.com/2026/11/10/anthropic-sets-price-range-of-70-to-78-in-upcoming-ipo.html",
+      "時事通信：オリックス系ファンド、リクルートの学習事業買収 「スタディサプリ」など（11/18 / 11/18）https://www.jiji.com/jc/article?k=2026111801160&g=eco",
+      "日本経済新聞：オリックス、リクルートのスタディサプリ買収 オンライン学習600億円（11/18 / 11/18）https://www.nikkei.com/article/DGXZQOUB094MQ0Z01C26A1000000/"
+    ],
+    "url": "https://github.com/knishida00/morning-news/releases/download/ep-2026-11-19/2026-11-19.mp3",
+    "bytes": 6066511,
+    "seconds": 758,
+    "sha": "fa034fbf87feb2efd95c06feecd09461f752b74b",
+    "rev": 1,
+    "play_url": "https://knishida00.github.io/morning-news/audio/2026-11-19.mp3"
+  },
+  {
     "date": "2026-11-18",
     "title": "11月18日 エヌビディア決算が予想上回るほか",
     "summary": "フアン氏退任後初となるエヌビディア決算の売上高2倍超と強気の見通し、日米の株価の続落と円相場、AZEC首脳会合でのアジア版IEA創設の合意、鴻海によるソニーの車載カメラ用モジュール事業の買収、NTTの失敗を事前に予測するロボット技術を紹介。資産形成コラムは医療費控除とセルフメディケーション税制、AI活用コラムはClaude for Excelでインタビュー対象者の候補表を作る方法",
