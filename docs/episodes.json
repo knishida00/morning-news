@@ -1,5 +1,30 @@
 [
   {
+    "date": "2026-11-21",
+    "title": "11月21日 週末版 日経平均3000円安、世界で株安ほか",
+    "summary": "日経平均の歴代5番目の下げ幅とニューヨーク市場の調整入り、10月の全国消費者物価の2.2％上昇、トランプ大統領の海外データセンターへの課税発言、GTA6の発売初日の売上の記録と、来週の注目予定を振り返る週末版。資産形成コラムは会社を辞めたときの失業給付のしくみ、AI活用コラムはClaudeのファイル作成機能でECの商品ページ画像のABテスト結果を判定する方法",
+    "sources": [
+      "日テレNEWS NNN（Yahoo!ニュース）：【速報】日経平均株価 終値約7か月ぶり5万6000円台 下げ幅3000円超（2026-11-20 / 2026-11-20）https://news.yahoo.co.jp/articles/4f3d50b08ce88bfe7ff3ad7fddb3666d7992e888",
+      "共同通信（Yahoo!ニュース）：NY株大幅続落、949ドル安（米国時間2026-11-20 / 2026-11-21）https://news.yahoo.co.jp/articles/1168fa48191b92d5e9fa428b793398ac2158db7b",
+      "CNBC：S&P 500 and Dow close in correction; Nasdaq erases 2026 gain as AI rout picks up steam（米国時間2026-11-20 / 2026-11-20）https://www.cnbc.com/amp/2026/11/19/stock-market-today-live-updates.html",
+      "Yahoo Finance：Anthropic Sinks 9% on Day Two as AI Selloff Deepens（米国時間2026-11-20 / 2026-11-20）https://finance.yahoo.com/markets/stocks/articles/anthropic-sinks-9-day-two-144026883.html",
+      "共同通信（山陰中央新報）：NY円、158円63～73銭（米国時間2026-11-20 / 2026-11-21）https://www.sanin-chuo.co.jp/articles/-/1120002",
+      "テレビ朝日系（ANN）：10月の消費者物価指数 前年同月比2.2％上昇 2カ月連続2％上回る 総務省（2026-11-20 / 2026-11-20）https://news.yahoo.co.jp/articles/c0df89b3a9e406547f64729f9c7997918527579a",
+      "共同通信（新潟日報）：10月の全国消費者物価指数2.2％上昇（2026-11-20 / 2026-11-20）https://www.niigata-nippo.co.jp/articles/-/946365",
+      "OANDA証券：【全国CPI】10月のコアは前年比＋2.2%と予想を下回るも2ヶ月連続の2%台（2026-11-20 / 2026-11-20）https://www.oanda.jp/lab-education/market_news/jpcpi-oct-2026-review/",
+      "CNBC：Trump vows to stop U.S. companies from building data centers abroad, threatens 'tremendous tax'（米国時間2026-11-20 / 2026-11-20）https://www.cnbc.com/2026/11/20/trump-data-centers-ai-companies-tax.html",
+      "Axios：Trump threatens tax on US companies building data centers overseas（米国時間2026-11-20 / 2026-11-20）https://www.axios.com/2026/11/20/us-ai-trump-data-centers-overseas",
+      "CNN：GTA VI sales blew past $3 billion in a single day（米国時間2026-11-20 / 2026-11-20）https://www.cnn.com/2026/11/20/media/gta-vi-launch-sales-numbers",
+      "ABC News：GTA 6 breaks entertainment box office records with $3.79B in 1st-day sales（米国時間2026-11-20 / 2026-11-20）https://abcnews.com/GMA/Culture/grand-theft-auto-vi-breaks-1st-day-sales-record/story?id=138328412"
+    ],
+    "url": "https://github.com/knishida00/morning-news/releases/download/ep-2026-11-21/2026-11-21.mp3",
+    "bytes": 6340901,
+    "seconds": 793,
+    "sha": "fe008c3b32f44133a8e1afbfe9446d5e0d83eae2",
+    "rev": 1,
+    "play_url": "https://knishida00.github.io/morning-news/audio/2026-11-21.mp3"
+  },
+  {
     "date": "2026-11-20",
     "title": "11月20日 アンソロピック上場、NYダウ1100ドル安ほか",
     "summary": "アンソロピックのナスダック上場と過去最大の調達額、同じ日にNYダウが1100ドル安で5万ドルを割り込んだ米国市場、史上初の米中ロ首脳会談の「平和宣言」、JTのロシア事業の連結除外による巨額赤字、スターシップ宇宙船の空中キャッチ成功を紹介。資産形成コラムは相場が荒れた日のニュースとの付き合い方、AI活用コラムはGeminiの予約アクションで担当商品と競合の動きを毎朝自動で届ける方法",
