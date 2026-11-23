@@ -1,5 +1,30 @@
 [
   {
+    "date": "2026-11-24",
+    "title": "11月24日 フアン氏がエヌビディアCEOに復帰、米株急伸ほか",
+    "summary": "エヌビディアのフアン氏のCEO復帰とナスダックの6.5％高、クラウドストライクによるゼットスケーラーの約7兆円での買収、ワコムの投資ファンドと組んだMBO、アマゾンによるAI新興企業デカートの技術の買収、窓ガラス型のペロブスカイト太陽電池の実証の協定。資産形成コラムは海外の資産に投資するときの為替の影響、AI活用コラムはClaudeのコンピューター操作機能で社内の定型の依頼書づくりを半自動化する方法",
+    "sources": [
+      "日本経済新聞：NVIDIA、CEOにジェンスン・ファン氏復帰 「安保上のリスクなし」（2026-11-23 / 2026-11-24）https://www.nikkei.com/article/DGXZQOGN232LV0T21C26A1000000/",
+      "NVIDIA（SEC Form 8-K）：Press release on CEO reinstatement（2026-11-23 / 2026-11-23）https://www.sec.gov/Archives/edgar/data/0001045810/000104581026000090/nov23pressrelease.htm",
+      "CNBC：Jensen Huang reinstated as Nvidia CEO. Stock skyrockets 31%（2026-11-23 / 2026-11-23）https://www.cnbc.com/2026/11/23/nvidia-jensen-huang-ceo.html",
+      "CNBC：2-year Treasury yield jumps as stocks rebound（2026-11-23 / 2026-11-23）https://www.cnbc.com/2026/11/23/treasury-yields-bonds-fed.html",
+      "共同通信（中日新聞）：為替相場 24日（日本時間3時）（2026-11-24 / 2026-11-24）https://www.chunichi.co.jp/article/1343789",
+      "日本経済新聞：クラウドストライク、ゼットスケーラー7兆円買収 サイバー2強統合（2026-11-23 / 2026-11-24）https://www.nikkei.com/article/DGXZQOGN232TD0T21C26A1000000/",
+      "日本経済新聞：ワコムがMBOへ、投資ファンドMBKが支援（2026-11-20 / 2026-11-20）https://www.nikkei.com/article/DGXZQOUC20B2E0Q6A121C2000000/",
+      "ワコム（適時開示）：MBOの実施及び公開買付けの開始予定に関する意見表明並びに応募の推奨に関するお知らせ（2026-11-20 / 2026-11-20）https://finance.biggo.jp/news/jpx_tdnet_140120261113579942",
+      "TechCrunch：Amazon snaps up Decart's AI optimization tech for $7.5B as it prepares to sell Trainium chips（2026-11-23 / 2026-11-23）https://techcrunch.com/2026/11/23/amazon-snaps-up-decarts-ai-optimization-tech-for-7-5b-as-it-prepares-to-sell-trainium-chips/",
+      "CNBC：Amazon to acquire AI startup Decart's chip software, hire founders（2026-11-23 / 2026-11-23）https://www.cnbc.com/2026/11/23/amazon-decarts-ai-acquisition.html",
+      "関西大学（PR TIMES）：ガラス型ペロブスカイト太陽電池の実証試験に向けた基本協定を締結（2026-11-20 / 2026-11-20）https://prtimes.jp/main/html/rd/p/000000328.000013058.html",
+      "投資信託協会：投資信託が持つリスク（確認日 2026-11-24）https://www.toushin.or.jp/investmenttrust/meritrisk/risk/index.html"
+    ],
+    "url": "https://github.com/knishida00/morning-news/releases/download/ep-2026-11-24/2026-11-24.mp3",
+    "bytes": 5897865,
+    "seconds": 737,
+    "sha": "e80483e44fb86aae52dc42fc122bf0be3f1aa6a0",
+    "rev": 1,
+    "play_url": "https://knishida00.github.io/morning-news/audio/2026-11-24.mp3"
+  },
+  {
     "date": "2026-11-23",
     "title": "11月23日 週末版 マンション短期転売に課税強化案ほか",
     "summary": "新築マンションの短期転売への課税強化の検討、合意文書を採択できずに閉幕したCOP31、エヌビディア製半導体の中国への密輸網をめぐる報道、3台のスパコンとAIで天の川銀河を星一つずつ再現した研究と、来週の注目予定を振り返る週末版。資産形成コラムは親から住宅資金の援助を受けるときの贈与税の非課税制度、AI活用コラムはClaude Dataで週次の売上表からダッシュボードと要点の文章を作る方法",
