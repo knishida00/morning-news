@@ -1,5 +1,30 @@
 [
   {
+    "date": "2026-11-26",
+    "title": "11月26日 米国が日本など14か国に新関税案ほか",
+    "summary": "アメリカによる日本など14の国と地域への新たな関税案、AI株の売りで日経平均1633円安とナスダックの一時4.6％安、アメリカの物価と成長率の上振れと12月の利上げ観測、JX金属の基板がNASAの新しい宇宙望遠鏡の目に採用。資産形成コラムは残業代のしくみ、AI活用コラムはApps ScriptのGeminiで調査データのクロス集計を自動化する方法",
+    "sources": [
+      "日本経済新聞：トランプ政権が新関税、日本15%・中国20% 違憲判決前の水準に逆戻り（2026-11-25 / 2026-11-26）https://www.nikkei.com/article/DGXZQOGN25CDT0V21C26A1000000/",
+      "CNBC：U.S. proposes new tariffs on 14 trading partners, including China and the EU（2026-11-25 / 2026-11-25）https://www.cnbc.com/2026/11/25/us-tariffs-trump-section-301.html",
+      "共同通信（神奈川新聞）：米、14カ国・地域への新関税検討正式発表（2026-11-25 / 2026-11-26）https://www.kanaloco.jp/news/economy/article-1323672.html",
+      "日本経済新聞：EUがHVに緊急輸入制限 中国との合意受け12月から、日本製も対象（2026-11-24 / 2026-11-25）https://www.nikkei.com/article/DGXZQOGR249RU0U6A121C2000000/",
+      "共同通信（中日新聞）：東証、終値は5万7011円（2026-11-25 / 2026-11-25）https://www.chunichi.co.jp/article/1344459",
+      "テレビ朝日系（ANN）：日経平均株価 終値は1633円安の5万7011円 AI投資の採算性懸念で（2026-11-25 / 2026-11-25）https://news.ksb.co.jp/ann/article/17078611",
+      "CNBC：Tech stocks sink but close well off the lows（2026-11-25 / 2026-11-25）https://www.cnbc.com/2026/11/25/nvidia-ai-stock-tech-selloff.html",
+      "ロイター（Korea Times）：Nasdaq, S&P 500 ease, but off lows of the day as investors seek bargains（2026-11-25 / 2026-11-26）https://www.koreatimes.co.kr/world/20261126/nasdaq-sp-500-ease-but-off-lows-of-the-day-as-investors-seek-bargains",
+      "米商務省経済分析局（BEA）：Personal Income and Outlays, October 2026（2026-11-25 / 2026-11-25）https://www.bea.gov/news/2026/personal-income-and-outlays-october-2026",
+      "CNBC：PCE inflation report October 2026（2026-11-25 / 2026-11-25）https://www.cnbc.com/2026/11/25/pce-inflation-report-october-2026.html",
+      "MONOist：JX金属の亜鉛基板、宇宙へ 暗黒エネルギー解明に貢献（2026-11-20 / 2026-11-24）https://monoist.itmedia.co.jp/mn/articles/2611/24/news019.html",
+      "鉄鋼新聞：JX金属のテルル化カドミウム亜鉛基板／NASAの宇宙望遠鏡向け赤外線検出器に採用（2026-11-20 / 2026-11-21）https://www.japanmetaldaily.com/articles/-/271186"
+    ],
+    "url": "https://github.com/knishida00/morning-news/releases/download/ep-2026-11-26/2026-11-26.mp3",
+    "bytes": 6011340,
+    "seconds": 751,
+    "sha": "562429772a5c4f24b256579bc7e1f244b13e418b",
+    "rev": 1,
+    "play_url": "https://knishida00.github.io/morning-news/audio/2026-11-26.mp3"
+  },
+  {
     "date": "2026-11-25",
     "title": "11月25日 米AI株が反落、アンソロピック公開価格割れほか",
     "summary": "アメリカのAI・半導体株の反落とアンソロピック株の公開価格割れ、ホルムズ海峡での船舶攻撃と原油の反発、アメリカの消費者の景気の見方の急改善と円相場、第2次補正予算の編成指示、アマゾンの衛星インターネット用の衛星36基の打ち上げ。資産形成コラムは源泉徴収票の読み方、AI活用コラムはClaudeで作った小さな道具をパソコンのアプリとして入れ、毎週の競合価格の確認を楽にする方法",
